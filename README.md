@@ -22,3 +22,7 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
+### Vue Router
+See [History Mode](https://router.vuejs.org/guide/essentials/history-mode.html#example-server-configurations).

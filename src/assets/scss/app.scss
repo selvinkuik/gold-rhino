@@ -1,0 +1,14 @@
+@import 'reset';
+@import 'foundation-sites/scss/foundation.scss';
+
+@include foundation-xy-grid-classes;
+
+// body {
+//   overflow-x: hidden;
+// }
+
+.foreground {
+  background-color: #fff;
+  position: relative;
+  z-index: 1;
+}
