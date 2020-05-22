@@ -7,6 +7,7 @@
 <script>
   export default {
     name: 'VideoFullWidth',
+    
     props: {
       src: String
     }
