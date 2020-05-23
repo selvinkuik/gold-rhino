@@ -1,5 +1,12 @@
 # gold-rhino
 
+## Prerequisites
+
+  - node 12.7.0
+  - yarn 1.22.4
+  - vue-cli 4.3.1
+
+
 ## Project setup
 ```
 yarn install

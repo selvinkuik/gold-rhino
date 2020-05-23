@@ -1,7 +1,7 @@
 <template>
   <div class="text-with-horizontal-ticker grid-x">
     <div class="ticker">
-      <div ref="ticker" :style="{ width: tickerWidthInline }">{{ ticker }}</div>
+      <div ref="ticker" :style="{ width: tickerWidth }">{{ ticker }}</div>
     </div>
 
     <div class="text cell large-6 large-offset-6">
@@ -20,31 +20,25 @@
 
     data() {
       return {
-        tickerWidth: 0
-      }
-    },
-
-    computed: {
-      tickerWidthInline: function () {
-        return this.tickerWidth ? this.tickerWidth + 'px' : 'auto'
+        tickerWidth: 'auto'
       }
     },
 
     mounted() {
-        this.tickerWidth = this.$refs.ticker.clientWidth
+      this.tickerWidth = getComputedStyle(this.$refs.ticker).width
 
-        const scene = this.$scrollmagic.scene({
-          triggerElement: '.text-with-horizontal-ticker',
-          triggerHook: 1,  // {0,0.5,1} - animations starts from {top,center,end} of window
-          duration: '100%' // The full height of the window
+      const scene = this.$scrollmagic.scene({
+        triggerElement: '.text-with-horizontal-ticker',
+        triggerHook: 1,  // {0,0.5,1} - animations starts from {top,center,end} of window
+        duration: '100%' // The full height of the window
+      })
+        .setTween(this.$refs.ticker, { 
+          left: -parseInt(this.tickerWidth),
+          ease: 'Linear.easeNone'
         })
-          .setTween(this.$refs.ticker, { 
-            left: -this.tickerWidth,
-            ease: 'Linear.easeNone'
-          })
-          // .addIndicators({ name: 'TextWithHorizontalTicker' })
+        // .addIndicators({ name: 'TextWithHorizontalTicker' })
 
-        this.$scrollmagic.addScene(scene)
+      this.$scrollmagic.addScene(scene)
     }
   }
 </script>
