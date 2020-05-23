@@ -13,7 +13,7 @@
 
     <div class="menu-overlay" ref="menu">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/about-us">About us</router-link>
     </div>
   </div>
 </template>
