@@ -9,7 +9,7 @@
 <style lang="scss" scoped>
   .fade-enter-active,
   .fade-leave-active {
-    transition: opacity 0.4s ease;
+    transition: opacity 0.4s cubic-bezier(0.19, 1, 0.22, 1);
   }
 
   .fade-enter,

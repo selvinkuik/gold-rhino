@@ -6,7 +6,7 @@
       <NavBar />
 
       <div style="height: 500px"></div>
-      <ClipPathBox src="placeholder.jpg" text="Home" to="/" />
+      <ClipPathBox image="placeholder.jpg" text="Home" to="/" />
       <div style="height: 1000px"></div>
     </div>
   </div>

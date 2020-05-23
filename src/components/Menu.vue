@@ -12,8 +12,9 @@
     </div>
 
     <div class="menu-overlay" ref="menu">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about-us">About us</router-link>
+      <router-link v-for="item in $router.options.routes" :key="item.path" :to="item.path">
+        {{ item.name }}
+      </router-link>
     </div>
   </div>
 </template>
@@ -82,7 +83,7 @@
     height: 100%;
     position: absolute;
     transform: scale(1);
-    transition: transform 0.2s ease-in-out;
+    transition: transform 0.2s cubic-bezier(0.19, 1, 0.22, 1);
     width: 100%;
   }
 
@@ -112,7 +113,7 @@
     position: absolute;
     text-align: center;
     top: 0;
-    transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s cubic-bezier(0.19, 1, 0.22, 1);
     visibility: hidden;
     width: 100%;
     z-index: 1;
@@ -120,7 +121,7 @@
 
   .open {
     .menu-circle {
-      transform: scale(60);
+      transform: scale(70);
     }
 
     .menu-line-1 {

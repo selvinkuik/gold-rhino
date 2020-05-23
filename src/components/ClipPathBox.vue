@@ -13,7 +13,7 @@
             <circle ref="clipPath" cx="50%" cy="50%" r="8%" />
           </clipPath>
         </defs>
-        <image clip-path="url(#mask)" xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="require('@/assets/' + src)" width="100%" height="100%" />
+        <image clip-path="url(#mask)" xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="require('@/assets/' + image)" width="100%" height="100%" />
         <circle ref="circle" cx="50%" cy="50%" r="8%" style="fill: transparent;" />
       </svg>
     </router-link>
@@ -25,7 +25,7 @@
     name: 'ClipPathBox',
     
     props: {
-      src: String,
+      image: String,
       text: String,
       to: String
     },
@@ -106,7 +106,7 @@
 
     .inactive {
       circle {
-        transition: cx 0.2s, cy 0.2s;
+        transition: cx 0.2s cubic-bezier(0.19, 1, 0.22, 1), cy 0.2s cubic-bezier(0.19, 1, 0.22, 1);
       }
     }
   }
