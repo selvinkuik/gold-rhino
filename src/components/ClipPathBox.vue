@@ -1,20 +1,20 @@
 <template>
   <div class="clip-path-box grid-x">
-    <router-link class="box large-6 large-offset-3" to="/">
+    <router-link ref="box" class="box large-6 large-offset-3" :class="{ inactive: !mouseOver }" :to="to">
       <p>{{ text }}</p>
 
-      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink= "http://www.w3.org/1999/xlink" ref="svgElement">
+      <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink= "http://www.w3.org/1999/xlink" ref="overlay">
         <rect width="100%" height="100%" fill="#EEEEEE" />
       </svg>
 
       <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink= "http://www.w3.org/1999/xlink">
         <defs>
           <clipPath id="mask">
-            <circle ref="maskedElement" cx="50%" cy="50%" r="8%" />
+            <circle ref="clipPath" cx="50%" cy="50%" r="8%" />
           </clipPath>
         </defs>
         <image clip-path="url(#mask)" xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="require('@/assets/' + src)" width="100%" height="100%" />
-        <circle ref="circleFeedback" cx="50%" cy="50%" r="8%" style="stroke: #fff; fill: transparent; stroke-width: 5;" />
+        <circle ref="circle" cx="50%" cy="50%" r="8%" style="fill: transparent;" />
       </svg>
     </router-link>
   </div>
@@ -32,7 +32,8 @@
 
     data() {
       return {
-        svgPoint: null
+        svgPoint: null,
+        mouseOver: false
       }
     },
 
@@ -44,10 +45,10 @@
       },
 
       update(svgCoords) {
-        this.$refs.maskedElement.setAttribute('cx', svgCoords.x)
-        this.$refs.maskedElement.setAttribute('cy', svgCoords.y)
-        this.$refs.circleFeedback.setAttribute('cx', svgCoords.x)
-        this.$refs.circleFeedback.setAttribute('cy', svgCoords.y)
+        this.$refs.clipPath.setAttribute('cx', svgCoords.x)
+        this.$refs.clipPath.setAttribute('cy', svgCoords.y)
+        this.$refs.circle.setAttribute('cx', svgCoords.x)
+        this.$refs.circle.setAttribute('cy', svgCoords.y)
       },
 
       reset() {
@@ -59,13 +60,16 @@
     },
 
     mounted() {
-      this.svgPoint = this.$refs.svgElement.createSVGPoint()
+      this.svgPoint = this.$refs.overlay.createSVGPoint()
 
       this.onMouseMove = (e) => {
-        const rect = this.$refs.svgElement.getBoundingClientRect()
+        const rect = this.$refs.overlay.getBoundingClientRect()
+
         if( (e.pageX > rect.left && e.pageX < rect.right) && (e.pageY > (rect.top + window.scrollY) && e.pageY < (rect.bottom + window.scrollY)) ) {
-          this.update(this.cursorPoint(e, this.$refs.svgElement))
+          this.mouseOver = true
+          this.update(this.cursorPoint(e, this.$refs.overlay))
         } else {
+          this.mouseOver = false
           this.reset()
         }
       }
@@ -98,6 +102,12 @@
       position: absolute;
       top: 0;
       width: 100%;
+    }
+
+    .inactive {
+      circle {
+        transition: cx 0.2s, cy 0.2s;
+      }
     }
   }
 </style>
