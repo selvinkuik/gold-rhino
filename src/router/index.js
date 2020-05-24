@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import NotFound from '../views/NotFound.vue'
 
 Vue.use(VueRouter)
 
@@ -22,6 +23,9 @@ const routes = [
     name: 'Investment',
     image: 'placeholder.jpg',
     component: () => import('../views/Investment.vue')
+  },
+  {
+    path: '*', component: NotFound
   }
 ]
 
