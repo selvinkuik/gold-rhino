@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="checkForm" method="post">
+  <form @submit.prevent="checkForm">
     <div>
       <label>
         First name:

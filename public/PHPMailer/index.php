@@ -7,6 +7,9 @@ require("Exception.php");
 require("PHPMailer.php");
 require("SMTP.php");
 
+$request_body = file_get_contents('php://input');
+$data = json_decode($request_body);
+
 $mail = new PHPMailer();
 $mail->IsSMTP();
 $mail->Mailer = "smtp";
@@ -22,10 +25,10 @@ $mail->FromName = "Gold Rhino Website";
 $mail->AddAddress("selvinkuik@gmail.com", "Sel-Vin Kuik");
 
 $mail->isHTML(true);
-$mail->Subject = "Hi!";
+$mail->Subject = "New Message";
 
 ob_start();
-require("foundation-emails/index-inline.html");
+require("foundation-emails/index-inline.php");
 $mail->Body = ob_get_contents();
 ob_end_clean();
 

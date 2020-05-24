@@ -25,7 +25,7 @@
                             First name:
                           </th>
                           <th class="expander">
-                            <?php echo $_POST['firstName'] ?? null; ?>
+                            <?php echo $data['firstName'] ?? null; ?>
                           </th>
                         </tr>
                       </table>
