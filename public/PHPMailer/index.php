@@ -21,14 +21,17 @@ $mail->From = "website@goldrhino.com.au";
 $mail->FromName = "Gold Rhino Website";
 $mail->AddAddress("selvinkuik@gmail.com", "Sel-Vin Kuik");
 
+$mail->isHTML(true);
 $mail->Subject = "Hi!";
-$mail->Body = "Hi! How are you?";
-$mail->WordWrap = 50;
+
+ob_start();
+require("foundation-emails/index-inline.html");
+$mail->Body = ob_get_contents();
+ob_end_clean();
 
 if(!$mail->Send()) {
     echo 'Message was not sent.';
     echo 'Mailer error: ' . $mail->ErrorInfo;
-    exit;
 } else {
     echo 'Message has been sent.';
 }
