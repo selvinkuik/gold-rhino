@@ -25,10 +25,17 @@
 
     methods: {
       checkForm() {
-        fetch('http://localhost:8080/' + encodeURIComponent(this.firstName))
-          .then(async res => {
-            let errorResponse = await res.json()
-            console.log(errorResponse)
+        fetch('https://goldrhino.selvinkuik.com/PHPMailer/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            firstName: this.firstName
+          })
+        })
+          .then(response => {
+            console.log(response)
           })
       }
     }

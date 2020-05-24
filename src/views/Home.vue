@@ -1,6 +1,6 @@
 <template>
   <div class="grid-container full">
-    <VideoFullWidth src="/placeholder.mp4" />
+    <VideoFullWidth src="/videos/placeholder.mp4" />
 
     <div class="foreground">
       <NavBar />
@@ -10,7 +10,7 @@
       <template v-for="item in $router.options.routes">
         <router-link :key="item.path" :to="item.path">
           {{ item.name }}
-          <img :src="require('@/assets/' + item.image)" />
+          <img :src="require('@/assets/images/' + item.image)" />
         </router-link>
       </template>
     </div>

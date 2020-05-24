@@ -1,6 +1,6 @@
 <template>
   <div class="grid-container full">
-    <VideoFullWidth src="/placeholder.mp4" />
+    <VideoFullWidth src="/videos/placeholder.mp4" />
 
     <div class="foreground">
       <NavBar />

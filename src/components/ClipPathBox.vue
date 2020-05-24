@@ -13,7 +13,7 @@
             <circle ref="clipPath" cx="50%" cy="50%" r="8%" />
           </clipPath>
         </defs>
-        <image clip-path="url(#mask)" xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="require('@/assets/' + image)" width="100%" height="100%" />
+        <image clip-path="url(#mask)" xmlns:xlink="http://www.w3.org/1999/xlink" :xlink:href="require('@/assets/images/' + image)" width="100%" height="100%" />
         <circle ref="circle" cx="50%" cy="50%" r="8%" style="fill: transparent;" />
       </svg>
     </router-link>
