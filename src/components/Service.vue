@@ -5,7 +5,7 @@
   >
     <div class="pinned">
       <div class="counter">{{ scrollCounter }} / {{ scrollMax }}</div>
-      <h3 v-html="name"></h3>
+      <h3 v-html="title"></h3>
 
       <div class="grid-x">
         <div
@@ -55,7 +55,7 @@
       image1: String,
       image2: String,
       layout: String,
-      name: String,
+      title: String,
       slug: String,
       scrollCounter: Number,
       scrollMax: Number
@@ -147,6 +147,7 @@
       position: absolute;
       top: 0;
       width: 100%;
+      z-index: 2;
     }
 
     img {

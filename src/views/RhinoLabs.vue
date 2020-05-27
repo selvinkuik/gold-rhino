@@ -1,12 +1,18 @@
 <template>
   <div class="grid-container full">
     <VideoFullWidth
-      src="/videos/placeholder.mp4"
-      :showNav="true"
+      name="RHINO LABS"
+      src="/videos/rhino-labs.mp4"
+      title="rhino-labs.svg"
+      showNav="white"
+      ref="banner"
     />
 
-    <div class="foreground dark-neutral">
-      <NavBar color="red" />
+    <div
+      class="foreground dark-neutral"
+      ref="darkSection"
+    >
+      <NavBar backgroundColor="#1C2936" />
 
       <div class="rhino-labs grid-x grid-margin-x">
         <div class="cell large-4 large-offset-2">
@@ -36,7 +42,7 @@
         image1="discovery-1.jpg"
         image2="discovery-2.jpg"
         layout="layout-1"
-        name="Discovery"
+        title="Discovery"
         slug="discovery"
         :scrollCounter="1"
         :scrollMax="6"
@@ -49,7 +55,7 @@
         image1="strategy-1.jpg"
         image2="strategy-2.jpg"
         layout="layout-2"
-        name="Strategy"
+        title="Strategy"
         slug="strategy"
         :scrollCounter="2"
         :scrollMax="6"
@@ -62,7 +68,7 @@
         image1="branding-1.jpg"
         image2="branding-2.jpg"
         layout="layout-3"
-        name="Visual Identity<br>and Branding"
+        title="Visual Identity<br>and Branding"
         slug="branding"
         :scrollCounter="3"
         :scrollMax="6"
@@ -75,7 +81,7 @@
         image1="structure-1.jpg"
         image2="structure-2.jpg"
         layout="layout-1"
-        name="Structure"
+        title="Structure"
         slug="structure"
         :scrollCounter="4"
         :scrollMax="6"
@@ -88,7 +94,7 @@
         image1="gtm-1.jpg"
         image2="gtm-2.jpg"
         layout="layout-2"
-        name="Go-To-Market"
+        title="Go-To-Market"
         slug="gtm"
         :scrollCounter="5"
         :scrollMax="6"
@@ -101,7 +107,7 @@
         image1="exit-1.jpg"
         image2="exit-2.jpg"
         layout="layout-3"
-        name="Exit Strategy"
+        title="Exit Strategy"
         slug="exit"
         :scrollCounter="6"
         :scrollMax="6"
@@ -109,34 +115,40 @@
       >
         Gold Rhino have a proven track record when it comes to selling a business. It is the last and most crucial stage of the journey. We will guide you to an exit that delivers maximum value for all of your emotional investment and hard work in the company that you have built.
       </Service>
+    </div>
 
-      <div class="light-neutral">
-        <div class="grid-x">
-          <div class="large-8 large-offset-2">
-            <img class="image" src="@/assets/images/rhino-labs.jpg" />
-          </div>
+    <div
+      class="foreground light-neutral"
+      ref="lightSection"
+    >
+      <NavBar backgroundColor="#F8F7F1" />
+
+      <div class="grid-x">
+        <div class="cell large-8 large-offset-2">
+          <img class="image" src="@/assets/images/rhino-labs.jpg" />
         </div>
-
-        <div class="grid-x">
-          <div class="large-6 large-offset-3">
-            <p class="text">We work in partnership with a range of trusted experts and advisors to deliver these services, including Ernst & Young, a highly-credentialed branding and marketing agency, and a finance and book-keeping services team, all of which we have worked closely with for over a decade.</p>
-
-            <p class="small">With this gold-standard team, we help you set up your business operations properly, giving you a jump-start past the usual hurdles of the start-up world, and catapulting you into a different class of business very quickly.</p>
-          </div>
-        </div>
-
-        <ClipPathBox
-          counter="06"
-          image="placeholder.jpg"
-          text="Investment"
-          to="/"
-        />
       </div>
+
+      <div class="grid-x">
+        <div class="cell large-6 large-offset-3">
+          <p class="text">We work in partnership with a range of trusted experts and advisors to deliver these services, including Ernst & Young, a highly-credentialed branding and marketing agency, and a finance and book-keeping services team, all of which we have worked closely with for over a decade.</p>
+
+          <p class="small">With this gold-standard team, we help you set up your business operations properly, giving you a jump-start past the usual hurdles of the start-up world, and catapulting you into a different class of business very quickly.</p>
+        </div>
+      </div>
+
+      <ClipPathBox
+        counter="06"
+        image="placeholder.jpg"
+        text="Investment"
+        to="/"
+      />
     </div>
   </div>
 </template>
 
 <script>
+  import imagesLoaded from 'imagesloaded'
   import ClipPathBox from '@/components/ClipPathBox.vue'
   import NavBar from '@/components/NavBar.vue'
   import Service from '@/components/Service.vue'
@@ -159,13 +171,18 @@
     },
 
     mounted() {
-      const scene = this.$scrollmagic.scene({
-        triggerElement: '.scroll-indicator',
-        triggerHook: 0.4
-      })
-        .setPin('.scroll-indicator', {pushfollowers: false})
+      imagesLoaded(this.$refs.darkSection, () => {
+        const scene = this.$scrollmagic.scene({
+          triggerElement: '.scroll-indicator',
+          triggerHook: 0.4
+        })
+          .setPin('.scroll-indicator', {pushfollowers: false})
 
-      this.$scrollmagic.addScene(scene)
+        this.$scrollmagic.addScene(scene)
+
+        const top = parseInt(getComputedStyle(this.$refs.banner.$el).height) + parseInt(getComputedStyle(this.$refs.darkSection).height)
+        this.$refs.lightSection.style.top = top + 'px'
+      })
     }
   }
 </script>
@@ -203,7 +220,7 @@
       background-color: $light-neutral;
       height: 18px; // 108 ÷ 6
       position: absolute;
-      transition: top 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+      transition: top 0.4s cubic-bezier(0.19, 1, 0.22, 1);
       width: 4px;
     }
   }

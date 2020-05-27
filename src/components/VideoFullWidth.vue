@@ -1,6 +1,6 @@
 <template>
   <div class="video-full-width">
-    <NavBar v-if="showNav" />
+    <NavBar v-if="showNav" :color="showNav" />
 
     <video
       autoplay
@@ -9,6 +9,11 @@
       playsinline
       :src="src"
     />
+
+    <div class="overlay">
+      <div class="name">{{ name }}</div>
+      <img :src="require('@/assets/images/' + title)" />
+    </div>
   </div>
 </template>
 
@@ -19,8 +24,10 @@
     name: 'VideoFullWidth',
     
     props: {
-      showNav: Boolean,
-      src: String
+      name: String,
+      showNav: String,
+      src: String,
+      title: String
     },
 
     components: {
@@ -39,6 +46,38 @@
       position: fixed;
       top: 0;
       width: 100%;
+    }
+  }
+
+  .overlay {
+    align-items: center;
+    background-color: rgba(0, 0, 0, .35);
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+
+    .name {
+      bottom: 14%;
+      color: $light-neutral;
+      font: 10px Termina;
+      left: .6%;
+      letter-spacing: 2px;
+      position: absolute;
+      transform: rotate(270deg);
+    }
+
+    &:after {
+      background-color: $light-neutral;
+      bottom: 0;
+      content: ' ';
+      height: 100px;
+      position: absolute;
+      right: 9%;
+      width: 2px;
     }
   }
 </style>

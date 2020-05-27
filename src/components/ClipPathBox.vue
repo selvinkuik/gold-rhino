@@ -2,7 +2,7 @@
   <div class="clip-path-box grid-x">
     <router-link
       ref="box"
-      class="box large-8 large-offset-2"
+      class="box cell large-8 large-offset-2"
       :class="{ inactive: !mouseOver }"
       :to="to"
     >
@@ -135,7 +135,7 @@
 
     .inactive {
       circle {
-        transition: cx 0.2s cubic-bezier(0.19, 1, 0.22, 1), cy 0.2s cubic-bezier(0.19, 1, 0.22, 1);
+        transition: cx 0.4s cubic-bezier(0.19, 1, 0.22, 1), cy 0.4s cubic-bezier(0.19, 1, 0.22, 1);
       }
     }
   }

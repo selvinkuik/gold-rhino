@@ -15,16 +15,18 @@
   font-style: normal;
 }
 
+a {
+  text-decoration: none;
+}
+
 .app {
   font-family: Montserrat;
   overflow-x: hidden;
 }
 
 .foreground {
-  background-color: #fff;
   clip: rect(auto, auto, auto, auto);
   position: absolute;
-  width: 100%;
 }
 
 .light-neutral {
