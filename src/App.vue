@@ -95,7 +95,6 @@
 </template>
 
 <script>
-  import imagesLoaded from 'imagesloaded'
   // import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock'
   import NavBar from '@/components/NavBar.vue'
 
@@ -128,20 +127,16 @@
     //   clearAllBodyScrollLocks()
     // },
 
-    updated() {
-      this.$nextTick(() => {
-        imagesLoaded(this.$refs.app, () => {
-          setTimeout(() => { // Just for good measure
-            let top = 0
+    mounted() {
+      setInterval(() => { // Continuosly monitor the page
+        let top = 0
 
-            this.$refs.app.querySelector('.grid-container').children.forEach(function(el) {
-              top += parseInt(getComputedStyle(el).height)
-            })
-
-            this.$refs.footer.style.top = top + 'px'
-          }, 100)
+        this.$refs.app.querySelector('.grid-container').children.forEach(function(el) {
+          top += parseInt(getComputedStyle(el).height)
         })
-      })
+console.log(top)
+        this.$refs.footer.style.top = top + 'px'
+      }, 1000)
     }
   }
 </script>
@@ -237,6 +232,7 @@
 
   .footer {
     background: url('~@/assets/images/footer-bg.svg');
+    background-size: cover;
     color: $light-neutral;
     padding: 8.2% 0 17.3%;
     position: absolute;

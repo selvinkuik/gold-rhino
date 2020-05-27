@@ -179,10 +179,12 @@
           .setPin('.scroll-indicator', {pushfollowers: false})
 
         this.$scrollmagic.addScene(scene)
-
-        const top = parseInt(getComputedStyle(this.$refs.banner.$el).height) + parseInt(getComputedStyle(this.$refs.darkSection).height)
-        this.$refs.lightSection.style.top = top + 'px'
       })
+
+      setInterval(() => { // Continuosly monitor the page
+          const top = parseInt(getComputedStyle(this.$refs.banner.$el).height) + parseInt(getComputedStyle(this.$refs.darkSection).height)
+          this.$refs.lightSection.style.top = top + 'px'
+      }, 1000)
     }
   }
 </script>
