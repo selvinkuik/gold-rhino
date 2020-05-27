@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueScrollmagic from 'vue-scrollmagic'
-import App from './App.vue'
-import router from './router'
+import App from '@/App.vue'
+import router from '@/router'
 
 Vue.config.productionTip = false
 
@@ -12,4 +12,4 @@ new Vue({
   render: h => h(App)
 }).$mount('#app')
 
-require('./assets/scss/app.scss');
+require('@/assets/scss/app.scss')

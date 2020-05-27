@@ -1,31 +1,45 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import NotFound from '../views/NotFound.vue'
+import Home from '@/views/Home.vue'
+import NotFound from '@/views/NotFound.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    component: Home,
+    image: 'placeholder.jpg',
+    meta: {
+      title: 'Gold Rhino'
+    },
     name: 'Home',
-    image: 'placeholder.jpg',
-    component: Home
+    path: '/'
   },
   {
-    path: '/about-us',
-    name: 'About us',
+    component: () => import('@/views/RhinoLabs.vue'),
     image: 'placeholder.jpg',
-    component: () => import('../views/AboutUs.vue')
+    meta: {
+      title: 'Rhino Labs | Gold Rhino'
+    },
+    name: 'Rhino Labs',
+    path: '/rhino-labs'
   },
   {
-    path: '/investment',
+    component: () => import('@/views/Investment.vue'),
+    image: 'placeholder.jpg',
+    meta: {
+      title: 'Investment | Gold Rhino'
+    },
     name: 'Investment',
-    image: 'placeholder.jpg',
-    component: () => import('../views/Investment.vue')
+    path: '/investment'
   },
   {
-    path: '*', component: NotFound
+    component: NotFound,
+    meta: {
+      title: 'Not found | Gold Rhino'
+    },
+    name: 'Not found',
+    path: '*'
   }
 ]
 
@@ -33,6 +47,18 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+// This callback runs before every route change, including on page load.
+router.beforeEach((to, from, next) => {
+  // This goes through the matched routes from last to first, finding the closest route with a title.
+  // eg. if we have /some/deep/nested/route and /some, /deep, and /nested have titles, nested's will be chosen.
+  const nearestWithTitle = to.matched.slice().reverse().find(r => r.meta && r.meta.title)
+
+  // If a route with a title was found, set the document (page) title to that value.
+  if(nearestWithTitle) document.title = nearestWithTitle.meta.title
+
+  return next()
 })
 
 export default router

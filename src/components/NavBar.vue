@@ -1,6 +1,9 @@
 <template>
   <div class="nav-bar grid-x">
-    <div class="cell large-6">
+    <div
+      class="cell large-6"
+      :class="color"
+    >
       Logo
     </div>
 
@@ -16,25 +19,25 @@
   export default {
     name: 'NavBar',
 
+    props: {
+      color: String
+    },
+
     components: {
       Menu
-    },
-    
-    mounted() {
-      const scene = this.$scrollmagic.scene({
-        triggerElement: '.foreground',
-        triggerHook: 0 // {0,0.5,1} - animations starts from {top,center,end} of window
-      })
-        .setPin('.nav-bar')
-        // .addIndicators({ name: 'nav-bar' })
-
-      this.$scrollmagic.addScene(scene)
     }
   }
 </script>
 
 <style lang="scss" scoped>
   .nav-bar {
+    position: fixed;
+    top: 0;
+    width: 100%;
     z-index: 2;
+  }
+
+  .red {
+    color: red;
   }
 </style>

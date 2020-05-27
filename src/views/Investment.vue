@@ -3,12 +3,18 @@
     <div>
       <label>
         First name:
-        <input v-model="firstName" type="text" />
+        <input
+          v-model="firstName"
+          type="text"
+        />
       </label>
     </div>
 
     <div>
-      <input type="submit" value="Submit" />
+      <input
+        type="submit"
+        value="Submit"
+      />
     </div>
   </form>
 </template>

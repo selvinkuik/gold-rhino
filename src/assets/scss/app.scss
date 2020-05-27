@@ -1,14 +1,36 @@
+@import url(https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Open+Sans&display=swap&text=0123456789);
+
 @import 'reset';
-@import 'foundation-sites/scss/foundation.scss';
+@import 'variables';
+@import 'foundation-sites/scss/foundation';
 
 @include foundation-xy-grid-classes;
 
+@font-face {
+  font-family: Termina;
+  src: url('../fonts/termina-medium.woff2') format('woff2'),
+       url('../fonts/termina-medium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .app {
+  font-family: Montserrat;
   overflow-x: hidden;
 }
 
 .foreground {
   background-color: #fff;
-  position: relative;
-  z-index: 1;
+  clip: rect(auto, auto, auto, auto);
+  position: absolute;
+  width: 100%;
+}
+
+.light-neutral {
+  background-color: $light-neutral;
+}
+
+.dark-neutral {
+  background-color: $dark-neutral;
 }

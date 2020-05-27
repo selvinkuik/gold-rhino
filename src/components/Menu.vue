@@ -1,9 +1,15 @@
 <template>
-  <div class="menu-state" :class="{ open: menuOpen }">
+  <div
+    class="menu-state"
+    :class="{ open: menuOpen }"
+  >
     <div class="menu">
       <span class="menu-circle"></span>
 
-      <div class="menu-link" @click="toggleMenu">
+      <div
+        class="menu-link"
+        @click="toggleMenu"
+      >
         <span class="menu-icon">
           <span class="menu-line menu-line-1"></span>
           <span class="menu-line menu-line-2"></span>
@@ -11,10 +17,19 @@
       </div>
     </div>
 
-    <div class="menu-overlay" ref="menu">
-      <router-link v-for="item in $router.options.routes" :key="item.path" :to="item.path">
-        {{ item.name }}
-      </router-link>
+    <div
+      class="menu-overlay"
+      ref="menu"
+    >
+      <template v-for="item in $router.options.routes">
+        <router-link
+          v-if="item.image"
+          :key="item.path"
+          :to="item.path"
+        >
+          {{ item.name }}
+        </router-link>
+      </template>
     </div>
   </div>
 </template>
@@ -116,7 +131,6 @@
     transition: opacity 0.2s cubic-bezier(0.19, 1, 0.22, 1);
     visibility: hidden;
     width: 100%;
-    z-index: 1;
   }
 
   .open {

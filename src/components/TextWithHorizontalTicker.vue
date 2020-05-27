@@ -1,7 +1,12 @@
 <template>
   <div class="text-with-horizontal-ticker grid-x">
     <div class="ticker">
-      <div ref="ticker" :style="{ width: tickerWidth }">{{ ticker }}</div>
+      <div
+        ref="ticker"
+        :style="{ width: tickerWidth }"
+      >
+        {{ ticker }}
+      </div>
     </div>
 
     <div class="text cell large-6 large-offset-6">
@@ -36,7 +41,6 @@
           left: -parseInt(this.tickerWidth),
           ease: 'Linear.easeNone'
         })
-        // .addIndicators({ name: 'TextWithHorizontalTicker' })
 
       this.$scrollmagic.addScene(scene)
     }
