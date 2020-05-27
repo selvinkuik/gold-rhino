@@ -131,13 +131,15 @@
     updated() {
       this.$nextTick(() => {
         imagesLoaded(this.$refs.app, () => {
-          let top = 0
+          setTimeout(() => { // Just for good measure
+            let top = 0
 
-          this.$refs.app.querySelector('.grid-container').children.forEach(function(el) {
-            top += parseInt(getComputedStyle(el).height)
-          })
+            this.$refs.app.querySelector('.grid-container').children.forEach(function(el) {
+              top += parseInt(getComputedStyle(el).height)
+            })
 
-          this.$refs.footer.style.top = top + 'px'
+            this.$refs.footer.style.top = top + 'px'
+          }, 100)
         })
       })
     }
@@ -221,12 +223,6 @@
         color: $dark-neutral;
       }
     }
-
-    // .logo {
-    //   left: 30px;
-    //   position: absolute;
-    //   top: 32px;
-    // }
 
     .label {
       bottom: 14%;
