@@ -16,7 +16,7 @@
           <NavBar
             color="white"
             :open="true"
-            :menuOpen.sync="menuOpen"
+            @toggleMenu="toggleMenu"
           />
 
           <div class="label">MENU</div>
@@ -25,7 +25,7 @@
             <div class="menu-nav cell large-6 large-offset-2">
               <template v-for="item in $router.options.routes">
                 <div
-                  v-if="item.image"
+                  v-if="item.showInNav"
                   :key="item.path"
                 >
                   <router-link :to="item.path">
@@ -61,7 +61,7 @@
           <div class="footer-nav cell large-5 large-offset-2">
             <template v-for="item in $router.options.routes">
               <div
-                v-if="item.image"
+                v-if="item.showInNav"
                 :key="item.path"
               >
                 <router-link :to="item.path">
@@ -95,8 +95,8 @@
 </template>
 
 <script>
-  // import { disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock'
   import NavBar from '@/components/NavBar.vue'
+  import ScrollLock from '@/utils/ScrollLock'
 
   export default {
     data() {
@@ -113,19 +113,13 @@
       toggleMenu() {
         this.menuOpen = !this.menuOpen
 
-        // if (this.menuOpen) {
-        //   disableBodyScroll(this.$refs.menu, {
-        //     reserveScrollBarGap: true
-        //   })
-        // } else {
-        //   enableBodyScroll(this.$refs.menu)
-        // }
+        if (this.menuOpen) {
+          ScrollLock.disable()
+        } else {
+          ScrollLock.enable()
+        }
       }
     },
-
-    // beforeDestroy() { 
-    //   clearAllBodyScrollLocks()
-    // },
 
     mounted() {
       setInterval(() => { // Continuosly monitor the page
@@ -134,7 +128,7 @@
         this.$refs.app.querySelector('.grid-container').children.forEach(function(el) {
           top += parseInt(getComputedStyle(el).height)
         })
-console.log(top)
+
         this.$refs.footer.style.top = top + 'px'
       }, 1000)
     }

@@ -1,8 +1,11 @@
 <template>
   <div class="grid-container full">
     <VideoFullWidth
-      src="/videos/placeholder.mp4"
-      :showNav="true"
+      name="HOME"
+      src="/videos/home.mp4"
+      title="rhino-labs.svg"
+      showNav="white"
+      ref="banner"
     />
 
     <div class="foreground">

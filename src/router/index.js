@@ -8,30 +8,32 @@ Vue.use(VueRouter)
 const routes = [
   {
     component: Home,
-    image: 'placeholder.jpg',
     meta: {
       title: 'Gold Rhino'
     },
     name: 'Home',
-    path: '/'
+    path: '/',
+    showInNav: true
   },
   {
     component: () => import('@/views/RhinoLabs.vue'),
-    image: 'placeholder.jpg',
+    image: 'hover-rhino-labs.jpg',
     meta: {
       title: 'Rhino Labs | Gold Rhino'
     },
     name: 'Rhino Labs',
-    path: '/rhino-labs'
+    path: '/rhino-labs',
+    showInNav: true
   },
   {
     component: () => import('@/views/Investment.vue'),
-    image: 'placeholder.jpg',
+    image: 'hover-investment.jpg',
     meta: {
       title: 'Investment | Gold Rhino'
     },
     name: 'Investment',
-    path: '/investment'
+    path: '/investment',
+    showInNav: true
   },
   {
     component: NotFound,

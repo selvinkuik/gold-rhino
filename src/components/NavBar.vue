@@ -20,7 +20,7 @@
       <div
         class="menu"
         :class="{ white: color == 'white', open: open }"
-        @click="closeMenu"
+        @click="$emit('toggleMenu')"
       >
         <div class="menu-circle">
           <span class="menu-icon">
@@ -41,14 +41,6 @@
       backgroundColor: String,
       color: String,
       open: Boolean
-    },
-
-    methods: {
-      closeMenu() {
-        if (this.open) {
-          this.$emit('update:menuOpen', false)
-        }
-      }
     }
   }
 </script>
@@ -121,10 +113,6 @@
   }
 
   .open {
-    // .nav-bar {
-    //   padding-right: 15px;
-    // }
-
     .menu-line-1 {
       transform: translateY(7.5px) translateY(-50%) rotate(-45deg);
     }
