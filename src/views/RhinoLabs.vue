@@ -1,7 +1,6 @@
 <template>
   <div class="grid-container full">
     <VideoFullWidth
-      name="RHINO LABS"
       src="/videos/rhino-labs.mp4"
       title="rhino-labs.svg"
       showNav="white"
@@ -176,7 +175,7 @@
           triggerElement: '.scroll-indicator',
           triggerHook: 0.4
         })
-          .setPin('.scroll-indicator', {pushfollowers: false})
+          .setPin('.scroll-indicator', { pushFollowers: false })
 
         this.$scrollmagic.addScene(scene)
       })

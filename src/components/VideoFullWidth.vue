@@ -11,13 +11,18 @@
     />
 
     <div class="overlay">
-      <div class="name">{{ name }}</div>
       <img :src="require('@/assets/images/' + title)" />
+
+      <div
+        class="animated-line"
+        ref="animatedLine"
+      ></div>
     </div>
   </div>
 </template>
 
 <script>
+  import throttle from 'lodash/throttle'
   import NavBar from '@/components/NavBar.vue'
 
   export default {
@@ -30,8 +35,41 @@
       title: String
     },
 
+    data() {
+      return {
+        pageHasScrolled: false
+      }
+    },
+
     components: {
       NavBar
+    },
+
+    methods: {
+      handleScroll() {
+        this.pageHasScrolled = window.scrollY > 0
+
+        if (!this.pageHasScrolled) {
+          this.$refs.animatedLine.classList.remove('paused')
+        }
+      }
+    },
+
+    mounted() {
+      this.$refs.animatedLine.addEventListener('animationiteration', () => {
+        if (this.pageHasScrolled) {
+          this.$refs.animatedLine.classList.add('paused')
+        }
+      })
+    },
+
+    created() {
+      this.handleDebouncedScroll = throttle(this.handleScroll, 100)
+      window.addEventListener('scroll', this.handleDebouncedScroll)
+    },
+
+    beforeDestroy() {
+      window.removeEventListener('scroll', this.handleDebouncedScroll)
     }
   }
 </script>
@@ -59,25 +97,34 @@
     top: 0;
     width: 100%;
     z-index: 1;
+  }
 
-    .name {
-      bottom: 14%;
-      color: $light-neutral;
-      font: 10px Termina;
-      left: .6%;
-      letter-spacing: 2px;
-      position: absolute;
-      transform: rotate(270deg);
+  .animated-line {
+    animation: animated-line 2s cubic-bezier(0.19, 1, 0.22, 1) infinite;
+    background-color: $light-neutral;
+    bottom: 0;
+    content: ' ';
+    height: 0;
+    position: absolute;
+    right: 9%;
+    width: 2px;
+
+    &.paused {
+      animation: '';
+    }
+  }
+
+  @keyframes animated-line {
+    0% {
+      height: 0;
     }
 
-    &:after {
-      background-color: $light-neutral;
-      bottom: 0;
-      content: ' ';
+    50% {
       height: 100px;
-      position: absolute;
-      right: 9%;
-      width: 2px;
+    }
+
+    100% {
+      height: 0;
     }
   }
 </style>

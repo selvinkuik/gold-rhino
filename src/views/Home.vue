@@ -1,7 +1,6 @@
 <template>
   <div class="grid-container full">
     <VideoFullWidth
-      name="HOME"
       src="/videos/home.mp4"
       title="rhino-labs.svg"
       showNav="white"
