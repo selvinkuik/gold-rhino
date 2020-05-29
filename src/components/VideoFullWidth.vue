@@ -3,8 +3,6 @@
     class="video-full-width"
     :class="slug"
   >
-    <NavBar :color="navColor" />
-
     <div>
       <video
         autoplay
@@ -25,7 +23,6 @@
 
 <script>
   import throttle from 'lodash/throttle'
-  import NavBar from '@/components/NavBar.vue'
 
   export default {
     name: 'VideoFullWidth',
@@ -40,10 +37,6 @@
       return {
         pageHasScrolled: false
       }
-    },
-
-    components: {
-      NavBar
     },
 
     methods: {

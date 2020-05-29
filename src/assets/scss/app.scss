@@ -19,6 +19,29 @@ a {
   text-decoration: none;
 }
 
+.text-link {
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: $light-neutral;
+    visibility: hidden;
+    transform: scaleX(0);
+    transform-origin: bottom left;
+    transition: transform 0.2s  cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  &:hover:before {
+    visibility: visible;
+    transform: scaleX(1);
+  }
+}
+
 .app {
   font-family: Montserrat;
   overflow-x: hidden;
@@ -39,4 +62,45 @@ a {
 
 .dark-neutral {
   background-color: $dark-neutral;
+}
+
+.menu,
+.menu-circle-transform {
+  .menu-icon {
+    bottom: 0;
+    height: 11px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 14px;
+  }
+
+  .menu-line {
+    background-color: $gold;
+    height: 3px;
+    position: absolute;
+    width: 100%;
+  }
+
+  .menu-line-1 {
+    top: 0;
+  }
+
+  .menu-line-2 {
+    bottom: 0;
+  }
+
+  &.white {
+    border-color: $light-neutral !important;
+
+    .menu-circle {
+      border-color: $light-neutral;
+    }
+
+    .menu-line {
+      background-color: $light-neutral;
+    }
+  }
 }

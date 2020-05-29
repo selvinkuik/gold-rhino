@@ -1,5 +1,5 @@
 <template>
-  <div class="clip-area">
+  <div :class="{ 'clip-area': !open, 'menu-open': open }">
     <div class="nav-bar grid-x">
       <div class="cell large-6">
         <img
@@ -20,7 +20,7 @@
       <div class="cell large-6">
         <div
           class="menu"
-          :class="{ white: color == 'white', open: open }"
+          :class="{ white: color == 'white' }"
           @click="$emit('toggleMenu')"
         >
           <div class="menu-circle">
@@ -109,50 +109,17 @@
     width: 100%;
   }
 
-  .menu-icon {
-    bottom: 0;
-    height: 15px;
-    left: 0;
-    margin: auto;
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 15px;
-  }
-
-  .menu-line {
-    background-color: $gold;
-    height: 3px;
-    position: absolute;
-    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-    width: 100%;
-  }
-
-  .menu-line-1 {
-    top: 0;
-  }
-
-  .menu-line-2 {
-    bottom: 0;
-  }
-
-  .white {
-    .menu-circle {
-      border-color: $light-neutral;
+  .menu-open {
+    .menu {
+      pointer-events: auto;
     }
 
-    .menu-line {
-      background-color: $light-neutral;
-    }
-  }
-
-  .open {
     .menu-line-1 {
-      transform: translateY(7.5px) translateY(-50%) rotate(-45deg);
+      transform: translateY(5.5px) translateY(-50%) rotate(-45deg);
     }
 
     .menu-line-2 {
-      transform: translateY(-7.5px) translateY(50%) rotate(45deg);
+      transform: translateY(-5.5px) translateY(50%) rotate(45deg);
     }
   }
 </style>

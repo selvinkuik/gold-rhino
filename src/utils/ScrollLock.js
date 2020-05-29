@@ -9,10 +9,12 @@ function enable() {
 }
 
 function disable() {
-  scrollTop = (window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0)
+  setTimeout(() => {
+    scrollTop = (window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0)
 
-  $body.style.position = 'fixed'
-  $body.style.overflowY = 'scroll'
+    $body.style.position = 'fixed'
+    $body.style.overflowY = 'scroll'
+  }, 800) // Half the length of the menu transition
 }
 
 export default { enable, disable }

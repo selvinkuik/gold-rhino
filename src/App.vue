@@ -3,10 +3,15 @@
     <transition name="fade" mode="out-in">
       <div>
         <div
-          class="menu-circle-transform"
+          class="menu-circle-transform white"
           :class="{ open: menuOpen }"
           @click="toggleMenu"
-        ></div>
+        >
+          <span class="menu-icon">
+            <span class="menu-line menu-line-1"></span>
+            <span class="menu-line menu-line-2"></span>
+          </span>
+        </div>
 
         <div
           class="menu-overlay"
@@ -23,8 +28,10 @@
 
           <div class="grid-x">
             <div class="menu-nav cell large-6 large-offset-2">
-              <template v-for="item in $router.options.routes">
+              <template v-for="(item, index) in $router.options.routes">
                 <div
+                  class="nav-link"
+                  :class="`link-delay-${index}`"
                   v-if="item.showInNav"
                   :key="item.path"
                 >
@@ -38,7 +45,12 @@
             <div class="contact-info cell large-4">
               <div class="email">
                 <p>Email:</p>
-                <a href="mailto:tim.smith@goldrhino.com.au">tim.smith@goldrhino.com.au</a>
+                <a
+                  class="text-link"
+                  href="mailto:tim.smith@goldrhino.com.au"
+                >
+                  tim.smith@goldrhino.com.au
+                </a>
               </div>
 
               <div class="address">
@@ -70,7 +82,10 @@
                   v-if="item.showInNav"
                   :key="item.path"
                 >
-                  <router-link :to="item.path">
+                  <router-link
+                    class="text-link"
+                    :to="item.path"
+                  >
                     {{ item.name }}
                   </router-link>
                 </div>
@@ -80,7 +95,12 @@
             <div class="contact-info cell large-5">
               <div class="email">
                 <p>Email:</p>
-                <a href="mailto:tim.smith@goldrhino.com.au">tim.smith@goldrhino.com.au</a>
+                <a
+                  class="text-link"
+                  href="mailto:tim.smith@goldrhino.com.au"
+                >
+                  tim.smith@goldrhino.com.au
+                </a>
               </div>
 
               <div class="address">
@@ -147,7 +167,7 @@
 <style lang="scss" scoped>
   .fade-enter-active,
   .fade-leave-active {
-    transition: opacity 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: opacity 0.4s;
   }
 
   .fade-enter,
@@ -163,13 +183,32 @@
     right: 22px;
     top: 28px;
     transform: scale(1);
-    transition: background-color 0.4s cubic-bezier(0.19, 1, 0.22, 1), transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    // transition: background-color 0.4s, border 0.4s, transform 1.6s cubic-bezier(0.19, 1, 0.22, 1);
     width: 64px;
     z-index: 3;
+
+    .menu-icon {
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    &:hover {
+      background-color: $gold;
+      border: 2px solid $gold;
+
+      .menu-icon {
+        opacity: 1;
+      }
+    }
 
     &.open {
       background-color: $gold;
       transform: scale(70);
+      transition: background-color 0.4s, border 0.4s, transform 1.6s cubic-bezier(0.19, 1, 0.22, 1);
+
+      .menu-icon {
+        display: none;
+      }
     }
   }
 
@@ -181,7 +220,7 @@
     padding-top: 11%;
     position: fixed;
     top: 0;
-    transition: opacity 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: opacity .4s .2s;
     visibility: hidden;
     width: 100%;
     z-index: 4;
@@ -189,6 +228,25 @@
     &.open {
       opacity: 1;
       visibility: visible;
+
+      .nav-link {
+        opacity: 1;
+        transform: translateY(0px);
+      }
+    }
+
+    .nav-link {
+      opacity: 0;
+      transform: translateY(-20px);
+      transition: opacity .4s .4s, transform .4s .4s cubic-bezier(0.19, 1, 0.22, 1);
+
+      &.link-delay-1 {
+        transition-delay: .6s;
+      }
+
+      &.link-delay-2 {
+        transition-delay: .8s;
+      }
     }
 
     .contact-info {
@@ -217,19 +275,25 @@
       line-height: 1.125em;
       padding-bottom: 18.7%;
 
+      .nav-link a {
+        transition: color .4s;
+      }
+
+      .nav-link a:hover,
       .router-link-exact-active {
         color: $dark-neutral;
       }
     }
 
     .label {
-      bottom: 14%;
+      bottom: 7.8%;
       color: $light-neutral;
       font: 10px Termina;
-      left: 2.5%;
+      left: 5%;
       letter-spacing: 2px;
       position: absolute;
       transform: rotate(270deg);
+      transform-origin: bottom left;
     }
   }
 

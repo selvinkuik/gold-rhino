@@ -2,12 +2,13 @@
   <div class="grid-container full">
     <VideoFullWidth
       ref="banner"
-      navColor="white"
       slug="rhino-labs-video"
       src="/videos/rhino-labs.mp4"
     />
 
     <div class="overlay grid-x">
+      <NavBar color="white" />
+
       <div class="cell large-8 large-offset-2">
         <img class="title" src="@/assets/images/rhino-labs.svg" />
         <p class="intro">At Rhino Labs we offer a commitment to financially support you and offer an Accelerator programme to help you achieve your business goals.</p>
