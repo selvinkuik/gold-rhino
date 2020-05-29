@@ -32,17 +32,17 @@
     mounted() {
       this.tickerWidth = getComputedStyle(this.$refs.ticker).width
 
-      const scene = this.$scrollmagic.scene({
-        triggerElement: '.text-with-horizontal-ticker',
-        triggerHook: 1,  // {0,0.5,1} - animations starts from {top,center,end} of window
-        duration: '100%' // The full height of the window
-      })
-        .setTween(this.$refs.ticker, { 
-          left: -parseInt(this.tickerWidth),
-          ease: 'Linear.easeNone'
+      this.$scrollmagic.addScene(
+        this.$scrollmagic.scene({
+          triggerElement: '.text-with-horizontal-ticker',
+          triggerHook: 1,  // {0,0.5,1} - animations starts from {top,center,end} of window
+          duration: '100%' // The full height of the window
         })
-
-      this.$scrollmagic.addScene(scene)
+          .setTween(this.$refs.ticker, { 
+            left: -parseInt(this.tickerWidth),
+            ease: 'Linear.easeNone'
+          })
+      )
     }
   }
 </script>

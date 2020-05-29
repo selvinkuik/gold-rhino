@@ -24,9 +24,13 @@ a {
   overflow-x: hidden;
 }
 
+.no-push-followers-pin-spacer {
+  height: 0 !important;
+  min-height: 0 !important;
+}
+
 .foreground {
-  clip: rect(auto, auto, auto, auto);
-  position: absolute;
+  position: relative;
 }
 
 .light-neutral {

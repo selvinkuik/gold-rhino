@@ -3,7 +3,6 @@
     <router-link
       ref="box"
       class="box cell large-8 large-offset-2"
-      :class="{ inactive: !mouseOver }"
       :to="to"
     >
       <div class="overlay">
@@ -46,13 +45,6 @@
           width="100%"
           height="100%"
         />
-        <circle
-          ref="circle"
-          cx="66%"
-          cy="50%"
-          r="24%"
-          style="fill: transparent;"
-        />
       </svg>
     </router-link>
   </div>
@@ -71,8 +63,7 @@
 
     data() {
       return {
-        svgPoint: null,
-        mouseOver: false
+        svgPoint: null
       }
     },
 
@@ -86,15 +77,6 @@
       update(svgCoords) {
         this.$refs.clipPath.setAttribute('cx', svgCoords.x)
         this.$refs.clipPath.setAttribute('cy', svgCoords.y)
-        this.$refs.circle.setAttribute('cx', svgCoords.x)
-        this.$refs.circle.setAttribute('cy', svgCoords.y)
-      },
-
-      reset() {
-        this.update({
-          x: '66%',
-          y: '50%'
-        })
       }
     },
 
@@ -102,15 +84,8 @@
       this.svgPoint = this.$refs.overlay.createSVGPoint()
 
       this.onMouseMove = (e) => {
-        const rect = this.$refs.overlay.getBoundingClientRect()
-
-        if( (e.pageX > rect.left && e.pageX < rect.right) && (e.pageY > (rect.top + window.scrollY) && e.pageY < (rect.bottom + window.scrollY)) ) {
-          this.mouseOver = true
-          this.update(this.cursorPoint(e, this.$refs.overlay))
-        } else {
-          this.mouseOver = false
-          this.reset()
-        }
+        this.mouseOver = true
+        this.update(this.cursorPoint(e, this.$refs.overlay))
       }
       window.addEventListener('mousemove', this.onMouseMove)
     },
@@ -133,15 +108,12 @@
       width: 100%;
     }
 
-    .inactive {
-      circle {
-        transition: cx 0.4s cubic-bezier(0.19, 1, 0.22, 1), cy 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-      }
+    circle {
+      transition: cx 0.4s cubic-bezier(0.19, 1, 0.22, 1), cy 0.4s cubic-bezier(0.19, 1, 0.22, 1);
     }
   }
 
   .box {
-    cursor: none;
     padding-top: 41.2%;
     position: relative;
   }
@@ -172,5 +144,12 @@
     bottom: 10.4%;
     position: absolute;
     right: 5.8%;
+    transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  }
+
+  .clip-path-box:hover {
+    .arrow {
+      transform: translateX(10px);
+    }
   }
 </style>

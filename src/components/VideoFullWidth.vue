@@ -1,17 +1,19 @@
 <template>
-  <div class="video-full-width">
-    <NavBar v-if="showNav" :color="showNav" />
+  <div
+    class="video-full-width"
+    :class="slug"
+  >
+    <NavBar :color="navColor" />
 
-    <video
-      autoplay
-      loop
-      muted
-      playsinline
-      :src="src"
-    />
-
-    <div class="overlay">
-      <img :src="require('@/assets/images/' + title)" />
+    <div>
+      <video
+        autoplay
+        loop
+        muted
+        playsinline
+        ref="video"
+        :src="src"
+      />
 
       <div
         class="animated-line"
@@ -29,10 +31,9 @@
     name: 'VideoFullWidth',
     
     props: {
-      name: String,
-      showNav: String,
-      src: String,
-      title: String
+      navColor: String,
+      slug: String,
+      src: String
     },
 
     data() {
@@ -61,6 +62,16 @@
           this.$refs.animatedLine.classList.add('paused')
         }
       })
+
+      this.$refs.video.addEventListener('loadeddata', () => {
+        this.$scrollmagic.addScene(
+          this.$scrollmagic.scene({
+            triggerElement: `.${this.slug}`,
+            triggerHook: 0
+          })
+            .setPin(`.${this.slug}`, { spacerClass: 'no-push-followers-pin-spacer' })
+        )
+      })
     },
 
     created() {
@@ -76,27 +87,9 @@
 
 <style lang="scss" scoped>
   .video-full-width {
-    clip: rect(auto, auto, auto, auto);
-    padding-top: 56.25%; // 16:9
-    position: relative;
-
     video {
-      position: fixed;
-      top: 0;
       width: 100%;
     }
-  }
-
-  .overlay {
-    align-items: center;
-    background-color: rgba(0, 0, 0, .35);
-    display: flex;
-    height: 100%;
-    justify-content: center;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: 1;
   }
 
   .animated-line {
@@ -108,6 +101,7 @@
     position: absolute;
     right: 9%;
     width: 2px;
+    z-index: 1;
 
     &.paused {
       animation: '';

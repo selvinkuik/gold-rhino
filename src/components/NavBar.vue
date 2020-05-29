@@ -1,33 +1,42 @@
 <template>
-  <div class="nav-bar grid-x">
-    <div class="cell large-6">
-      <img
-        v-if="color == 'white'"
-        class="logo"
-        src="@/assets/images/gold-rhino-white.svg"
-        :style="{ backgroundColor: backgroundColor || 'transparent' }"
-      />
+  <div class="clip-area">
+    <div class="nav-bar grid-x">
+      <div class="cell large-6">
+        <img
+          v-if="color == 'white'"
+          class="logo"
+          :class="{ backgroundClass }"
+          src="@/assets/images/gold-rhino-white.svg"
+        />
 
-      <img
-        v-else
-        class="logo"
-        src="@/assets/images/gold-rhino.svg"
-        :style="{ backgroundColor: backgroundColor || 'transparent' }"
-      />
-    </div>
+        <img
+          v-else
+          class="logo"
+          :class="{ backgroundClass }"
+          src="@/assets/images/gold-rhino.svg"
+        />
+      </div>
 
-    <div class="cell large-6">
-      <div
-        class="menu"
-        :class="{ white: color == 'white', open: open }"
-        @click="$emit('toggleMenu')"
-      >
-        <div class="menu-circle">
-          <span class="menu-icon">
-            <span class="menu-line menu-line-1"></span>
-            <span class="menu-line menu-line-2"></span>
-          </span>
+      <div class="cell large-6">
+        <div
+          class="menu"
+          :class="{ white: color == 'white', open: open }"
+          @click="$emit('toggleMenu')"
+        >
+          <div class="menu-circle">
+            <span class="menu-icon">
+              <span class="menu-line menu-line-1"></span>
+              <span class="menu-line menu-line-2"></span>
+            </span>
+          </div>
         </div>
+      </div>
+
+      <div
+        class="label"
+        :class="{ white: color == 'white' }"
+      >
+        {{ $router.currentRoute.name }}
       </div>
     </div>
   </div>
@@ -38,7 +47,7 @@
     name: 'NavBar',
 
     props: {
-      backgroundColor: String,
+      backgroundClass: String,
       color: String,
       open: Boolean
     }
@@ -46,7 +55,16 @@
 </script>
 
 <style lang="scss" scoped>
+  .clip-area {
+    clip: rect(auto, auto, auto, auto);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+  }
+  
   .nav-bar {
+    height: 100vh;
+    pointer-events: none;
     position: fixed;
     top: 0;
     width: 100%;
@@ -54,6 +72,22 @@
 
     .logo {
       margin: 40px 0 0 32px;
+    }
+  }
+
+  .label {
+    bottom: 7.8%;
+    color: $gold;
+    font: 10px Termina;
+    left: 5%;
+    letter-spacing: 2px;
+    position: absolute;
+    text-transform: uppercase;
+    transform: rotate(270deg);
+    transform-origin: bottom left;
+
+    &.white {
+      color: $light-neutral;
     }
   }
 

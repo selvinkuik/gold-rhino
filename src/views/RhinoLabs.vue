@@ -1,17 +1,24 @@
 <template>
   <div class="grid-container full">
     <VideoFullWidth
-      src="/videos/rhino-labs.mp4"
-      title="rhino-labs.svg"
-      showNav="white"
       ref="banner"
+      navColor="white"
+      slug="rhino-labs-video"
+      src="/videos/rhino-labs.mp4"
     />
+
+    <div class="overlay grid-x">
+      <div class="cell large-8 large-offset-2">
+        <img class="title" src="@/assets/images/rhino-labs.svg" />
+        <p class="intro">At Rhino Labs we offer a commitment to financially support you and offer an Accelerator programme to help you achieve your business goals.</p>
+      </div>
+    </div>
 
     <div
       class="foreground dark-neutral"
       ref="darkSection"
     >
-      <NavBar backgroundColor="#1C2936" />
+      <NavBar backgroundClass="dark-neutral" />
 
       <div class="rhino-labs grid-x grid-margin-x">
         <div class="cell large-4 large-offset-2">
@@ -29,7 +36,7 @@
           <div class="bar">
             <div
               class="handle"
-              :style="{ top: (scrollPosition * 100) + '%' }"
+              :style="{ height: (scrollPosition * 100) + '%' }"
             />
           </div>
 
@@ -42,7 +49,6 @@
         image2="discovery-2.jpg"
         layout="layout-1"
         title="Discovery"
-        slug="discovery"
         :scrollCounter="1"
         :scrollMax="6"
         :scrollPosition.sync="scrollPosition"
@@ -55,7 +61,6 @@
         image2="strategy-2.jpg"
         layout="layout-2"
         title="Strategy"
-        slug="strategy"
         :scrollCounter="2"
         :scrollMax="6"
         :scrollPosition.sync="scrollPosition"
@@ -68,7 +73,6 @@
         image2="branding-2.jpg"
         layout="layout-3"
         title="Visual Identity<br>and Branding"
-        slug="branding"
         :scrollCounter="3"
         :scrollMax="6"
         :scrollPosition.sync="scrollPosition"
@@ -81,7 +85,6 @@
         image2="structure-2.jpg"
         layout="layout-1"
         title="Structure"
-        slug="structure"
         :scrollCounter="4"
         :scrollMax="6"
         :scrollPosition.sync="scrollPosition"
@@ -94,7 +97,6 @@
         image2="gtm-2.jpg"
         layout="layout-2"
         title="Go-To-Market"
-        slug="gtm"
         :scrollCounter="5"
         :scrollMax="6"
         :scrollPosition.sync="scrollPosition"
@@ -107,7 +109,6 @@
         image2="exit-2.jpg"
         layout="layout-3"
         title="Exit Strategy"
-        slug="exit"
         :scrollCounter="6"
         :scrollMax="6"
         :scrollPosition.sync="scrollPosition"
@@ -120,11 +121,19 @@
       class="foreground light-neutral"
       ref="lightSection"
     >
-      <NavBar backgroundColor="#F8F7F1" />
+      <NavBar backgroundClass="light-neutral" />
 
       <div class="grid-x">
         <div class="cell large-8 large-offset-2">
-          <img class="image" src="@/assets/images/rhino-labs.jpg" />
+          <div
+            class="image-mask"
+            ref="imageMask"
+          >
+            <img
+              ref="imageParallax"
+              src="@/assets/images/rhino-labs.jpg"
+            />
+          </div>
         </div>
       </div>
 
@@ -148,6 +157,7 @@
 
 <script>
   import imagesLoaded from 'imagesloaded'
+  import { TimelineMax, TweenMax } from 'gsap'
   import ClipPathBox from '@/components/ClipPathBox.vue'
   import NavBar from '@/components/NavBar.vue'
   import Service from '@/components/Service.vue'
@@ -171,29 +181,54 @@
 
     mounted() {
       imagesLoaded(this.$refs.darkSection, () => {
-        const scene = this.$scrollmagic.scene({
-          triggerElement: '.scroll-indicator',
-          triggerHook: 0.4
-        })
-          .setPin('.scroll-indicator', { pushFollowers: false })
+        this.$scrollmagic.addScene(
+          this.$scrollmagic.scene({
+            triggerElement: '.scroll-indicator',
+            triggerHook: 0.4
+          })
+            .setPin('.scroll-indicator')
+        )
 
-        this.$scrollmagic.addScene(scene)
+        this.$scrollmagic.addScene(
+          this.$scrollmagic.scene({
+            triggerElement: this.$refs.lightSection,
+            triggerHook: 1,
+            duration: '200%'
+          })
+            .setTween(new TimelineMax().add([
+              TweenMax.to(this.$refs.imageParallax, 1, { scale: 1.2 }),
+              TweenMax.to(this.$refs.imageMask, 1, { yPercent: 50 })
+            ]))
+        )
       })
-
-      setInterval(() => { // Continuosly monitor the page
-          const top = parseInt(getComputedStyle(this.$refs.banner.$el).height) + parseInt(getComputedStyle(this.$refs.darkSection).height)
-          this.$refs.lightSection.style.top = top + 'px'
-      }, 1000)
     }
   }
 </script>
 
 <style lang="scss" scoped>
+  .overlay {
+    background-color: rgba(0, 0, 0, .35);
+    padding-bottom: 19.6%;
+    position: relative;
+    z-index: 1;
+
+    .title {
+      margin: 40% auto 0;
+    }
+
+    .intro {
+      color: $light-neutral;
+      font-size: 64px;
+      line-height: 1.125em;
+      margin-top: 18%;
+    }
+  }
+
   .rhino-labs {
     color: $light-neutral;
     font-size: 32px;
     line-height: 1.375em;
-    margin: 19.6% 0 30%;
+    padding: 19.6% 0 30%;
   }
 
   .scroll-indicator {
@@ -221,7 +256,7 @@
       background-color: $light-neutral;
       height: 18px; // 108 ÷ 6
       position: absolute;
-      transition: top 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+      transition: height 0.4s cubic-bezier(0.19, 1, 0.22, 1);
       width: 4px;
     }
   }
@@ -230,15 +265,17 @@
     padding-bottom: 20%;
   }
 
-  .image {
-    margin-top: 29%;
+  .image-mask {
+    border: 1px solid transparent;
+    margin-top: -10%;
+    overflow: hidden;
   }
 
   .text {
     color: $dark-neutral;
     font-size: 32px;
     line-height: 1.375em;
-    margin-top: 18%;
+    margin-top: 60%;
   }
 
   .small {
