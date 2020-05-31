@@ -1,14 +1,14 @@
 <?php
 
+// header('Access-Control-Allow-Origin: *');
+// header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 require("Exception.php");
 require("PHPMailer.php");
 require("SMTP.php");
-
-$request_body = file_get_contents('php://input');
-$data = json_decode($request_body);
 
 $mail = new PHPMailer();
 $mail->IsSMTP();
@@ -26,6 +26,8 @@ $mail->AddAddress("selvinkuik@gmail.com", "Sel-Vin Kuik");
 
 $mail->isHTML(true);
 $mail->Subject = "New Message";
+
+$mail->addAttachment($_FILES['businessPlan']['tmp_name'], $_FILES['businessPlan']['name']);
 
 ob_start();
 require("foundation-emails/index-inline.php");
