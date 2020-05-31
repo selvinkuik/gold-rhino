@@ -1,6 +1,5 @@
 <template>
   <div class="app">
-    <transition name="fade" mode="out-in">
       <div>
         <div
           class="menu-circle-transform white"
@@ -35,7 +34,10 @@
                   v-if="item.showInNav"
                   :key="item.path"
                 >
-                  <router-link :to="item.path">
+                  <router-link
+                    :to="item.path"
+                    @click.native="toggleMenu"
+                  >
                     {{ item.name }}
                   </router-link>
                 </div>
@@ -66,7 +68,12 @@
         </div>
 
         <div ref="app">
-          <router-view />
+          <transition
+            name="fade"
+            mode="out-in"
+          >
+            <router-view />
+          </transition>
         </div>
         
         <footer>
@@ -120,7 +127,6 @@
           </div>
         </footer>
       </div>
-    </transition>
   </div>
 </template>
 
@@ -165,15 +171,15 @@
 </script>
 
 <style lang="scss" scoped>
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: opacity 0.4s;
-  }
+  // .fade-enter-active,
+  // .fade-leave-active {
+  //   transition: opacity 0.2s;
+  // }
 
-  .fade-enter,
-  .fade-leave-active {
-    opacity: 0;
-  }
+  // .fade-enter,
+  // .fade-leave-active {
+  //   opacity: 0;
+  // }
 
   .menu-circle-transform {
     border-radius: 50%;
@@ -183,13 +189,17 @@
     right: 22px;
     top: 28px;
     transform: scale(1);
-    // transition: background-color 0.4s, border 0.4s, transform 1.6s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: background-color 0.4s, border 0.4s, transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
     width: 64px;
     z-index: 3;
 
     .menu-icon {
       opacity: 0;
       transition: opacity 0.4s;
+    }
+
+    .menu-line {
+      transition: background-color 0s 0.4s;
     }
 
     &:hover {
@@ -207,7 +217,12 @@
       transition: background-color 0.4s, border 0.4s, transform 1.6s cubic-bezier(0.19, 1, 0.22, 1);
 
       .menu-icon {
-        display: none;
+        opacity: 0;
+      }
+
+      .menu-line {
+        background-color: $gold;
+        transition: background-color 0s;
       }
     }
   }

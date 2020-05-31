@@ -24,7 +24,7 @@
       class="images"
       ref="images"
     >
-      <div class="grid-x">
+      <div class="grid-x grid-padding-x">
         <div
           class="cell"
           :class="image1GridClasses"
@@ -41,7 +41,7 @@
         </div>
       </div>
 
-      <div class="grid-x">
+      <div class="grid-x grid-padding-x">
         <div
           class="cell"
           :class="image2GridClasses"
@@ -90,22 +90,22 @@
 
       image1GridClasses: function () {
         if (this.layout == 'layout-1') {
-          return 'large-2 large-offset-9'
+          return 'small-5 small-offset-7 large-2 large-offset-9'
         } else if (this.layout == 'layout-2') {
-          return 'large-5 large-offset-6'
+          return 'small-8 small-offset-4 large-5 large-offset-6'
         }
 
-        return 'large-2 large-offset-8'
+        return 'small-5 small-offset-7 large-2 large-offset-8'
       },
 
       image2GridClasses: function () {
         if (this.layout == 'layout-1') {
-          return 'large-4 large-offset-1'
+          return 'small-8 large-4 large-offset-1'
         } else if (this.layout == 'layout-2') {
-          return 'large-3 large-offset-5'
+          return 'small-5 large-3 large-offset-5'
         }
 
-        return 'large-3 large-offset-1'
+        return 'small-8 large-3 large-offset-1'
       }
     },
 
@@ -119,7 +119,7 @@
           })
             .setPin(this.$refs.pinned)
             .on('enter', () => {
-              this.$emit('update:scrollPosition', this.scrollCounter / this.scrollMax)
+              this.$emit('update:scrollPosition', this.scrollCounter)
             })
         )
 
@@ -151,6 +151,8 @@
 </script>
 
 <style lang="scss" scoped>
+  @import 'foundation-sites/scss/foundation';
+
   .service {
     position: relative;
 
@@ -167,11 +169,15 @@
 
     h3 {
       color: $light-neutral;
-      font-size: 136px;
+      font-size: 48px;
       font-weight: 300;
       line-height: 1em;
       margin-top: 25px;
       text-align: center;
+
+      @include breakpoint(large) {
+        font-size: 136px;
+      }
     }
 
     p {

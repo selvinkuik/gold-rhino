@@ -1,6 +1,8 @@
 <template>
   <div class="grid-container full">
     <div class="foreground dark-neutral">
+      <NavBar backgroundClass="dark-neutral" />
+
       <form @submit.prevent="checkForm">
         <div class="grid-x">
           <div class="form-group cell large-7 large-offset-2">
@@ -51,6 +53,7 @@
 
 <script>
   import axios from 'axios'
+  import NavBar from '@/components/NavBar.vue'
   import FileInput from '@/components/FileInput.vue'
   import SelectInput from '@/components/SelectInput.vue'
   import TextInput from '@/components/TextInput.vue'
@@ -59,6 +62,7 @@
     name: 'Investment',
 
     components: {
+      NavBar,
       FileInput,
       SelectInput,
       TextInput

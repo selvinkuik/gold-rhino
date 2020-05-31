@@ -9,7 +9,7 @@
     <div class="overlay grid-x">
       <NavBar color="white" />
 
-      <div class="cell large-8 large-offset-2">
+      <div class="cell small-10 small-offset-1 large-8 large-offset-2">
         <img class="title" src="@/assets/images/rhino-labs.svg" />
         <p class="intro">At Rhino Labs we offer a commitment to financially support you and offer an Accelerator programme to help you achieve your business goals.</p>
       </div>
@@ -22,22 +22,22 @@
       <NavBar backgroundClass="dark-neutral" />
 
       <div class="rhino-labs grid-x grid-margin-x">
-        <div class="cell large-4 large-offset-2">
+        <div class="cell small-10 small-offset-1 large-4 large-offset-2">
           At Gold Rhino, not only will you receive a commitment and a determination from us to financially support you, we also offer advice on how to establish or adjust your business to achieve your goals, charge ahead of your competition, and move <strong>Forward Together</strong> with the help of an experienced team.
         </div>
-        <div class="cell large-4">
+        <div class="cell small-10 small-offset-1 large-4">
           Our “Rhino Labs” Accelerator Services provide you with a comprehensive package of additional assistance across different facets of your business.
         </div>
       </div>
 
       <div class="scroll-indicator">
         <div class="scroll-container">
-          01
+          0{{ scrollPosition }}
 
           <div class="bar">
             <div
               class="handle"
-              :style="{ height: (scrollPosition * 100) + '%' }"
+              :style="{ height: ((scrollPosition / 6) * 100) + '%' }"
             />
           </div>
 
@@ -176,7 +176,7 @@
 
     data() {
       return {
-        scrollPosition: 0
+        scrollPosition: 1
       }
     },
 
@@ -207,6 +207,8 @@
 </script>
 
 <style lang="scss" scoped>
+  @import 'foundation-sites/scss/foundation';
+
   .overlay {
     background-color: rgba(0, 0, 0, .35);
     padding-bottom: 19.6%;
@@ -219,17 +221,25 @@
 
     .intro {
       color: $light-neutral;
-      font-size: 64px;
+      font-size: 32px;
       line-height: 1.125em;
       margin-top: 18%;
+
+      @include breakpoint(large) {
+        font-size: 64px;
+      }
     }
   }
 
   .rhino-labs {
     color: $light-neutral;
-    font-size: 32px;
+    font-size: 20px;
     line-height: 1.375em;
     padding: 19.6% 0 30%;
+
+    @include breakpoint(large) {
+      font-size: 32px;
+    }
   }
 
   .scroll-indicator {

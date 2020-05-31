@@ -3,7 +3,7 @@
     class="video-full-width"
     :class="slug"
   >
-    <div>
+    <div class="video-cover-sizer">
       <video
         autoplay
         loop
@@ -79,9 +79,17 @@
 </script>
 
 <style lang="scss" scoped>
-  .video-full-width {
+  .video-cover-sizer {
+    overflow: hidden;
+
     video {
-      width: 100%;
+      height: 100%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 55vw; /* 100 * 9 / 16 (rounded down a bit) */
+      position: relative;
+      transform: translateX(-50.1%); // ?
+      width: 177.77777778vh; /* 100 * 16 / 9 */
     }
   }
 
