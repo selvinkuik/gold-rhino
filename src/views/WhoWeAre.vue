@@ -1,7 +1,7 @@
 <template>
   <div class="grid-container full">
     <div class="foreground dark-neutral">
-      <NavBar backgroundClass="dark-neutral" />
+      <NavBar tintClass="dark" />
 
       Tim Smith
     </div>

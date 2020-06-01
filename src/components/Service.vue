@@ -115,7 +115,7 @@
           this.$scrollmagic.scene({
             triggerElement: this.$refs.pinned,
             triggerHook: 0.2,
-            duration: parseInt(getComputedStyle(this.$refs.pinned).height) / 2 // ?
+            duration: parseInt(getComputedStyle(this.$refs.pinned).height) * 1 // Balances with...
           })
             .setPin(this.$refs.pinned)
             .on('enter', () => {
@@ -124,24 +124,32 @@
         )
 
         let tween = new TimelineMax().add([
-          TweenMax.to(this.$refs.image1, 1, { scale: 1.2 }),
           TweenMax.to(this.$refs.image2, 1, { scale: 1.2 }),
-          TweenMax.to(this.$refs.imageMask1, 1, { yPercent: -100 })
+          TweenMax.to(this.$refs.imageMask1, 1, { yPercent: -50 }) // Balances with...
         ])
 
         if (this.layout == 'layout-1') {
-          tween.add(TweenMax.to(this.$refs.imageMask2, 1, { yPercent: -180 }), 0)
+          tween.add([
+            TweenMax.to(this.$refs.image1, 1, { scale: 1.2 }),
+            TweenMax.to(this.$refs.imageMask2, 1, { yPercent: -125 })
+          ], 0)
         } else if (this.layout == 'layout-2') {
-          tween.add(TweenMax.to(this.$refs.imageMask2, 1, { yPercent: -320 }), 0)
+          tween.add([
+            TweenMax.to(this.$refs.image1, 1, { scale: 1.1 }),
+            TweenMax.to(this.$refs.imageMask2, 1, { yPercent: -200 })
+          ], 0)
         } else {
-          tween.add(TweenMax.to(this.$refs.imageMask2, 1, { yPercent: -240 }), 0)
+          tween.add([
+            TweenMax.to(this.$refs.image1, 1, { scale: 1.2 }),
+            TweenMax.to(this.$refs.imageMask2, 1, { yPercent: -150 })
+          ], 0)
         }
 
         this.$scrollmagic.addScene(
           this.$scrollmagic.scene({
-            triggerElement: this.$refs.pinned,
+            triggerElement: this.$refs.images,
             triggerHook: 1,
-            duration: '100%'
+            duration: '150%'
           })
             .setTween(tween)
         )
@@ -155,7 +163,7 @@
     position: relative;
 
     .pinned {
-      padding-bottom: 30%;
+      height: 100vh;
     }
 
     .counter {
@@ -187,7 +195,7 @@
     .images {
       pointer-events: none;
       position: absolute;
-      top: 0;
+      top: 30%; // Balances with...
       width: 100%;
       z-index: 2;
 

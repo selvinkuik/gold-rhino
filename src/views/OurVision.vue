@@ -7,7 +7,7 @@
     </BannerOverlay>
 
     <div class="foreground dark-neutral">
-      <NavBar backgroundClass="dark-neutral" />
+      <NavBar tintClass="dark" />
 
       Our Vision
     </div>

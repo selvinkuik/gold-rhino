@@ -1,7 +1,10 @@
 <template>
   <div :class="{ 'clip-area': !open, 'menu-open': open }">
-    <div class="nav-bar grid-x">
-      <div class="cell large-6">
+    <div class="nav-bar">
+      <div
+        class="tint"
+        :class="tintClass"
+      >
         <router-link
           class="logo"
           to="/"
@@ -9,19 +12,15 @@
         >
           <img
             v-if="color == 'white'"
-            :class="{ backgroundClass }"
             src="@/assets/images/gold-rhino-white.svg"
           />
 
           <img
             v-else
-            :class="{ backgroundClass }"
             src="@/assets/images/gold-rhino.svg"
           />
         </router-link>
-      </div>
 
-      <div class="cell large-6">
         <div
           class="menu"
           :class="{ white: color == 'white' }"
@@ -35,14 +34,14 @@
           </div>
         </div>
       </div>
+    </div>
 
-      <div
-        class="label"
-        :class="{ white: color == 'white' }"
-        v-if="!open"
-      >
-        {{ $router.currentRoute.name }}
-      </div>
+    <div
+      class="label"
+      :class="{ white: color == 'white' }"
+      v-if="!open"
+    >
+      {{ $router.currentRoute.name }}
     </div>
   </div>
 </template>
@@ -52,7 +51,7 @@
     name: 'NavBar',
 
     props: {
-      backgroundClass: String,
+      tintClass: String,
       color: String,
       open: Boolean
     }
@@ -74,12 +73,36 @@
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 2;
+    z-index: 3;
 
     .logo {
-      display: block;
-      margin: 40px 0 0 32px;
+      display: inline-block;
+      margin: 18px 0 0 25px;
       pointer-events: auto;
+
+      @include breakpoint(large) {
+        margin: 40px 0 0 32px;
+      }
+
+      @include breakpoint(small only) {
+        img {
+          width: 70px;
+        }
+      }
+    }
+  }
+
+  @include breakpoint(small only) {
+    .tint {
+      padding-bottom: 12px;
+
+      &.dark {
+        background-color: rgba(11, 15, 20, .8);
+      }
+
+      &.light {
+        background-color: rgba(248, 247, 241, .8);
+      }
     }
   }
 
@@ -101,12 +124,19 @@
 
   .menu {
     cursor: pointer;
-    height: 64px;
+    height: 48px;
     position: absolute;
-    right: 22px;
-    top: 28px;
-    width: 64px;
+    right: 16px;
+    top: 16px;
+    width: 48px;
     z-index: 1;
+
+    @include breakpoint(large) {
+      height: 64px;
+      right: 22px;
+      top: 28px;
+      width: 64px;
+    }
   }
 
   .menu-circle {
@@ -123,11 +153,19 @@
     }
 
     .menu-line-1 {
-      transform: translateY(5.5px) translateY(-50%) rotate(-45deg);
+      transform: translateY(4px) translateY(-50%) rotate(-45deg);
+
+      @include breakpoint(large) {
+        transform: translateY(5.5px) translateY(-50%) rotate(-45deg);
+      }
     }
 
     .menu-line-2 {
-      transform: translateY(-5.5px) translateY(50%) rotate(45deg);
+      transform: translateY(-4px) translateY(50%) rotate(45deg);
+
+      @include breakpoint(large) {
+        transform: translateY(-5.5px) translateY(50%) rotate(45deg);
+      }
     }
   }
 </style>

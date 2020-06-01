@@ -184,14 +184,21 @@
   .menu-circle-transform {
     border-radius: 50%;
     cursor: pointer;
-    height: 64px;
+    height: 48px;
     position: fixed;
-    right: 22px;
-    top: 28px;
+    right: 16px;
+    top: 16px;
     transform: scale(1);
     transition: background-color 0.4s, border 0.4s, transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-    width: 64px;
-    z-index: 3;
+    width: 48px;
+    z-index: 4;
+
+    @include breakpoint(large) {
+      height: 64px;
+      right: 22px;
+      top: 28px;
+      width: 64px;
+    }
 
     .menu-icon {
       opacity: 0;
@@ -242,7 +249,7 @@
     transition: opacity .4s .2s;
     visibility: hidden;
     width: 100%;
-    z-index: 4;
+    z-index: 5;
 
     &.open {
       opacity: 1;
@@ -302,6 +309,10 @@
 
       @include breakpoint(large) {
         font-size: 64px;
+      }
+
+      @include breakpoint(small only) {
+        margin-top: 40px;
       }
 
       .nav-link a {

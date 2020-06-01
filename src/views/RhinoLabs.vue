@@ -13,7 +13,7 @@
       class="foreground dark-neutral"
       ref="darkSection"
     >
-      <NavBar backgroundClass="dark-neutral" />
+      <NavBar tintClass="dark" />
 
       <div class="rhino-labs grid-x grid-margin-x">
         <div class="cell small-10 small-offset-1 large-4 large-offset-2">
@@ -116,7 +116,7 @@
       class="foreground light-neutral"
       ref="lightSection"
     >
-      <NavBar backgroundClass="light-neutral" />
+      <NavBar tintClass="light" />
 
       <ParallaxImage src="rhino-labs.jpg" />
 

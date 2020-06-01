@@ -10,7 +10,7 @@
     </BannerOverlay>
 
     <div class="foreground white">
-      <NavBar backgroundClass="light-neutral" />
+      <NavBar tintClass="light" />
 
       <div class="grid-x">
         <div class="cell large-3 large-offset-2">

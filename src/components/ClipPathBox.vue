@@ -34,7 +34,7 @@
               ref="clipPath" 
               cx="66%" 
               cy="50%"
-              r="24%" 
+              :r="mouseOver ? '24%' : '10%'" 
             />
           </clipPath>
         </defs>
@@ -63,7 +63,8 @@
 
     data() {
       return {
-        svgPoint: null
+       mouseOver: false,
+       svgPoint: null
       }
     },
 
@@ -84,7 +85,8 @@
       this.svgPoint = this.$refs.overlay.createSVGPoint()
 
       this.onMouseMove = (e) => {
-        this.mouseOver = true
+        const rect = this.$refs.overlay.getBoundingClientRect()
+        this.mouseOver = (e.pageX > rect.left && e.pageX < rect.right) && (e.pageY > (rect.top + window.scrollY) && e.pageY < (rect.bottom + window.scrollY))
         this.update(this.cursorPoint(e, this.$refs.overlay))
       }
       window.addEventListener('mousemove', this.onMouseMove)
@@ -109,47 +111,47 @@
     }
 
     circle {
-      transition: cx 0.4s cubic-bezier(0.19, 1, 0.22, 1), cy 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+      transition: cx 0.4s cubic-bezier(0.19, 1, 0.22, 1), cy 0.4s cubic-bezier(0.19, 1, 0.22, 1), r 0.4s cubic-bezier(0.19, 1, 0.22, 1);
     }
-  }
 
-  .box {
-    padding-top: 41.2%;
-    position: relative;
-  }
+    .box {
+      padding-top: 41.2%;
+      position: relative;
+    }
 
-  .overlay {
-    height: 100%;
-    padding: 5.2% 5.8%;
-    position: absolute;
-    top: 0;
-    width: 100%;
-    z-index: 1;
-  }
+    .overlay {
+      height: 100%;
+      padding: 5.2% 5.8%;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 1;
+    }
 
-  .counter {
-    color: $light-neutral;
-    font: 10px Termina;
-    letter-spacing: 2px;
-  }
+    .counter {
+      color: $light-neutral;
+      font: 10px Termina;
+      letter-spacing: 2px;
+    }
 
-  h4 {
-    color: $light-neutral;
-    font-size: 56px;
-    line-height: 1.14em;
-    margin-top: 10px;
-  }
+    h4 {
+      color: $light-neutral;
+      font-size: 56px;
+      line-height: 1.14em;
+      margin-top: 10px;
+    }
 
-  .arrow {
-    bottom: 10.4%;
-    position: absolute;
-    right: 5.8%;
-    transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
-  }
-
-  .clip-path-box:hover {
     .arrow {
-      transform: translateX(10px);
+      bottom: 10.4%;
+      position: absolute;
+      right: 5.8%;
+      transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    a:hover {
+      .arrow {
+        transform: translateX(10px);
+      }
     }
   }
 </style>

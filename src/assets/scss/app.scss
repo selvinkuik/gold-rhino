@@ -103,20 +103,29 @@ a {
 .menu-circle-transform {
   .menu-icon {
     bottom: 0;
-    height: 11px;
+    height: 8px;
     left: 0;
     margin: auto;
     position: absolute;
     right: 0;
     top: 0;
-    width: 14px;
+    width: 10px;
+
+    @include breakpoint(large) {
+      height: 11px;
+      width: 14px;
+    }
   }
 
   .menu-line {
     background-color: $gold;
-    height: 3px;
+    height: 2px;
     position: absolute;
     width: 100%;
+
+    @include breakpoint(large) {
+      height: 3px;
+    }
   }
 
   .menu-line-1 {
