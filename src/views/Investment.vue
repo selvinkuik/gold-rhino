@@ -5,7 +5,7 @@
 
       <form @submit.prevent="checkForm">
         <div class="grid-x">
-          <div class="form-group cell large-7 large-offset-2">
+          <div class="form-group cell small-10 small-offset-1 large-7 large-offset-2">
             PERSONAL DETAILS
           </div>
         </div>
@@ -38,7 +38,7 @@
         />
 
         <div class="grid-x">
-          <div class="cell large-4 large-offset-5">
+          <div class="cell small-10 small-offset-1 large-4 large-offset-5">
             <input
               class="submit"
               type="submit"

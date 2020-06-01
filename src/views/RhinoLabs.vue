@@ -1,19 +1,13 @@
 <template>
   <div class="grid-container full">
     <VideoFullWidth
-      ref="banner"
       slug="rhino-labs-video"
       src="/videos/rhino-labs.mp4"
     />
 
-    <div class="overlay grid-x">
-      <NavBar color="white" />
-
-      <div class="cell small-10 small-offset-1 large-8 large-offset-2">
-        <img class="title" src="@/assets/images/rhino-labs.svg" />
-        <p class="intro">At Rhino Labs we offer a commitment to financially support you and offer an Accelerator programme to help you achieve your business goals.</p>
-      </div>
-    </div>
+    <BannerOverlay src="rhino-labs.svg">
+      At Rhino Labs we offer a commitment to financially support you and offer an Accelerator programme to help you achieve your business goals.
+    </BannerOverlay>
 
     <div
       class="foreground dark-neutral"
@@ -25,7 +19,7 @@
         <div class="cell small-10 small-offset-1 large-4 large-offset-2">
           At Gold Rhino, not only will you receive a commitment and a determination from us to financially support you, we also offer advice on how to establish or adjust your business to achieve your goals, charge ahead of your competition, and move <strong>Forward Together</strong> with the help of an experienced team.
         </div>
-        <div class="cell small-10 small-offset-1 large-4">
+        <div class="cell small-10 small-offset-1 large-4 large-offset-0">
           Our “Rhino Labs” Accelerator Services provide you with a comprehensive package of additional assistance across different facets of your business.
         </div>
       </div>
@@ -125,7 +119,7 @@
       <NavBar backgroundClass="light-neutral" />
 
       <div class="grid-x">
-        <div class="cell large-8 large-offset-2">
+        <div class="cell small-10 small-offset-1 large-8 large-offset-2">
           <div
             class="image-mask"
             ref="imageMask"
@@ -139,7 +133,7 @@
       </div>
 
       <div class="grid-x">
-        <div class="cell large-6 large-offset-3">
+        <div class="cell small-10 small-offset-1 large-6 large-offset-3">
           <p class="text">We work in partnership with a range of trusted experts and advisors to deliver these services, including Ernst & Young, a highly-credentialed branding and marketing agency, and a finance and book-keeping services team, all of which we have worked closely with for over a decade.</p>
 
           <p class="small">With this gold-standard team, we help you set up your business operations properly, giving you a jump-start past the usual hurdles of the start-up world, and catapulting you into a different class of business very quickly.</p>
@@ -147,10 +141,10 @@
       </div>
 
       <ClipPathBox
-        counter="06"
+        counter="03"
         image="placeholder.jpg"
         text="Investment"
-        to="/"
+        to="/investment"
       />
     </div>
   </div>
@@ -159,6 +153,7 @@
 <script>
   import imagesLoaded from 'imagesloaded'
   import { TimelineMax, TweenMax } from 'gsap'
+  import BannerOverlay from '@/components/BannerOverlay.vue'
   import ClipPathBox from '@/components/ClipPathBox.vue'
   import NavBar from '@/components/NavBar.vue'
   import Service from '@/components/Service.vue'
@@ -168,6 +163,7 @@
     name: 'RhinoLabs',
     
     components: {
+      BannerOverlay,
       ClipPathBox,
       NavBar,
       Service,
@@ -207,30 +203,6 @@
 </script>
 
 <style lang="scss" scoped>
-  @import 'foundation-sites/scss/foundation';
-
-  .overlay {
-    background-color: rgba(0, 0, 0, .35);
-    padding-bottom: 19.6%;
-    position: relative;
-    z-index: 1;
-
-    .title {
-      margin: 40% auto 0;
-    }
-
-    .intro {
-      color: $light-neutral;
-      font-size: 32px;
-      line-height: 1.125em;
-      margin-top: 18%;
-
-      @include breakpoint(large) {
-        font-size: 64px;
-      }
-    }
-  }
-
   .rhino-labs {
     color: $light-neutral;
     font-size: 20px;
@@ -247,6 +219,10 @@
     font: 12px 'Open Sans';
     top: 0;
     width: 100%;
+
+    @include breakpoint(small only) {
+      display: none;
+    }
 
     .scroll-container {
       position: absolute;
@@ -283,14 +259,16 @@
   }
 
   .text {
-    color: $dark-neutral;
-    font-size: 32px;
+    font-size: 20px;
     line-height: 1.375em;
     margin-top: 60%;
+
+    @include breakpoint(large) {
+      font-size: 32px;
+    }
   }
 
   .small {
-    color: $dark-neutral;
     line-height: 1.5em;
     margin-top: 18%;
   }

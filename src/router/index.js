@@ -22,6 +22,7 @@ const routes = [
       title: 'Rhino Labs | Gold Rhino'
     },
     name: 'Rhino Labs',
+    description: 'An Accelerator Service to drive your business forward.',
     path: '/rhino-labs',
     showInNav: true
   },
@@ -32,6 +33,7 @@ const routes = [
       title: 'Investment | Gold Rhino'
     },
     name: 'Investment',
+    description: 'Complete this form so we can take a look at your business.',
     path: '/investment',
     showInNav: true
   },

@@ -1,10 +1,10 @@
 <template>
   <div class="grid-x">
-    <label class="form-label cell large-3 large-offset-2">
+    <label class="form-label cell small-10 small-offset-1 large-3 large-offset-2">
       {{ name }}:
     </label>
 
-    <div class="cell large-4">
+    <div class="cell small-10 small-offset-1 large-4 large-offset-0">
       <div class="styled-select">
         <select @input="$emit('input', $event.target.value)">
           <option value=""></option>

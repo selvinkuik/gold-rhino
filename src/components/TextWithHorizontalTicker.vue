@@ -9,7 +9,7 @@
       </div>
     </div>
 
-    <div class="text cell large-6 large-offset-6">
+    <div class="text cell small-10 small-offset-1 large-5 large-offset-6">
       <slot></slot>
     </div>
   </div>
@@ -35,8 +35,8 @@
       this.$scrollmagic.addScene(
         this.$scrollmagic.scene({
           triggerElement: '.text-with-horizontal-ticker',
-          triggerHook: 1,  // {0,0.5,1} - animations starts from {top,center,end} of window
-          duration: '100%' // The full height of the window
+          triggerHook: .5,  // {0,0.5,1} - animations starts from {top,center,end} of window
+          duration: '150%' // The full height of the window
         })
           .setTween(this.$refs.ticker, { 
             left: -parseInt(this.tickerWidth),
@@ -53,7 +53,12 @@
   }
 
   .ticker {
+    align-items: center;
+    display: flex;
+    font-size: 320px;
+    font-weight: 300;
     height: 100%;
+    opacity: .05;
     position: absolute;
     user-select: none;
     width: 100%;
@@ -66,7 +71,15 @@
   }
 
   .text {
+    font-size: 20px;
+    line-height: 1.375em;
+    margin-bottom: 21.2%;
+    margin-top: 19.8%;
     position: relative;
     z-index: 1;
+
+    @include breakpoint(large) {
+      font-size: 32px;
+    }
   }
 </style>

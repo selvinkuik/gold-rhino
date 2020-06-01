@@ -47,6 +47,7 @@ a {
 }
 
 .app {
+  color: $dark-neutral;
   font-family: Montserrat;
   overflow-x: hidden;
 }
@@ -58,6 +59,10 @@ a {
 
 .foreground {
   position: relative;
+
+  &.white {
+    background-color: #fff;
+  }
 }
 
 .light-neutral {

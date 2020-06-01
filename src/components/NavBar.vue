@@ -35,6 +35,7 @@
       <div
         class="label"
         :class="{ white: color == 'white' }"
+        v-if="!open"
       >
         {{ $router.currentRoute.name }}
       </div>
@@ -58,6 +59,7 @@
   .clip-area {
     clip: rect(auto, auto, auto, auto);
     height: 100%;
+    pointer-events: none;
     position: absolute;
     width: 100%;
   }

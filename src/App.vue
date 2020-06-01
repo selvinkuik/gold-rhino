@@ -26,7 +26,7 @@
           <div class="label">MENU</div>
 
           <div class="grid-x">
-            <div class="menu-nav cell large-6 large-offset-2">
+            <div class="menu-nav cell small-10 small-offset-1 large-6 large-offset-2">
               <template v-for="(item, index) in $router.options.routes">
                 <div
                   class="nav-link"
@@ -44,7 +44,7 @@
               </template>
             </div>
 
-            <div class="contact-info cell large-4">
+            <div class="contact-info cell small-10 small-offset-1 large-4 large-offset-0">
               <div class="email">
                 <p>Email:</p>
                 <a
@@ -83,7 +83,7 @@
             class="footer-content grid-x"
             ref="footer"
           >
-            <div class="footer-nav cell large-5 large-offset-2">
+            <div class="footer-nav cell small-10 small-offset-1 large-5 large-offset-2">
               <template v-for="item in $router.options.routes">
                 <div
                   v-if="item.showInNav"
@@ -99,7 +99,7 @@
               </template>
             </div>
 
-            <div class="contact-info cell large-5">
+            <div class="contact-info cell small-10 small-offset-1 large-5 large-offset-0">
               <div class="email">
                 <p>Email:</p>
                 <a
@@ -214,7 +214,11 @@
     &.open {
       background-color: $gold;
       transform: scale(70);
-      transition: background-color 0.4s, border 0.4s, transform 1.6s cubic-bezier(0.19, 1, 0.22, 1);
+      transition: background-color 0.4s, border 0.4s, transform 6s cubic-bezier(0.19, 1, 0.22, 1);
+
+      @include breakpoint(large) {
+        transition: background-color 0.4s, border 0.4s, transform 1.6s cubic-bezier(0.19, 1, 0.22, 1);
+      }
 
       .menu-icon {
         opacity: 0;
@@ -265,14 +269,19 @@
     }
 
     .contact-info {
-      border-left: 2px solid $light-neutral;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
 
+      @include breakpoint(large) {
+        border-left: 2px solid $light-neutral;
+      }
+
       .email,
       .address {
-        margin-left: 20px;
+        @include breakpoint(large) {
+          margin-left: 20px;
+        }
 
         p {
           line-height: 1.5em;
@@ -280,15 +289,23 @@
         }
 
         a {
-          font-size: 24px;
+          font-size: 20px;
+
+          @include breakpoint(large) {
+            font-size: 24px;
+          }
         }
       }
     }
 
     .menu-nav {
-      font-size: 64px;
+      font-size: 40px;
       line-height: 1.125em;
       padding-bottom: 18.7%;
+
+      @include breakpoint(large) {
+        font-size: 64px;
+      }
 
       .nav-link a {
         transition: color .4s;
@@ -323,14 +340,19 @@
       width: 100%;
 
       .contact-info {
-        border-left: 2px solid $light-neutral;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
 
+        @include breakpoint(large) {
+          border-left: 2px solid $light-neutral;
+        }
+
         .email,
         .address {
-          margin-left: 20px;
+          @include breakpoint(large) {
+            margin-left: 20px;
+          }
           
           p {
             line-height: 1.5em;
@@ -338,7 +360,11 @@
           }
 
           a {
-            font-size: 32px;
+            font-size: 20px;
+
+            @include breakpoint(large) {
+              font-size: 24px;
+            }
           }
         }
       }
@@ -346,6 +372,10 @@
       .footer-nav {
         line-height: 2em;
         padding-bottom: 26.8%;
+
+        @include breakpoint(small only) {
+          font-size: 14px;
+        }
       }
 
       .logo {

@@ -12,7 +12,7 @@
 
       <div class="grid-x">
         <div
-          class="cell large-3"
+          class="cell small-8 large-3"
           :class="slotGridClasses"
         >
           <p><slot></slot></p>
@@ -80,12 +80,12 @@
     computed: {
       slotGridClasses: function () {
         if (this.layout == 'layout-1') {
-          return 'large-offset-6'
+          return 'small-offset-3 large-offset-6'
         } else if (this.layout == 'layout-2') {
-          return 'large-offset-2'
+          return 'small-offset-1 large-offset-2'
         }
 
-        return 'large-offset-5'
+        return 'small-offset-3 large-offset-5'
       },
 
       image1GridClasses: function () {
@@ -151,8 +151,6 @@
 </script>
 
 <style lang="scss" scoped>
-  @import 'foundation-sites/scss/foundation';
-
   .service {
     position: relative;
 
