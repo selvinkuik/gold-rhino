@@ -1,17 +1,23 @@
 <template>
-  <div
-    class="video-full-width"
-    :class="slug"
-  >
-    <div class="video-cover-sizer">
+  <div ref="banner">
+    <div class="media-sizer">
       <video
+        v-if="video"
+        class="media"
         autoplay
         loop
         muted
         playsinline
-        ref="video"
+        ref="media"
         :src="src"
       />
+
+      <img
+        v-else
+        class="media"
+        ref="media"
+        :src="require('@/assets/images/' + src)"
+      >
 
       <div
         class="animated-line"
@@ -23,14 +29,16 @@
 
 <script>
   import throttle from 'lodash/throttle'
+  import imagesLoaded from 'imagesloaded'
 
   export default {
-    name: 'VideoFullWidth',
+    name: 'Banner',
     
     props: {
       navColor: String,
       slug: String,
-      src: String
+      src: String,
+      video: Boolean
     },
 
     data() {
@@ -46,6 +54,16 @@
         if (!this.pageHasScrolled) {
           this.$refs.animatedLine.classList.remove('paused')
         }
+      },
+
+      pinMedia() {
+        this.$scrollmagic.addScene(
+          this.$scrollmagic.scene({
+            triggerElement: this.$refs.banner,
+            triggerHook: 0
+          })
+            .setPin(this.$refs.banner, { spacerClass: 'no-push-followers-pin-spacer' })
+        )
       }
     },
 
@@ -56,15 +74,11 @@
         }
       })
 
-      this.$refs.video.addEventListener('loadeddata', () => {
-        this.$scrollmagic.addScene(
-          this.$scrollmagic.scene({
-            triggerElement: `.${this.slug}`,
-            triggerHook: 0
-          })
-            .setPin(`.${this.slug}`, { spacerClass: 'no-push-followers-pin-spacer' })
-        )
-      })
+      if (this.video) {
+        this.$refs.media.addEventListener('loadeddata', this.pinMedia)
+      } else {
+        imagesLoaded(this.$refs.media, this.pinMedia)
+      }
     },
 
     created() {
@@ -79,10 +93,10 @@
 </script>
 
 <style lang="scss" scoped>
-  .video-cover-sizer {
+  .media-sizer {
     overflow: hidden;
 
-    video {
+    .media {
       height: 100%;
       left: 50%;
       min-width: 100%;

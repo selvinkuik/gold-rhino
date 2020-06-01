@@ -4,9 +4,11 @@
 
     <div class="cell small-10 small-offset-1 large-8 large-offset-2">
       <img
+        v-if="src"
         class="title"
         :src="require('@/assets/images/' + src)"
       />
+
       <p class="intro">
         <slot></slot>
       </p>
@@ -32,7 +34,7 @@
 
 <style lang="scss" scoped>
   .overlay {
-    background-color: rgba(0, 0, 0, .35);
+    // background-color: rgba(0, 0, 0, .35);
     padding-bottom: 19.6%;
     position: relative;
     z-index: 1;

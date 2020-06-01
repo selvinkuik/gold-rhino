@@ -1,8 +1,8 @@
 <template>
   <div class="grid-container full">
-    <VideoFullWidth
-      slug="rhino-labs-video"
+    <Banner
       src="/videos/rhino-labs.mp4"
+      :video="true"
     />
 
     <BannerOverlay src="rhino-labs.svg">
@@ -118,25 +118,13 @@
     >
       <NavBar backgroundClass="light-neutral" />
 
-      <div class="grid-x">
-        <div class="cell small-10 small-offset-1 large-8 large-offset-2">
-          <div
-            class="image-mask"
-            ref="imageMask"
-          >
-            <img
-              ref="imageParallax"
-              src="@/assets/images/rhino-labs.jpg"
-            />
-          </div>
-        </div>
-      </div>
+      <ParallaxImage src="rhino-labs.jpg" />
 
       <div class="grid-x">
         <div class="cell small-10 small-offset-1 large-6 large-offset-3">
           <p class="text">We work in partnership with a range of trusted experts and advisors to deliver these services, including Ernst & Young, a highly-credentialed branding and marketing agency, and a finance and book-keeping services team, all of which we have worked closely with for over a decade.</p>
 
-          <p class="small">With this gold-standard team, we help you set up your business operations properly, giving you a jump-start past the usual hurdles of the start-up world, and catapulting you into a different class of business very quickly.</p>
+          <p class="small-text">With this gold-standard team, we help you set up your business operations properly, giving you a jump-start past the usual hurdles of the start-up world, and catapulting you into a different class of business very quickly.</p>
         </div>
       </div>
 
@@ -152,22 +140,23 @@
 
 <script>
   import imagesLoaded from 'imagesloaded'
-  import { TimelineMax, TweenMax } from 'gsap'
+  import Banner from '@/components/Banner.vue'
   import BannerOverlay from '@/components/BannerOverlay.vue'
   import ClipPathBox from '@/components/ClipPathBox.vue'
   import NavBar from '@/components/NavBar.vue'
+  import ParallaxImage from '@/components/ParallaxImage.vue'
   import Service from '@/components/Service.vue'
-  import VideoFullWidth from '@/components/VideoFullWidth.vue'
 
   export default {
     name: 'RhinoLabs',
     
     components: {
+      Banner,
       BannerOverlay,
       ClipPathBox,
       NavBar,
-      Service,
-      VideoFullWidth
+      ParallaxImage,
+      Service
     },
 
     data() {
@@ -184,18 +173,6 @@
             triggerHook: 0.4
           })
             .setPin('.scroll-indicator')
-        )
-
-        this.$scrollmagic.addScene(
-          this.$scrollmagic.scene({
-            triggerElement: this.$refs.lightSection,
-            triggerHook: 1,
-            duration: '200%'
-          })
-            .setTween(new TimelineMax().add([
-              TweenMax.to(this.$refs.imageParallax, 1, { scale: 1.2 }),
-              TweenMax.to(this.$refs.imageMask, 1, { yPercent: 50 })
-            ]))
         )
       })
     }
@@ -236,7 +213,7 @@
       height: 108px;
       margin: 8px auto;
       position: relative;
-      width: 4px;
+      width: 3px;
     }
 
     .handle {
@@ -244,7 +221,7 @@
       height: 18px; // 108 ÷ 6
       position: absolute;
       transition: height 0.4s cubic-bezier(0.19, 1, 0.22, 1);
-      width: 4px;
+      width: 3px;
     }
   }
 
@@ -252,24 +229,11 @@
     padding-bottom: 20%;
   }
 
-  .image-mask {
-    border: 1px solid transparent;
-    margin-top: -10%;
-    overflow: hidden;
-  }
-
   .text {
-    font-size: 20px;
-    line-height: 1.375em;
     margin-top: 60%;
-
-    @include breakpoint(large) {
-      font-size: 32px;
-    }
   }
 
-  .small {
-    line-height: 1.5em;
+  .small-text {
     margin-top: 18%;
   }
 </style>

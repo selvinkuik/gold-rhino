@@ -2,19 +2,23 @@
   <div :class="{ 'clip-area': !open, 'menu-open': open }">
     <div class="nav-bar grid-x">
       <div class="cell large-6">
-        <img
-          v-if="color == 'white'"
+        <router-link
           class="logo"
-          :class="{ backgroundClass }"
-          src="@/assets/images/gold-rhino-white.svg"
-        />
+          to="/"
+          @click.native="$emit('toggleMenu')"
+        >
+          <img
+            v-if="color == 'white'"
+            :class="{ backgroundClass }"
+            src="@/assets/images/gold-rhino-white.svg"
+          />
 
-        <img
-          v-else
-          class="logo"
-          :class="{ backgroundClass }"
-          src="@/assets/images/gold-rhino.svg"
-        />
+          <img
+            v-else
+            :class="{ backgroundClass }"
+            src="@/assets/images/gold-rhino.svg"
+          />
+        </router-link>
       </div>
 
       <div class="cell large-6">
@@ -73,7 +77,9 @@
     z-index: 2;
 
     .logo {
+      display: block;
       margin: 40px 0 0 32px;
+      pointer-events: auto;
     }
   }
 

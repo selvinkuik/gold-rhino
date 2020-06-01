@@ -16,6 +16,17 @@ const routes = [
     showInNav: true
   },
   {
+    component: () => import('@/views/AboutUs.vue'),
+    image: 'hover-about-us.jpg',
+    meta: {
+      title: 'About us | Gold Rhino'
+    },
+    name: 'About us',
+    description: 'We are an investment company with a difference.',
+    path: '/about-us',
+    showInNav: true
+  },
+  {
     component: () => import('@/views/RhinoLabs.vue'),
     image: 'hover-rhino-labs.jpg',
     meta: {
@@ -35,6 +46,39 @@ const routes = [
     name: 'Investment',
     description: 'Complete this form so we can take a look at your business.',
     path: '/investment',
+    showInNav: true
+  },
+  {
+    component: () => import('@/views/WhoWeAre.vue'),
+    image: 'hover-who-we-are.jpg',
+    meta: {
+      title: 'Who we are | Gold Rhino'
+    },
+    name: 'Who we are',
+    description: 'Meet the man behind Gold Rhino.',
+    path: '/who-we-are',
+    showInNav: true
+  },
+  {
+    component: () => import('@/views/OurVision.vue'),
+    image: 'hover-our-vision.jpg',
+    meta: {
+      title: 'Our vision | Gold Rhino'
+    },
+    name: 'Our vision',
+    description: 'We have a deeper purpose than just business investment.',
+    path: '/our-vision',
+    showInNav: true
+  },
+  {
+    component: () => import('@/views/SupportTheRhino.vue'),
+    image: 'hover-support-the-rhino.jpg',
+    meta: {
+      title: 'Support the rhino | Gold Rhino'
+    },
+    name: 'Support the rhino',
+    description: 'What can you do to help?',
+    path: '/support-the-rhino',
     showInNav: true
   },
   {

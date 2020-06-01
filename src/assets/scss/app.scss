@@ -21,6 +21,28 @@
 
 a {
   text-decoration: none;
+
+  &.standard-text-link {
+    color: $link;
+    text-decoration: underline;
+  }
+}
+
+.text {
+  font-size: 20px;
+  line-height: 1.375em;
+
+  @include breakpoint(large) {
+    font-size: 32px;
+  }
+}
+
+.small-text {
+  line-height: 1.5em;
+}
+
+.big-text {
+  font-size: 56px;
 }
 
 .text-link {
@@ -44,6 +66,10 @@ a {
     visibility: visible;
     transform: scaleX(1);
   }
+}
+
+.form-label {
+  color: $light-neutral;
 }
 
 .app {
@@ -71,10 +97,6 @@ a {
 
 .dark-neutral {
   background-color: $dark-neutral;
-}
-
-.form-label {
-  color: $light-neutral;
 }
 
 .menu,

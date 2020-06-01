@@ -259,12 +259,10 @@
       transform: translateY(-20px);
       transition: opacity .4s .4s, transform .4s .4s cubic-bezier(0.19, 1, 0.22, 1);
 
-      &.link-delay-1 {
-        transition-delay: .6s;
-      }
-
-      &.link-delay-2 {
-        transition-delay: .8s;
+      @for $i from 1 through 7 {
+        &.link-delay-#{$i} {
+          transition-delay: #{.4 + ($i * .2)}s;
+        }
       }
     }
 
@@ -301,7 +299,6 @@
     .menu-nav {
       font-size: 40px;
       line-height: 1.125em;
-      padding-bottom: 18.7%;
 
       @include breakpoint(large) {
         font-size: 64px;
@@ -371,7 +368,7 @@
 
       .footer-nav {
         line-height: 2em;
-        padding-bottom: 26.8%;
+        padding-bottom: 17.7%;
 
         @include breakpoint(small only) {
           font-size: 14px;

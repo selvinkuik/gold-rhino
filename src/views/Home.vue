@@ -1,8 +1,8 @@
 <template>
   <div class="grid-container full">
-    <VideoFullWidth
-      slug="home-video"
+    <Banner
       src="/videos/home.mp4"
+      :video="true"
     />
 
     <BannerOverlay src="forward-together.svg" />
@@ -34,19 +34,19 @@
 </template>
 
 <script>
+  import Banner from '@/components/Banner.vue'
   import BannerOverlay from '@/components/BannerOverlay.vue'
   import NavBar from '@/components/NavBar.vue'
-  import VideoFullWidth from '@/components/VideoFullWidth.vue'
   import TextWithHorizontalTicker from '@/components/TextWithHorizontalTicker.vue'
 
   export default {
     name: 'Home',
     
     components: {
+      Banner,
       BannerOverlay,
       NavBar,
-      TextWithHorizontalTicker,
-      VideoFullWidth
+      TextWithHorizontalTicker
     }
   }
 </script>
