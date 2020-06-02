@@ -34,14 +34,14 @@
           </div>
         </div>
       </div>
-    </div>
 
-    <div
-      class="label"
-      :class="{ white: color == 'white' }"
-      v-if="!open"
-    >
-      {{ $router.currentRoute.name }}
+      <div
+        class="label"
+        :class="{ white: color == 'white' }"
+        v-if="!open"
+      >
+        {{ $router.currentRoute.name }}
+      </div>
     </div>
   </div>
 </template>

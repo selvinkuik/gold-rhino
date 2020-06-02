@@ -3,7 +3,7 @@
     class="grid-x"
     ref="triggerElement"
   >
-    <div class="image-border cell large-8 large-offset-2">
+    <div class="image-border cell small-10 small-offset-1 large-8 large-offset-2">
       <div
         class="image-mask"
         ref="imageMask"

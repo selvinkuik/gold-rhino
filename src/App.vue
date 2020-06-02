@@ -48,7 +48,7 @@
               <div class="email">
                 <p>Email:</p>
                 <a
-                  class="text-link"
+                  class="hover-link"
                   href="mailto:tim.smith@goldrhino.com.au"
                 >
                   tim.smith@goldrhino.com.au
@@ -90,10 +90,10 @@
                   :key="item.path"
                 >
                   <router-link
-                    class="text-link"
+                    class="hover-link"
                     :to="item.path"
                   >
-                    {{ item.name }}
+                    {{ item.shortName || item.name }}
                   </router-link>
                 </div>
               </template>
@@ -103,7 +103,7 @@
               <div class="email">
                 <p>Email:</p>
                 <a
-                  class="text-link"
+                  class="hover-link"
                   href="mailto:tim.smith@goldrhino.com.au"
                 >
                   tim.smith@goldrhino.com.au
@@ -159,12 +159,16 @@
     },
 
     mounted() {
+      const offset = parseInt(getComputedStyle(this.$refs.footer).height) - window.innerHeight // The gap above the footer at max. scroll
+      const yPosition = window.innerWidth < 1024 ? -320 : 0 // The width required to reveal the swoosh on small screens
+
       this.$scrollmagic.addScene(
         this.$scrollmagic.scene({
+          offset: offset < 0 ? offset : 0,
           triggerElement: this.$refs.footer,
           triggerHook: 0
         })
-          .setTween(TweenMax.fromTo(this.$refs.footer, 1, { backgroundPosition: window.innerWidth + 'px 0px' }, { backgroundPosition: '0px 0px' }))
+          .setTween(TweenMax.fromTo(this.$refs.footer, 1, { backgroundPosition: window.innerWidth + 'px 0px' }, { backgroundPosition: yPosition + 'px 0px' }))
       )
     }
   }
@@ -258,6 +262,12 @@
       .nav-link {
         opacity: 1;
         transform: translateY(0px);
+
+        @for $i from 1 through 7 {
+          &.link-delay-#{$i} {
+            transition-delay: #{.4 + ($i * .2)}s;
+          }
+        }
       }
     }
 
@@ -265,12 +275,6 @@
       opacity: 0;
       transform: translateY(-20px);
       transition: opacity .4s .4s, transform .4s .4s cubic-bezier(0.19, 1, 0.22, 1);
-
-      @for $i from 1 through 7 {
-        &.link-delay-#{$i} {
-          transition-delay: #{.4 + ($i * .2)}s;
-        }
-      }
     }
 
     .contact-info {
@@ -342,6 +346,7 @@
 
     .footer-content {
       background: #18202A url('~@/assets/images/footer-bg.svg') no-repeat 0 0;
+      background-size: cover;
       color: $light-neutral;
       padding: 8.2% 0 17.3%;
       position: relative;

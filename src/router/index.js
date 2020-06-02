@@ -77,6 +77,7 @@ const routes = [
       title: 'Support the rhino | Gold Rhino'
     },
     name: 'Support the rhino',
+    shortName: 'Support',
     description: 'What can you do to help?',
     path: '/support-the-rhino',
     showInNav: true

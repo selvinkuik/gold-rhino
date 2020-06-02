@@ -22,10 +22,23 @@
 a {
   text-decoration: none;
 
-  &.standard-text-link {
-    color: $link;
+  &.light-link {
+    color: $light-link;
     text-decoration: underline;
   }
+
+  &.dark-link {
+    color: $dark-link;
+    text-decoration: underline;
+  }
+}
+
+.center {
+  text-align: center;
+}
+
+.small-text {
+  line-height: 1.5em;
 }
 
 .text {
@@ -37,15 +50,15 @@ a {
   }
 }
 
-.small-text {
-  line-height: 1.5em;
+.large-text {
+  font-size: 40px;
 }
 
-.big-text {
+.xlarge-text {
   font-size: 56px;
 }
 
-.text-link {
+.hover-link {
   position: relative;
 
   &:before {
