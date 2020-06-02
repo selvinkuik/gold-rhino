@@ -20,30 +20,37 @@
 
         <div
           class="select-selected"
-          :class="{ active: active }"
-          @click="active = !active"
+          :class="{ active: active, populated: value }"
+          @click="toggleActive"
           ref="select"
         >
-          {{ value }}
+          {{ value || 'Select' }}
         </div>
-        <div
+        <simplebar
           class="select-items"
           :class="{ active: active }"
+          data-simplebar-auto-hide="false"
+          ref="simplebar"
         >
           <div
+            class="item"
+            :class="{ active: item == value }"
             v-for="item in items"
             :key="item"
-            @click="$emit('input', item); active = !active"
+            @click="$emit('input', item); toggleActive"
           >
             {{ item }}
           </div>
-        </div>
+        </simplebar>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  import simplebar from 'simplebar-vue'
+  import 'simplebar/dist/simplebar.min.css'
+
   export default {
     name: 'SelectInput',
     
@@ -53,9 +60,19 @@
       value: String
     },
 
+    components: {
+      simplebar
+    },
+
     data() {
       return {
         active: false
+      }
+    },
+
+    methods: {
+      toggleActive() {
+        this.active = !this.active
       }
     },
 
@@ -86,11 +103,15 @@
   .select-selected {
     border: 2px solid #49515A;
     border-radius: 8px;
-    color: $light-neutral;
+    color: #777;
     cursor: default;
     min-height: 43px;
     padding: 10px;
     transition: border-color .4s cubic-bezier(0.19, 1, 0.22, 1);
+
+    &.populated {
+      color: $light-neutral;
+    }
 
     &:after {
       border: 6px solid transparent;
@@ -108,19 +129,22 @@
   .select-items {
     background-color: $light-neutral;
     border-radius: 8px;
+    cursor: default;
     display: none;
     left: 0;
     margin-top: -33px;
+    height: 200px;
     position: absolute;
     padding: 10px;
     right: 0;
     top: 100%;
     z-index: 1;
 
-    div {
+    .item {
       cursor: default;
       padding: 10px;
 
+      &.active,
       &:hover {
         background-color: #e1e2de;
       }

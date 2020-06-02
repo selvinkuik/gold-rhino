@@ -14,8 +14,11 @@
       />
 
       <label :for="`file-input-${_uid}`">
-        <div class="file-input-name">
-          {{ fileName }}
+        <div
+          class="file-input-name"
+          :class="{ populated: fileName }"
+        >
+          {{ fileName || 'Upload' }}
         </div>
         <div class="file-input-button">
           BROWSE
@@ -60,10 +63,10 @@
     + label {
       border: 2px solid #49515A;
       border-radius: 8px;
-      color: $light-neutral;
       display: flex;
 
       .file-input-name {
+        color: #777;
         display: inline-block;
         flex-grow: 1;
         min-height: 39px;
@@ -72,6 +75,10 @@
         text-overflow: ellipsis;
         vertical-align: top;
         white-space: nowrap;
+
+        &.populated {
+          color: $light-neutral;
+        }
       }
 
       .file-input-button {

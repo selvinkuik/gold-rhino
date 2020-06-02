@@ -49,6 +49,14 @@ const routes = [
     showInNav: true
   },
   {
+    component: () => import('@/views/ThankYou.vue'),
+    meta: {
+      title: 'Thank You | Gold Rhino'
+    },
+    name: 'Thank You',
+    path: '/investment/thank-you'
+  },
+  {
     component: () => import('@/views/WhoWeAre.vue'),
     image: 'hover-who-we-are.jpg',
     meta: {

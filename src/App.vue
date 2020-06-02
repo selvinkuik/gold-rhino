@@ -61,7 +61,13 @@
                   North Sydney NSW 2060<br />
                   Australia
                 </p>
-                <a>Map</a>
+                <a
+                  class="hover-link"
+                  href="https://goo.gl/maps/Fma5qx6YFUAck2Ya9"
+                  target="_blank"
+                >
+                  Map
+                </a>
               </div>
             </div>
           </div>
@@ -116,7 +122,13 @@
                   North Sydney NSW 2060<br />
                   Australia
                 </p>
-                <a>Map</a>
+                <a
+                  class="hover-link"
+                  href="https://goo.gl/maps/Fma5qx6YFUAck2Ya9"
+                  target="_blank"
+                >
+                  Map
+                </a>
               </div>
             </div>
 

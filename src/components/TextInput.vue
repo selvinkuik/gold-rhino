@@ -4,15 +4,20 @@
       {{ name }}:
     </label>
 
-    <div class="cell small-10 small-offset-1 large-4 large-offset-0">
+    <div
+      class="cell small-10 small-offset-1 large-offset-0"
+      :class="{ 'large-1': type == 'number', 'large-4': type != 'number' }"
+    >
       <textarea
-        v-if="multiline"
+        v-if="type == 'textarea'"
+        placeholder="Type here"
         :value="value"
         @input="$emit('input', $event.target.value)"
       />
       <input
         v-else
-        type="text"
+        :placeholder="type == 'number' ? '-' : 'Type here'"
+        :type="type || 'text'"
         :value="value"
         @input="$emit('input', $event.target.value)"
       />
@@ -25,8 +30,8 @@
     name: 'TextInput',
     
     props: {
-      multiline: Boolean,
       name: String,
+      type: String,
       value: String
     }
   }
@@ -44,6 +49,16 @@
     resize: none;
     transition: border-color .4s cubic-bezier(0.19, 1, 0.22, 1);
     width: 100%;
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+        margin: 0;
+    }
+
+    &[type=number] {
+      -moz-appearance: textfield;
+    }
 
     &:focus {
       border-color: $light-neutral;

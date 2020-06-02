@@ -9,7 +9,7 @@
       </div>
     </div>
 
-    <div class="text cell small-10 small-offset-1 large-5 large-offset-6">
+    <div class="text medium-text cell small-10 small-offset-1 large-5 large-offset-6">
       <slot></slot>
     </div>
   </div>
@@ -71,8 +71,6 @@
   }
 
   .text {
-    font-size: 20px;
-    line-height: 1.375em;
     margin-bottom: 21.2%;
     margin-top: 19.8%;
     position: relative;

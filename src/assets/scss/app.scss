@@ -33,29 +33,47 @@ a {
   }
 }
 
-.center {
-  text-align: center;
-}
-
-.small-text {
-  line-height: 1.5em;
-}
-
 .text {
-  font-size: 20px;
-  line-height: 1.375em;
-
-  @include breakpoint(large) {
-    font-size: 32px;
+  &.light-neutral {
+    color: $light-neutral;
   }
-}
 
-.large-text {
-  font-size: 40px;
-}
+  &.dark-neutral {
+    color: $dark-neutral;
+  }
 
-.xlarge-text {
-  font-size: 56px;
+  &.center {
+    text-align: center;
+  }
+
+  &.xsmall-text {
+    font-size: 10px;
+  }
+
+  &.small-text {
+    line-height: 1.5em;
+  }
+
+  &.medium-text {
+    font-size: 20px;
+    line-height: 1.375em;
+
+    @include breakpoint(large) {
+      font-size: 32px;
+    }
+  }
+
+  &.large-text {
+    font-size: 40px;
+  }
+
+  &.xlarge-text {
+    font-size: 56px;
+  }
+
+  &.xxlarge-text {
+    font-size: 64px;
+  }
 }
 
 .hover-link {
@@ -102,14 +120,14 @@ a {
   &.white {
     background-color: #fff;
   }
-}
 
-.light-neutral {
-  background-color: $light-neutral;
-}
+  &.light-neutral {
+    background-color: $light-neutral;
+  }
 
-.dark-neutral {
-  background-color: $dark-neutral;
+  &.dark-neutral {
+    background-color: $dark-neutral;
+  }
 }
 
 .menu,

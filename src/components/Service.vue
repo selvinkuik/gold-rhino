@@ -115,7 +115,7 @@
           this.$scrollmagic.scene({
             triggerElement: this.$refs.pinned,
             triggerHook: 0.2,
-            duration: parseInt(getComputedStyle(this.$refs.pinned).height) * 1 // Balances with...
+            duration: parseInt(getComputedStyle(this.$refs.pinned).height) // Balances with...
           })
             .setPin(this.$refs.pinned)
             .on('enter', () => {

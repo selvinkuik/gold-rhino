@@ -33,3 +33,9 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Vue Router
 See [History Mode](https://router.vuejs.org/guide/essentials/history-mode.html#example-server-configurations).
+
+
+### Deployment
+```
+rsync -azP --stats --rsync-path=/home/goldrhin/rsync-HEAD-20200602-0204GMT/bin/rsync dist/* goldrhin@43.243.118.113:public_html
+```
