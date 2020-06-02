@@ -32,8 +32,8 @@
           <clipPath id="mask">
             <circle 
               ref="clipPath" 
-              cx="66%" 
-              cy="50%"
+              cx="-100%" 
+              cy="-100%"
               :r="mouseOver ? '24%' : '10%'" 
             />
           </clipPath>
