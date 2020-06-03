@@ -87,6 +87,8 @@
     .name {
       font-size: 40px;
       margin-top: 3%;
+      transform: translateY(10px);
+      transition: transform .4s cubic-bezier(0.19, 1, 0.22, 1);
 
       @include breakpoint(large) {
         font-size: 104px;
@@ -95,6 +97,8 @@
 
     .description {
       margin-top: 1%;
+      opacity: 0;
+      transition: opacity .4s;
     }
 
     .image {
@@ -126,6 +130,11 @@
 
     @media (hover: hover) {
       &:hover {
+        .name {
+          transform: translateY(0);
+        }
+
+        .description,
         .image {
           opacity: 1;
         }

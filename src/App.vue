@@ -1,153 +1,151 @@
 <template>
   <div class="app">
-      <div>
-        <div
-          class="menu-circle-transform white"
-          :class="{ open: menuOpen }"
-          @click="toggleMenu"
-        >
-          <span class="menu-icon">
-            <span class="menu-line menu-line-1"></span>
-            <span class="menu-line menu-line-2"></span>
-          </span>
-        </div>
+    <div
+      class="menu-circle-transform white"
+      :class="{ open: menuOpen }"
+      @click="toggleMenu"
+    >
+      <span class="menu-icon">
+        <span class="menu-line menu-line-1"></span>
+        <span class="menu-line menu-line-2"></span>
+      </span>
+    </div>
 
-        <div
-          class="menu-overlay"
-          :class="{ open: menuOpen }"
-          ref="menu"
-        >
-          <NavBar
-            color="white"
-            :open="true"
-            @toggleMenu="toggleMenu"
-          />
+    <div
+      class="menu-overlay"
+      :class="{ open: menuOpen }"
+      ref="menu"
+    >
+      <NavBar
+        color="white"
+        :open="true"
+        @toggleMenu="toggleMenu"
+      />
 
-          <div class="label">MENU</div>
+      <div class="label">MENU</div>
 
-          <div
-            class="menu-overflow"
-            :class="{ overflowing: menuOverflowing }"
-            ref="menuOverflow"
-          >
-            <div class="grid-x">
-              <div class="menu-nav cell small-10 small-offset-1 large-6 large-offset-2">
-                <template v-for="(item, index) in $router.options.routes">
-                  <div
-                    class="nav-link"
-                    :class="`link-delay-${index}`"
-                    v-if="item.showInNav"
-                    :key="item.path"
-                  >
-                    <router-link
-                      :to="item.path"
-                      @click.native="toggleMenu"
-                    >
-                      {{ item.name }}
-                    </router-link>
-                  </div>
-                </template>
+      <div
+        class="menu-overflow"
+        :class="{ overflowing: menuOverflowing }"
+        ref="menuOverflow"
+      >
+        <div class="grid-x">
+          <div class="menu-nav cell small-10 small-offset-1 large-6 large-offset-2">
+            <template v-for="(item, index) in $router.options.routes">
+              <div
+                class="nav-link"
+                :class="`link-delay-${index}`"
+                v-if="item.showInNav"
+                :key="item.path"
+              >
+                <router-link
+                  :to="item.path"
+                  @click.native="toggleMenu"
+                >
+                  {{ item.name }}
+                </router-link>
               </div>
+            </template>
+          </div>
 
-              <div class="contact-info cell small-10 small-offset-1 large-4 large-offset-0">
-                <div class="email">
-                  <p>Email:</p>
-                  <a
-                    class="hover-link"
-                    href="mailto:tim.smith@goldrhino.com.au"
-                  >
-                    tim.smith@goldrhino.com.au
-                  </a>
-                </div>
+          <div class="contact-info cell small-10 small-offset-1 large-4 large-offset-0">
+            <div class="email">
+              <p>Email:</p>
+              <a
+                class="hover-link"
+                href="mailto:tim.smith@goldrhino.com.au"
+              >
+                tim.smith@goldrhino.com.au
+              </a>
+            </div>
 
-                <div class="address">
-                  <p>
-                    50 Miller Street<br />
-                    North Sydney NSW 2060<br />
-                    Australia
-                  </p>
-                  <a
-                    class="hover-link"
-                    href="https://goo.gl/maps/Fma5qx6YFUAck2Ya9"
-                    target="_blank"
-                  >
-                    Map
-                  </a>
-                </div>
-              </div>
+            <div class="address">
+              <p>
+                50 Miller Street<br />
+                North Sydney NSW 2060<br />
+                Australia
+              </p>
+              <a
+                class="hover-link"
+                href="https://goo.gl/maps/Fma5qx6YFUAck2Ya9"
+                target="_blank"
+              >
+                Map
+              </a>
             </div>
           </div>
         </div>
-
-        <div
-          class="content"
-          ref="app"
-        >
-          <transition
-            name="fade"
-            mode="out-in"
-          >
-            <router-view />
-          </transition>
-        </div>
-        
-        <footer>
-          <NavBar color="white" />
-
-          <div
-            class="footer-content grid-x"
-            ref="footer"
-          >
-            <div class="footer-nav cell small-10 small-offset-1 large-5 large-offset-2">
-              <template v-for="item in $router.options.routes">
-                <div
-                  v-if="item.showInNav"
-                  :key="item.path"
-                >
-                  <router-link
-                    class="hover-link"
-                    :to="item.path"
-                  >
-                    {{ item.shortName || item.name }}
-                  </router-link>
-                </div>
-              </template>
-            </div>
-
-            <div class="contact-info cell small-10 small-offset-1 large-5 large-offset-0">
-              <div class="email">
-                <p>Email:</p>
-                <a
-                  class="hover-link"
-                  href="mailto:tim.smith@goldrhino.com.au"
-                >
-                  tim.smith@goldrhino.com.au
-                </a>
-              </div>
-
-              <div class="address">
-                <p>
-                  50 Miller Street<br />
-                  North Sydney NSW 2060<br />
-                  Australia
-                </p>
-                <a
-                  class="hover-link"
-                  href="https://goo.gl/maps/Fma5qx6YFUAck2Ya9"
-                  target="_blank"
-                >
-                  Map
-                </a>
-              </div>
-            </div>
-
-            <img
-              class="logo"
-              src="@/assets/images/gold-rhino.svg"
-            />
-          </div>
-        </footer>
       </div>
+    </div>
+
+    <div
+      class="content"
+      ref="app"
+    >
+      <transition
+        name="fade"
+        mode="out-in"
+      >
+        <router-view />
+      </transition>
+    </div>
+    
+    <footer>
+      <NavBar color="white" />
+
+      <div
+        class="footer-content grid-x"
+        ref="footer"
+      >
+        <div class="footer-nav cell small-10 small-offset-1 large-5 large-offset-2">
+          <template v-for="item in $router.options.routes">
+            <div
+              v-if="item.showInNav"
+              :key="item.path"
+            >
+              <router-link
+                class="hover-link"
+                :to="item.path"
+              >
+                {{ item.shortName || item.name }}
+              </router-link>
+            </div>
+          </template>
+        </div>
+
+        <div class="contact-info cell small-10 small-offset-1 large-5 large-offset-0">
+          <div class="email">
+            <p>Email:</p>
+            <a
+              class="hover-link"
+              href="mailto:tim.smith@goldrhino.com.au"
+            >
+              tim.smith@goldrhino.com.au
+            </a>
+          </div>
+
+          <div class="address">
+            <p>
+              50 Miller Street<br />
+              North Sydney NSW 2060<br />
+              Australia
+            </p>
+            <a
+              class="hover-link"
+              href="https://goo.gl/maps/Fma5qx6YFUAck2Ya9"
+              target="_blank"
+            >
+              Map
+            </a>
+          </div>
+        </div>
+
+        <img
+          class="logo"
+          src="@/assets/images/gold-rhino.svg"
+        />
+      </div>
+    </footer>
   </div>
 </template>
 
