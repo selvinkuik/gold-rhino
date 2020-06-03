@@ -1,19 +1,13 @@
 <template>
   <div
-    class="grid-x"
-    ref="triggerElement"
+    class="image-mask"
+    ref="imageMask"
+    :style="{ 'margin-top': marginTop || '-10%' }"
   >
-    <div class="cell small-10 small-offset-1 large-8 large-offset-2">
-      <div
-        class="image-mask"
-        ref="imageMask"
-      >
-        <img
-          ref="imageParallax"
-          :src="require('@/assets/images/' + src)"
-        />
-      </div>
-    </div>
+    <img
+      ref="imageParallax"
+      :src="require('@/assets/images/' + src)"
+    />
   </div>
 </template>
 
@@ -25,14 +19,15 @@
     name: 'ParallaxImage',
     
     props: {
-      src: String
+      src: String,
+      marginTop: String
     },
 
     mounted() {
-      imagesLoaded(this.$refs.triggerElement, () => {
+      imagesLoaded(this.$refs.imageMask, () => {
         this.$scrollmagic.addScene(
           this.$scrollmagic.scene({
-            triggerElement: this.$refs.triggerElement,
+            triggerElement: this.$refs.imageMask,
             triggerHook: 1,
             duration: '200%'
           })
@@ -49,7 +44,6 @@
 <style lang="scss" scoped>
   .image-mask {
     border: 1px solid transparent;
-    margin-top: -10%;
     overflow: hidden;
   }
 </style>

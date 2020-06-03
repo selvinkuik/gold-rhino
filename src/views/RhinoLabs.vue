@@ -108,7 +108,11 @@
     >
       <NavBar tintClass="light" />
 
-      <ParallaxImage src="rhino-labs.jpg" />
+      <div class="grid-x">
+        <div class="cell small-10 small-offset-1 large-8 large-offset-2">
+          <ParallaxImage src="rhino-labs.jpg" />
+        </div>
+      </div>
 
       <div class="grid-x">
         <div class="cell small-10 small-offset-1 large-6 large-offset-3">
@@ -171,7 +175,7 @@
   }
 
   .light-neutral {
-    padding-bottom: 20%;
+    padding-bottom: 30%;
   }
 
   .medium-text {

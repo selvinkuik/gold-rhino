@@ -43,7 +43,11 @@
         </div>
       </div>
 
-      <ParallaxImage src="support-the-rhino.jpg" />
+      <div class="grid-x">
+        <div class="cell small-10 small-offset-1 large-8 large-offset-2">
+          <ParallaxImage src="support-the-rhino.jpg" />
+        </div>
+      </div>
 
       <div class="grid-x">
         <div class="cell small-10 small-offset-1 large-8 large-offset-2">

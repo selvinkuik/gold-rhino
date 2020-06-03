@@ -79,7 +79,10 @@
           </div>
         </div>
 
-        <div ref="app">
+        <div
+          class="content"
+          ref="app"
+        >
           <transition
             name="fade"
             mode="out-in"
@@ -156,6 +159,7 @@
   export default {
     data() {
       return {
+        animating: false,
         menuOverflowing: false,
         menuOpen: false
       }
@@ -167,14 +171,22 @@
 
     methods: {
       toggleMenu() {
-        this.menuOpen = !this.menuOpen
+        if (!this.animating) {
+          this.menuOpen = !this.menuOpen
 
-        if (this.menuOpen) {
-          ScrollLock.disable()
+          this.animating = true
 
-          this.menuOverflowing = this.$refs.menuOverflow.scrollHeight > this.$refs.menuOverflow.clientHeight
-        } else {
-          ScrollLock.enable()
+          setTimeout(() => {
+            this.animating = false // Prevent double-clicking for the duration of the animation
+          }, 1600)
+
+          if (this.menuOpen) {
+            ScrollLock.disable()
+
+            this.menuOverflowing = this.$refs.menuOverflow.scrollHeight > this.$refs.menuOverflow.clientHeight
+          } else {
+            ScrollLock.enable()
+          }
         }
       }
     },

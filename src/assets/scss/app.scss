@@ -74,6 +74,10 @@ a {
   &.xxlarge-text {
     font-size: 64px;
   }
+
+  + .text {
+    margin-top: 1em;
+  }
 }
 
 .hover-link {
