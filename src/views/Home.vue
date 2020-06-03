@@ -124,9 +124,11 @@
       }
     }
 
-    &:hover {
-      .image {
-        opacity: 1;
+    @media (hover: hover) {
+      &:hover {
+        .image {
+          opacity: 1;
+        }
       }
     }
   }
