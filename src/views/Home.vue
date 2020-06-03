@@ -22,10 +22,17 @@
             :key="item.path"
             :to="item.path"
           >
-            <div class="index">0{{ index }}</div>
-            <div class="name">{{ item.name }}</div>
-            <div class="description">{{ item.description }}</div>
-            <!-- <img :src="require('@/assets/images/' + item.image)" /> -->
+            <div class="overlay">
+              <div class="index">0{{ index }}</div>
+              <div class="name">{{ item.name }}</div>
+              <div class="description">{{ item.description }}</div>
+            </div>
+
+            <img
+              class="image"
+              :class="`image-hover-${index}`"
+              :src="require('@/assets/images/' + item.image)"
+            />
           </router-link>
         </template>
       </div>
@@ -57,11 +64,19 @@
   }
 
   .link {
-    border-bottom: 2px solid $dark-neutral;
-    padding: 2% 0 4%;
+    position: relative;
+
+    .overlay {
+      border-bottom: 2px solid $dark-neutral;
+      padding: 3% 0 6.2%;
+      position: relative;
+      z-index: 1;
+    }
 
     &:first-child {
-      border-top: 2px solid $dark-neutral;
+      .overlay {
+        border-top: 2px solid $dark-neutral;
+      }
     }
 
     .index {
@@ -80,6 +95,39 @@
 
     .description {
       margin-top: 1%;
+    }
+
+    .image {
+      height: 396px;
+      opacity: 0;
+      position: absolute;
+      top: -23%;
+      transition: opacity .4s;
+
+      &.image-hover-1 {
+        right: 14.8%;
+      }
+
+      &.image-hover-2,
+      &.image-hover-4,
+      &.image-hover-5,
+      &.image-hover-7 {
+        right: -11.8%;
+      }
+
+      &.image-hover-3 {
+        right: 24.5%;
+      }
+
+      &.image-hover-6 {
+        right: 18.8%;
+      }
+    }
+
+    &:hover {
+      .image {
+        opacity: 1;
+      }
     }
   }
 </style>

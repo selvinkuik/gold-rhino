@@ -25,49 +25,55 @@
 
           <div class="label">MENU</div>
 
-          <div class="grid-x">
-            <div class="menu-nav cell small-10 small-offset-1 large-6 large-offset-2">
-              <template v-for="(item, index) in $router.options.routes">
-                <div
-                  class="nav-link"
-                  :class="`link-delay-${index}`"
-                  v-if="item.showInNav"
-                  :key="item.path"
-                >
-                  <router-link
-                    :to="item.path"
-                    @click.native="toggleMenu"
+          <div
+            class="menu-overflow"
+            :class="{ overflowing: menuOverflowing }"
+            ref="menuOverflow"
+          >
+            <div class="grid-x">
+              <div class="menu-nav cell small-10 small-offset-1 large-6 large-offset-2">
+                <template v-for="(item, index) in $router.options.routes">
+                  <div
+                    class="nav-link"
+                    :class="`link-delay-${index}`"
+                    v-if="item.showInNav"
+                    :key="item.path"
                   >
-                    {{ item.name }}
-                  </router-link>
-                </div>
-              </template>
-            </div>
-
-            <div class="contact-info cell small-10 small-offset-1 large-4 large-offset-0">
-              <div class="email">
-                <p>Email:</p>
-                <a
-                  class="hover-link"
-                  href="mailto:tim.smith@goldrhino.com.au"
-                >
-                  tim.smith@goldrhino.com.au
-                </a>
+                    <router-link
+                      :to="item.path"
+                      @click.native="toggleMenu"
+                    >
+                      {{ item.name }}
+                    </router-link>
+                  </div>
+                </template>
               </div>
 
-              <div class="address">
-                <p>
-                  50 Miller Street<br />
-                  North Sydney NSW 2060<br />
-                  Australia
-                </p>
-                <a
-                  class="hover-link"
-                  href="https://goo.gl/maps/Fma5qx6YFUAck2Ya9"
-                  target="_blank"
-                >
-                  Map
-                </a>
+              <div class="contact-info cell small-10 small-offset-1 large-4 large-offset-0">
+                <div class="email">
+                  <p>Email:</p>
+                  <a
+                    class="hover-link"
+                    href="mailto:tim.smith@goldrhino.com.au"
+                  >
+                    tim.smith@goldrhino.com.au
+                  </a>
+                </div>
+
+                <div class="address">
+                  <p>
+                    50 Miller Street<br />
+                    North Sydney NSW 2060<br />
+                    Australia
+                  </p>
+                  <a
+                    class="hover-link"
+                    href="https://goo.gl/maps/Fma5qx6YFUAck2Ya9"
+                    target="_blank"
+                  >
+                    Map
+                  </a>
+                </div>
               </div>
             </div>
           </div>
@@ -150,6 +156,7 @@
   export default {
     data() {
       return {
+        menuOverflowing: false,
         menuOpen: false
       }
     },
@@ -164,6 +171,8 @@
 
         if (this.menuOpen) {
           ScrollLock.disable()
+
+          this.menuOverflowing = this.$refs.menuOverflow.scrollHeight > this.$refs.menuOverflow.clientHeight
         } else {
           ScrollLock.enable()
         }
@@ -171,8 +180,8 @@
     },
 
     mounted() {
-      const offset = parseInt(getComputedStyle(this.$refs.footer).height) - window.innerHeight // The gap above the footer at max. scroll
-      const yPosition = window.innerWidth < 1024 ? -320 : 0 // The width required to reveal the swoosh on small screens
+      const offset = parseInt(getComputedStyle(this.$refs.footer).height) - window.innerHeight - 50 // The gap above the footer at max. scroll (and then a bit)
+      const yPosition = window.innerWidth < 1024 ? -600 : 0 // The width required to reveal the swoosh on small screens
 
       this.$scrollmagic.addScene(
         this.$scrollmagic.scene({
@@ -254,18 +263,75 @@
     }
   }
 
+  .menu-overlay,
+  footer {
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      @include breakpoint(large) {
+        border-left: 2px solid $light-neutral;
+      }
+
+      @include breakpoint(small only) {
+        border-top: 2px solid $light-neutral;
+        padding-top: 8%;
+      }
+
+      .email,
+      .address {
+        @include breakpoint(large) {
+          margin-left: 20px;
+        }
+        
+        p {
+          line-height: 1.5em;
+          opacity: .6;
+        }
+
+        a {
+          font-size: 20px;
+
+          @include breakpoint(large) {
+            font-size: 24px;
+          }
+        }
+      }
+
+      .address {
+        @include breakpoint(small only) {
+          padding-top: 14%;
+        }
+      }
+    }
+  }
+
+  .menu-overflow {
+    height: 100%;
+
+    &.overflowing {
+      overflow: scroll;
+      padding-bottom: 20%;
+    }
+  }
+
   .menu-overlay {
     color: $light-neutral;
     height: 100%;
     left: 0;
     opacity: 0;
-    padding-top: 11%;
+    padding-top: 20%;
     position: fixed;
     top: 0;
     transition: opacity .4s .2s;
     visibility: hidden;
     width: 100%;
     z-index: 5;
+
+    @include breakpoint(large) {
+      padding-top: 8%;
+    }
 
     &.open {
       opacity: 1;
@@ -289,50 +355,27 @@
       transition: opacity .4s .4s, transform .4s .4s cubic-bezier(0.19, 1, 0.22, 1);
     }
 
-    .contact-info {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-
-      @include breakpoint(large) {
-        border-left: 2px solid $light-neutral;
-      }
-
-      .email,
-      .address {
-        @include breakpoint(large) {
-          margin-left: 20px;
-        }
-
-        p {
-          line-height: 1.5em;
-          opacity: .6;
-        }
-
-        a {
-          font-size: 20px;
-
-          @include breakpoint(large) {
-            font-size: 24px;
-          }
-        }
-      }
-    }
-
     .menu-nav {
       font-size: 40px;
-      line-height: 1.125em;
+      line-height: 1em;
 
       @include breakpoint(large) {
         font-size: 64px;
+        line-height: 1.125em;
       }
 
       @include breakpoint(small only) {
-        margin-top: 40px;
+        padding-bottom: 11%;
       }
 
-      .nav-link a {
-        transition: color .4s;
+      .nav-link {
+        @include breakpoint(small only) {
+          padding: 2.6% 0;
+        }
+
+        a {
+          transition: color .4s;
+        }
       }
 
       .nav-link a:hover,
@@ -360,38 +403,12 @@
       background: #18202A url('~@/assets/images/footer-bg.svg') no-repeat 0 0;
       background-size: cover;
       color: $light-neutral;
-      padding: 8.2% 0 17.3%;
+      padding: 12.2% 0 48%;
       position: relative;
       width: 100%;
 
-      .contact-info {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-
-        @include breakpoint(large) {
-          border-left: 2px solid $light-neutral;
-        }
-
-        .email,
-        .address {
-          @include breakpoint(large) {
-            margin-left: 20px;
-          }
-          
-          p {
-            line-height: 1.5em;
-            opacity: .6;
-          }
-
-          a {
-            font-size: 20px;
-
-            @include breakpoint(large) {
-              font-size: 24px;
-            }
-          }
-        }
+      @include breakpoint(large) {
+        padding: 12.2% 0 17.3%;
       }
 
       .footer-nav {
@@ -400,6 +417,7 @@
 
         @include breakpoint(small only) {
           font-size: 14px;
+          line-height: 2.3em;
         }
       }
 
@@ -408,6 +426,12 @@
         position: absolute;
         right: 18px;
         width: 66px;
+      }
+    }
+
+    .contact-info {
+      @include breakpoint(small only) {
+        padding-top: 17.7%
       }
     }
   }
