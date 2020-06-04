@@ -13,6 +13,13 @@
         <div class="cell small-10 small-offset-1 large-4 large-offset-2">
           <p class="text medium-text">We want to make a direct and more active contribution to this effort by helping to increase the rhinoceros population, and so remove the real threat of their extinction.</p>
         </div>
+
+        <div class="cell small-10 small-offset-1 large-3 large-offset-1">
+          <ParallaxImage
+            src="our-vision-1.jpg"
+            marginTop="-100%"
+          />
+        </div>
       </div>
 
       <div class="grid-x grid-margin-x story-1">
@@ -70,6 +77,7 @@
   import BannerOverlay from '@/components/BannerOverlay.vue'
   import ClipPathBox from '@/components/ClipPathBox.vue'
   import NavBar from '@/components/NavBar.vue'
+  import ParallaxImage from '@/components/ParallaxImage.vue'
   import ParallaxImageWithBorder from '@/components/ParallaxImageWithBorder.vue'
 
   export default {
@@ -80,6 +88,7 @@
       BannerOverlay,
       ClipPathBox,
       NavBar,
+      ParallaxImage,
       ParallaxImageWithBorder
     }
   }
