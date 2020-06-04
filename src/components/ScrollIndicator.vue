@@ -39,7 +39,8 @@
 <style lang="scss" scoped>
   .scroll-indicator {
     color: $light-neutral;
-    font: 12px 'Open Sans';
+    font: 10px Termina;
+    letter-spacing: 2px;
     top: 0;
     width: 100%;
 

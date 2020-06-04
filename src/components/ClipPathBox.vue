@@ -39,6 +39,7 @@
           </clipPath>
         </defs>
         <image
+          v-if="image"
           clip-path="url(#mask)"
           xmlns:xlink="http://www.w3.org/1999/xlink"
           :xlink:href="require('@/assets/images/' + image)"
@@ -115,7 +116,7 @@
     }
 
     .box {
-      padding-top: 41.2%;
+      padding-top: 37.1%;
       position: relative;
     }
 
@@ -142,9 +143,9 @@
     }
 
     .arrow {
-      bottom: 10.4%;
+      bottom: 15.4%;
       position: absolute;
-      right: 5.8%;
+      right: 6.8%;
       transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
     }
 

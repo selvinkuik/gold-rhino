@@ -1,5 +1,5 @@
 <template>
-  <div class="grid-x">
+  <div class="form-field grid-x">
     <label class="form-label cell small-10 small-offset-1 large-3 large-offset-2">
       {{ name }}:
     </label>
@@ -45,7 +45,7 @@
     border-radius: 8px;
     color: #F8F7F1;
     font: 16px Montserrat;
-    padding: 10px;
+    padding: 13px;
     resize: none;
     transition: border-color .4s cubic-bezier(0.19, 1, 0.22, 1);
     width: 100%;
@@ -63,5 +63,9 @@
     &:focus {
       border-color: $light-neutral;
     }
+  }
+
+  textarea {
+    height: 165px;
   }
 </style>

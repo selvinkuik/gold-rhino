@@ -1,6 +1,7 @@
 <template>
   <div class="app">
     <div
+      v-if="!holdingMode"
       class="menu-circle-transform white"
       :class="{ open: menuOpen }"
       @click="toggleMenu"
@@ -12,6 +13,7 @@
     </div>
 
     <div
+      v-if="!holdingMode"
       class="menu-overlay"
       :class="{ open: menuOpen }"
       ref="menu"
@@ -53,9 +55,9 @@
               <p>Email:</p>
               <a
                 class="hover-link"
-                href="mailto:tim.smith@goldrhino.com.au"
+                href="mailto:info@goldrhino.com.au"
               >
-                tim.smith@goldrhino.com.au
+                info@goldrhino.com.au
               </a>
             </div>
 
@@ -100,7 +102,7 @@
         <div class="footer-nav cell small-10 small-offset-1 large-5 large-offset-2">
           <template v-for="item in $router.options.routes">
             <div
-              v-if="item.showInNav"
+              v-if="item.showInNav && !holdingMode"
               :key="item.path"
             >
               <router-link
@@ -111,6 +113,18 @@
               </router-link>
             </div>
           </template>
+
+          <div
+            v-if="holdingMode"
+            class="pdf"
+          >
+            <a
+              class="white-link"
+              href="/presentation"
+            >
+              Click here to find out more
+            </a>
+          </div>
         </div>
 
         <div class="contact-info cell small-10 small-offset-1 large-5 large-offset-0">
@@ -118,9 +132,9 @@
             <p>Email:</p>
             <a
               class="hover-link"
-              href="mailto:tim.smith@goldrhino.com.au"
+              href="mailto:info@goldrhino.com.au"
             >
-              tim.smith@goldrhino.com.au
+              info@goldrhino.com.au
             </a>
           </div>
 
@@ -157,6 +171,7 @@
   export default {
     data() {
       return {
+        holdingMode: process.env.VUE_APP_HOLDING_MODE == 'true',
         animating: false,
         menuOverflowing: false,
         menuOpen: false
@@ -190,7 +205,7 @@
     },
 
     mounted() {
-      const offset = parseInt(getComputedStyle(this.$refs.footer).height) - window.innerHeight - 50 // The gap above the footer at max. scroll (and then a bit)
+      const offset = parseInt(getComputedStyle(this.$refs.footer).height) - window.innerHeight - 100 // The gap above the footer at max. scroll (and then a bit)
       const yPosition = window.innerWidth < 1024 ? -600 : 0 // The width required to reveal the swoosh on small screens
 
       this.$scrollmagic.addScene(
@@ -288,31 +303,45 @@
         border-top: 2px solid $light-neutral;
         padding-top: 8%;
       }
+    }
 
-      .email,
-      .address {
-        @include breakpoint(large) {
-          margin-left: 20px;
-        }
-        
-        p {
-          line-height: 1.5em;
-          opacity: .6;
-        }
-
-        a {
-          font-size: 20px;
-
-          @include breakpoint(large) {
-            font-size: 24px;
-          }
-        }
+    .pdf {
+      @include breakpoint(large) {
+        padding: 23px 0 28.6%;
       }
 
-      .address {
-        @include breakpoint(small only) {
-          padding-top: 14%;
+      a {
+        font-size: 20px;
+
+        @include breakpoint(large) {
+          font-size: 24px;
         }
+      }
+    }
+
+    .email,
+    .address {
+      @include breakpoint(large) {
+        margin-left: 20px;
+      }
+      
+      p {
+        line-height: 1.5em;
+        opacity: .6;
+      }
+
+      a {
+        font-size: 20px;
+
+        @include breakpoint(large) {
+          font-size: 24px;
+        }
+      }
+    }
+
+    .address {
+      @include breakpoint(small only) {
+        padding-top: 14%;
       }
     }
   }

@@ -38,7 +38,7 @@
           })
             .setTween(new TimelineMax().add([
               TweenMax.to(this.$refs.imageParallax, 1, { scale: 1.2 }),
-              TweenMax.to(this.$refs.imageMask, 1, { yPercent: 50 })
+              TweenMax.fromTo(this.$refs.imageMask, 1, { yPercent: -40 }, { yPercent: 10 })
             ]))
         )
       })
@@ -54,7 +54,7 @@
 
   .image-mask {
     border: 1px solid transparent;
-    margin: -10% auto 0;
+    margin: 0 auto;
     overflow: hidden;
     width: 50%;
   }

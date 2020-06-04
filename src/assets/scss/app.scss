@@ -22,6 +22,11 @@
 a {
   text-decoration: none;
 
+  &.white-link {
+    color: $light-neutral;
+    text-decoration: underline;
+  }
+
   &.light-link {
     color: $light-link;
     text-decoration: underline;
@@ -73,6 +78,7 @@ a {
 
   &.xxlarge-text {
     font-size: 64px;
+    line-height: 1.15em;
   }
 
   + .text {
@@ -103,8 +109,31 @@ a {
   }
 }
 
+.divider {
+  margin-top: 21.3%;
+  padding-top: 9.9%;
+  position: relative;
+
+  &:before {
+    background-color: $dark-neutral;
+    content: ' ';
+    height: 2px;
+    left: 50%;
+    margin-left: -40px;
+    position: absolute;
+    top: 0;
+    width: 80px;
+  }
+}
+
+.form-field {
+  padding-top: 2.8%;
+}
+
 .form-label {
+  align-items: center;
   color: $light-neutral;
+  display: flex;
 }
 
 .app {
@@ -132,6 +161,10 @@ a {
   &.dark-neutral {
     background-color: $dark-neutral;
   }
+}
+
+.padding-before-footer {
+  padding-bottom: 30%;
 }
 
 .menu,

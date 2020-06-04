@@ -22,6 +22,7 @@
         </router-link>
 
         <div
+          v-if="!holdingMode"
           class="menu"
           :class="{ white: color == 'white' }"
           @click="$emit('toggleMenu')"
@@ -54,6 +55,12 @@
       tintClass: String,
       color: String,
       open: Boolean
+    },
+
+    data() {
+      return {
+        holdingMode: process.env.VUE_APP_HOLDING_MODE == 'true'
+      }
     }
   }
 </script>

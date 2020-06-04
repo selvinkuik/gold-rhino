@@ -5,11 +5,11 @@
       :video="true"
     />
 
-    <BannerOverlay>
+    <BannerOverlay :tint="true">
       As a Private Equity firm, Gold Rhino funds and works closely with Australasian-based software development companies.
     </BannerOverlay>
 
-    <div class="about-us foreground white">
+    <div class="padding-before-footer foreground white">
       <NavBar tintClass="light" />
 
       <div class="grid-x intro">
@@ -38,7 +38,7 @@
         </div>
       </div>
 
-      <div class="grid-x tagline">
+      <div class="grid-x divider">
         <div class="small-10 small-offset-1 cell large-8 large-offset-2">
           <p class="text xlarge-text center">We are an investment company with a difference.</p>
         </div>
@@ -77,7 +77,7 @@
 
       <ClipPathBox
         counter="02"
-        image="placeholder.jpg"
+        image="rhino-labs-banner.jpg"
         text="Rhino Labs"
         to="/rhino-labs"
       />
@@ -108,10 +108,6 @@
 </script>
 
 <style lang="scss" scoped>
-  .about-us {
-    padding-bottom: 20%;
-  }
-
   .intro {
     padding: 37.3% 0 22%;
 
@@ -122,23 +118,6 @@
 
   .story {
     margin-top: 26.7%;
-  }
-
-  .tagline {
-    margin-top: 21.3%;
-    padding-top: 9.9%;
-    position: relative;
-
-    &:before {
-      background-color: $dark-neutral;
-      content: ' ';
-      height: 2px;
-      left: 50%;
-      margin-left: -40px;
-      position: absolute;
-      top: 0;
-      width: 80px;
-    }
   }
 
   .tree {

@@ -6,26 +6,26 @@
       The Southern White and Black African rhinoceroses are truly two of the most beautiful and rarest of animals facing a real. 
     </BannerOverlay>
 
-    <div class="foreground white">
+    <div class="padding-before-footer foreground white">
       <NavBar tintClass="light" />
 
-      <div class="grid-x">
+      <div class="grid-x intro">
         <div class="cell small-10 small-offset-1 large-8 large-offset-2">
           <p class="text medium-text">In addition to Australia-based foundations, there are a number of South African and UK-based organisations working hard to protect, conserve, and increase the population of the Southern White and Black Rhinoceroses in South Africa.</p>
           <p class="text medium-text">In recent years, we have supported the following:</p>
 
-          <div class="grid-x grid-margin-x">
-            <div class="cell small-8 small-offset-2 large-4 large-offset-0">
+          <div class="grid-x grid-margin-x logos">
+            <div class="cell small-8 small-offset-2 large-auto large-offset-0 logo">
               <a href="https://www.savetherhino.org/" target="_blank">
                 <img src="@/assets/images/save-the-rhino.svg" />
               </a>
             </div>
-            <div class="cell small-8 small-offset-2 large-4 large-offset-0">
+            <div class="cell small-8 small-offset-2 large-auto large-offset-1 logo">
               <a href="https://www.oursorai.com/" target="_blank">
                 <img src="@/assets/images/sorai.jpg" />
               </a>
             </div>
-            <div class="cell small-8 small-offset-2 large-4 large-offset-0">
+            <div class="cell small-8 small-offset-2 large-auto large-offset-1 logo">
               <a href="http://www.stoprhinopoaching.com/" target="_blank">
                 <img src="@/assets/images/stop-rhino-poaching.jpg" />
               </a>
@@ -34,7 +34,7 @@
         </div>
       </div>
 
-      <div class="grid-x">
+      <div class="grid-x story">
         <div class="cell small-10 small-offset-1 large-4 large-offset-6">
           <p class="text small-text">
             These organisations desperately need your help. If you care about the conservation of this majestic creature, please support these causes.<br>
@@ -43,13 +43,13 @@
         </div>
       </div>
 
-      <div class="grid-x">
+      <div class="grid-x rhino">
         <div class="cell small-10 small-offset-1 large-8 large-offset-2">
           <ParallaxImage src="support-the-rhino.jpg" />
         </div>
       </div>
 
-      <div class="grid-x">
+      <div class="grid-x contact divider">
         <div class="cell small-10 small-offset-1 large-8 large-offset-2">
           <p class="text large-text center">If you are interested in helping with our “More Rhinos Program”, TARP and Zoos SA’s Insurance Population Project in Australia, please email:</p>
           <p class="text large-text center"><a class="light-link" href="mailto:morerhinos@goldrhino.com.au">morerhinos@goldrhino.com.au</a></p>
@@ -67,7 +67,7 @@
 
       <ClipPathBox
         counter="06"
-        image="placeholder.jpg"
+        image="our-vision-banner.jpg"
         text="Our vision"
         to="/our-vision"
       />
@@ -96,4 +96,28 @@
 </script>
 
 <style lang="scss" scoped>
+  .intro {
+    padding-top: 19.6%;
+  }
+
+  .logos {
+    padding-top: 12%;
+
+    .logo {
+      align-items: center;
+      display: flex;
+    }
+  }
+
+  .story {
+    padding-top: 8.5%;
+  }
+
+  .rhino {
+    margin-top: 9.6%;
+  }
+
+  .contact {
+    margin-top: 35%;
+  }
 </style>

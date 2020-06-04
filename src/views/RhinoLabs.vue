@@ -103,7 +103,7 @@
     </div>
 
     <div
-      class="foreground light-neutral"
+      class="padding-before-footer foreground light-neutral"
       ref="lightSection"
     >
       <NavBar tintClass="light" />
@@ -124,7 +124,6 @@
 
       <ClipPathBox
         counter="03"
-        image="placeholder.jpg"
         text="Investment"
         to="/investment"
       />
@@ -172,10 +171,6 @@
     @include breakpoint(large) {
       font-size: 32px;
     }
-  }
-
-  .light-neutral {
-    padding-bottom: 30%;
   }
 
   .medium-text {

@@ -38,5 +38,6 @@
     color: #747a7f;
     font: 10px Termina;
     letter-spacing: 2px;
+    padding: 8.5% 0 2.8%;
   }
 </style>

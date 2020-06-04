@@ -1,5 +1,5 @@
 <template>
-  <div class="grid-x">
+  <div class="form-field grid-x">
     <label class="form-label cell small-10 small-offset-1 large-3 large-offset-2">
       {{ name }}:
     </label>

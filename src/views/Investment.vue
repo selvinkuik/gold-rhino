@@ -1,15 +1,15 @@
 <template>
   <div class="grid-container full">
-    <div class="foreground dark-neutral">
+    <div class="padding-before-footer foreground dark-neutral">
       <NavBar tintClass="dark" />
 
-      <div class="grid-x">
+      <div class="grid-x intro">
         <div class="cell small-10 small-offset-1 large-6 large-offset-2">
           <p class="text xxlarge-text light-neutral">Interested in moving <strong>Forward Together?</strong> Please complete the following investment qualification form</p>
         </div>
       </div>
 
-      <div class="grid-x">
+      <div class="grid-x small-print">
         <div class="cell small-10 small-offset-1 large-7 large-offset-2">
           <p class="text xsmall-text light-neutral">The information you provide to us will be treated as completely confidential, and will not be shared in any way with any other third party outside of Gold Rhino.</p>
         </div>
@@ -180,10 +180,10 @@
           v-model="estimatedSalePrice"
         />
 
-        <div class="grid-x">
+        <div class="grid-x submit">
           <div class="cell small-10 small-offset-1 large-4 large-offset-5">
             <input
-              class="submit"
+              class="submit-button"
               type="submit"
               value="SUBMIT"
             />
@@ -193,7 +193,6 @@
 
       <ClipPathBox
         counter="05"
-        image="placeholder.jpg"
         text="Who we are"
         to="/who-we-are"
       />
@@ -309,14 +308,26 @@
 </script>
 
 <style lang="scss" scoped>
+  .intro {
+    padding-top: 13.5%;
+  }
+
+  .small-print {
+    padding-top: 6.3%;
+  }
+
   .submit {
+    padding-top: 7.2%;
+  }
+
+  .submit-button {
     background-color: transparent;
     border: 2px solid $light-neutral;
     color: $light-neutral;
     cursor: pointer;
     font-family: Termina;
     letter-spacing: 3px;
-    padding: 50px 0;
+    padding: 44px 0;
     text-align: center;
     transition: background-color .2s, color .2s;
     width: 100%;
