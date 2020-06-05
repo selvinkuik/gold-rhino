@@ -36,7 +36,7 @@
           <p class="text small-text">The provenance of our company’s name lies in the story of the Golden Rhinoceros of Mapungubwe (South Africa), an archaeological find that showed a civilisation existed in Southern Africa that was far more advanced than previously thought.</p>
         </div>
 
-        <div class="small-10 small-offset-1 cell large-4">
+        <div class="small-10 small-offset-1 cell large-4 large-offset-0">
           <p class="text small-text">To us, the “Gold Rhino” is literally a symbol of being ahead of the game. It speaks to culture, rugged determination, refinement, financial success, and prosperity. The rhinoceros is a beautiful, rare and unique animal. Gold symbolises our shining track record of innovation, problem solving, and principled ways of working with others.</p>
         </div>
       </div>

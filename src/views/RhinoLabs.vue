@@ -32,7 +32,7 @@
         :scrollPosition="scrollPosition"
       />
 
-      <Service
+      <PinnedTextWithImages
         image1="discovery-1.jpg"
         image2="discovery-2.jpg"
         layout="layout-1"
@@ -42,9 +42,9 @@
         :scrollPosition.sync="scrollPosition"
       >
         In-depth market research, competitor analysis, mining of data, and expertise to find gaps in the industry/market and identify potential opportunities.
-      </Service>
+      </PinnedTextWithImages>
 
-      <Service
+      <PinnedTextWithImages
         image1="strategy-1.jpg"
         image2="strategy-2.jpg"
         layout="layout-2"
@@ -54,9 +54,9 @@
         :scrollPosition.sync="scrollPosition"
       >
         Develop routes to market to best suit your offering, i.e. who are your customers, where will we find them, how to engage with them, to finalise your Business Plan, mission, vision, objectives and goals.
-      </Service>
+      </PinnedTextWithImages>
 
-      <Service
+      <PinnedTextWithImages
         image1="branding-1.jpg"
         image2="branding-2.jpg"
         layout="layout-3"
@@ -66,9 +66,9 @@
         :scrollPosition.sync="scrollPosition"
       >
         Creation of your brand to connect with your future customers, from proposition to visual identity, and tone of voice.
-      </Service>
+      </PinnedTextWithImages>
 
-      <Service
+      <PinnedTextWithImages
         image1="structure-1.jpg"
         image2="structure-2.jpg"
         layout="layout-1"
@@ -78,9 +78,9 @@
         :scrollPosition.sync="scrollPosition"
       >
         Ensuring you have robust systems and structures in place, including advice on corporate and capital structures, resource and development planning, accounts and finance, book-keeping and financial compliance.
-      </Service>
+      </PinnedTextWithImages>
 
-      <Service
+      <PinnedTextWithImages
         image1="gtm-1.jpg"
         image2="gtm-2.jpg"
         layout="layout-2"
@@ -90,9 +90,9 @@
         :scrollPosition.sync="scrollPosition"
       >
         Advice around; what marketing and sales material needs to be created, mediums used to ensure your target customers are reached. We need to ensure your customers are seeing and hearing your brand and unique selling point.
-      </Service>
+      </PinnedTextWithImages>
 
-      <Service
+      <PinnedTextWithImages
         image1="exit-1.jpg"
         image2="exit-2.jpg"
         layout="layout-3"
@@ -102,7 +102,7 @@
         :scrollPosition.sync="scrollPosition"
       >
         Gold Rhino have a proven track record when it comes to selling a business. It is the last and most crucial stage of the journey. We will guide you to an exit that delivers maximum value for all of your emotional investment and hard work in the company that you have built.
-      </Service>
+      </PinnedTextWithImages>
     </div>
 
     <div
@@ -143,7 +143,7 @@
   import ClipPathBox from '@/components/ClipPathBox.vue'
   import NavBar from '@/components/NavBar.vue'
   import ParallaxImage from '@/components/ParallaxImage.vue'
-  import Service from '@/components/Service.vue'
+  import PinnedTextWithImages from '@/components/PinnedTextWithImages.vue'
   import ScrollIndicator from '@/components/ScrollIndicator.vue'
 
   export default {
@@ -155,7 +155,7 @@
       ClipPathBox,
       NavBar,
       ParallaxImage,
-      Service,
+      PinnedTextWithImages,
       ScrollIndicator
     },
 

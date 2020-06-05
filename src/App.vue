@@ -164,7 +164,7 @@
 
         <div class="footer-grid grid-x">
           <div class="cell small-7 small-offset-1 large-12 large-offset-0">
-            <p class="text xsmall-text">Copyright © 2020.  All rights reserved by Gold Rhino Pty Ltd under licence from White Lion (NZ) Trustees Limited.</p>
+            <p class="text xsmall-text">Copyright © {{ new Date().getFullYear() }}.  All rights reserved by Gold Rhino Pty Ltd under licence from White Lion (NZ) Trustees Limited.</p>
           </div>
         </div>
 
@@ -452,7 +452,7 @@
     position: relative;
 
     .footer-content {
-      background-color: $dark-neutral;
+      background-color: #18202A;
       color: $light-neutral;
       padding: 12.2% 0 31%;
       position: relative;
@@ -463,7 +463,7 @@
       }
 
       .footer-bg {
-        background: $dark-neutral url('~@/assets/images/footer-bg.svg') no-repeat 100% 100%;
+        background: #18202A url('~@/assets/images/footer-bg.svg') no-repeat 100% 100%;
         height: 100%;
         left: 0;
         transform: translateX(400px);
