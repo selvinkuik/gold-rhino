@@ -15,7 +15,7 @@
       <div class="grid-x intro">
         <div class="cell small-10 small-offset-1 large-8 large-offset-2">
           <p class="text medium-text">In addition to Australia-based foundations, there are a number of South African and UK-based organisations working hard to protect, conserve, and increase the population of the Southern White and Black Rhinoceroses in South Africa.</p>
-          <p class="text medium-text">In recent years, we have supported the following:</p>
+          <p class="text medium-text">In recent years, we have supported Save the Rhino International and Stop Rhino Poaching.  Save the Rhino International are working hard to increase the population of all five rhino species across Africa and Asia.  The world's most critically endangered rhino species, the Sumatran and Javan rhinos, have fewer than 80 animals remaining in the wild.  As partners of Save the Rhino International, Gold Rhino will be helping to tackle the key threats of poaching and habitat loss, working towards a world where all five species of rhinos thrive in the wild for generations to come.</p>
 
           <div class="grid-x grid-margin-x logos">
             <div class="cell small-8 small-offset-2 large-auto large-offset-0 logo">

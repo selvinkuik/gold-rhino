@@ -26,10 +26,9 @@
         >
           {{ value || 'Select' }}
         </div>
-        <simplebar
+        <OverlayScrollbarsComponent
           class="select-items"
           :class="{ active: active }"
-          data-simplebar-auto-hide="false"
         >
           <div
             class="item"
@@ -40,15 +39,15 @@
           >
             {{ item }}
           </div>
-        </simplebar>
+        </OverlayScrollbarsComponent>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  import simplebar from 'simplebar-vue'
-  import 'simplebar/dist/simplebar.min.css'
+  import 'overlayscrollbars/css/OverlayScrollbars.css'
+  import { OverlayScrollbarsComponent } from 'overlayscrollbars-vue'
 
   export default {
     name: 'SelectInput',
@@ -60,7 +59,7 @@
     },
 
     components: {
-      simplebar
+      OverlayScrollbarsComponent
     },
 
     data() {
