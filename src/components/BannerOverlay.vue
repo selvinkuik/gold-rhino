@@ -4,7 +4,10 @@
     :class="{ tint: tint }"
     ref="overlay"
   >
-    <NavBar color="white" />
+    <NavBar
+      color="white"
+      :showRouteLabel="true"
+    />
 
     <div class="cell small-10 small-offset-1 large-8 large-offset-2">
       <img
@@ -19,7 +22,7 @@
     </div>
 
     <div
-      class="animated-line"
+      class="animated-line paused"
       :class="{ fixed: overlayTallerThanWindow }"
       ref="animatedLine"
     ></div>
@@ -67,6 +70,10 @@
           this.$refs.animatedLine.classList.add('paused')
         }
       })
+
+      setTimeout(() => {
+        this.handleScroll()
+      }, 100)
     },
 
     created() {

@@ -8,7 +8,10 @@
     <BannerOverlay src="forward-together.svg" />
 
     <div class="foreground white">
-      <NavBar tintClass="light" />
+      <NavBar
+        tintClass="light"
+        :showRouteLabel="true"
+      />
 
       <TextWithHorizontalTicker ticker="Forward Together">
         Gold Rhino is both a private equity firm, and also a company that is actively involved in the preservation of the South African rhinoceros population. Gold Rhino brings together the solidarity, dependability and resilience of the unique animal it is named after, combined with a track record of innovation, charging ahead of the competition, and moving <strong>Forward Together</strong>, with rhinoceros preservation remaining at our core.

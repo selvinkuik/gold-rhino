@@ -30,7 +30,6 @@
           class="select-items"
           :class="{ active: active }"
           data-simplebar-auto-hide="false"
-          ref="simplebar"
         >
           <div
             class="item"
@@ -132,7 +131,7 @@
     cursor: default;
     display: none;
     left: 0;
-    margin-top: -33px;
+    margin-top: -28px;
     height: 200px;
     position: absolute;
     padding: 10px;

@@ -39,7 +39,7 @@
       <div
         class="label"
         :class="{ white: color == 'white' }"
-        v-if="!open"
+        v-if="showRouteLabel"
       >
         {{ $router.currentRoute.name }}
       </div>
@@ -52,9 +52,10 @@
     name: 'NavBar',
 
     props: {
-      tintClass: String,
+      open: Boolean,
       color: String,
-      open: Boolean
+      showRouteLabel: Boolean,
+      tintClass: String
     },
 
     data() {

@@ -46,6 +46,13 @@
           width="100%"
           height="100%"
         />
+        <rect
+          v-else
+          clip-path="url(#mask)"
+          width="100%"
+          height="100%"
+          fill="#1C2936"
+        />
       </svg>
     </router-link>
   </div>

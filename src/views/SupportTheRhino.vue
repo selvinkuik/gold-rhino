@@ -7,7 +7,10 @@
     </BannerOverlay>
 
     <div class="padding-before-footer foreground white">
-      <NavBar tintClass="light" />
+      <NavBar
+        tintClass="light"
+        :showRouteLabel="true"
+      />
 
       <div class="grid-x intro">
         <div class="cell small-10 small-offset-1 large-8 large-offset-2">

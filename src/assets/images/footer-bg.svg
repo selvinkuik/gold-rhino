@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="1440px" height="840px" viewBox="0 0 1440 840" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <rect id="Rectangle" fill="#18202A" x="0" y="0" width="1440" height="840"></rect>
-    <path d="M1440,692.706006 L1440,263 C1144.76843,730.433139 855.123768,847.440605 378,839.641044 L1440,839.641044 L1440,692.706006" id="Fill-1" fill="#FFFFFF"></path>
+    <title>Untitled</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle" fill="#1C2936" x="0" y="0" width="1440" height="840"></rect>
+        <path d="M1440,777.45749 L1440,595 C1314.62388,793.476809 1191.62036,843.159356 989,839.847583 L1440,839.847583 L1440,777.45749" id="Fill-1" fill="#FFFFFF"></path>
+    </g>
 </svg>

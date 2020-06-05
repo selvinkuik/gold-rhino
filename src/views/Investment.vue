@@ -1,7 +1,10 @@
 <template>
   <div class="grid-container full">
     <div class="padding-before-footer foreground dark-neutral">
-      <NavBar tintClass="dark" />
+      <NavBar
+        tintClass="dark"
+        :showRouteLabel="true"
+      />
 
       <div class="grid-x intro">
         <div class="cell small-10 small-offset-1 large-6 large-offset-2">

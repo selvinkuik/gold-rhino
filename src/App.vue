@@ -19,8 +19,9 @@
       ref="menu"
     >
       <NavBar
-        color="white"
         :open="true"
+        color="white"
+        :showRouteLabel="false"
         @toggleMenu="toggleMenu"
       />
 
@@ -93,64 +94,77 @@
     </div>
     
     <footer>
-      <NavBar color="white" />
+      <NavBar
+        color="white"
+        :showRouteLabel="false"
+      />
 
-      <div
-        class="footer-content grid-x"
-        ref="footer"
-      >
-        <div class="footer-nav cell small-10 small-offset-1 large-5 large-offset-2">
-          <template v-for="item in $router.options.routes">
-            <div
-              v-if="item.showInNav && !holdingMode"
-              :key="item.path"
-            >
-              <router-link
-                class="hover-link"
-                :to="item.path"
+      <div class="footer-content">
+        <div
+          class="footer-bg"
+          ref="footer"
+        ></div>
+
+        <div class="footer-grid grid-x">
+          <div class="footer-nav cell small-10 small-offset-1 large-5 large-offset-2">
+            <template v-for="item in $router.options.routes">
+              <div
+                v-if="item.showInNav && !holdingMode"
+                :key="item.path"
               >
-                {{ item.shortName || item.name }}
-              </router-link>
-            </div>
-          </template>
+                <router-link
+                  class="hover-link"
+                  :to="item.path"
+                >
+                  {{ item.shortName || item.name }}
+                </router-link>
+              </div>
+            </template>
 
-          <div
-            v-if="holdingMode"
-            class="pdf"
-          >
-            <a
-              class="white-link"
-              href="/presentation"
+            <div
+              v-if="holdingMode"
+              class="pdf"
             >
-              Click here to find out more
-            </a>
+              <a
+                class="white-link"
+                href="/presentation"
+              >
+                Click here to find out more
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-info cell small-10 small-offset-1 large-5 large-offset-0">
+            <div class="email">
+              <p>Email:</p>
+              <a
+                class="hover-link"
+                href="mailto:info@goldrhino.com.au"
+              >
+                info@goldrhino.com.au
+              </a>
+            </div>
+
+            <div class="address">
+              <p>
+                50 Miller Street<br />
+                North Sydney NSW 2060<br />
+                Australia
+              </p>
+              <a
+                class="hover-link"
+                href="https://goo.gl/maps/Fma5qx6YFUAck2Ya9"
+                target="_blank"
+              >
+                Map
+              </a>
+            </div>
           </div>
         </div>
 
-        <div class="contact-info cell small-10 small-offset-1 large-5 large-offset-0">
-          <div class="email">
-            <p>Email:</p>
-            <a
-              class="hover-link"
-              href="mailto:info@goldrhino.com.au"
-            >
-              info@goldrhino.com.au
-            </a>
-          </div>
-
-          <div class="address">
-            <p>
-              50 Miller Street<br />
-              North Sydney NSW 2060<br />
-              Australia
-            </p>
-            <a
-              class="hover-link"
-              href="https://goo.gl/maps/Fma5qx6YFUAck2Ya9"
-              target="_blank"
-            >
-              Map
-            </a>
+        <div class="footer-grid grid-x">
+          <div class="cell small-7 small-offset-1 large-12 large-offset-0">
+            <p class="text xsmall-text">Copyright © 2020.  All rights reserved by Gold Rhino Pty Ltd under licence from White Lion (NZ) Trustees Limited.</p>
           </div>
         </div>
 
@@ -206,7 +220,6 @@
 
     mounted() {
       const offset = parseInt(getComputedStyle(this.$refs.footer).height) - window.innerHeight - 100 // The gap above the footer at max. scroll (and then a bit)
-      const yPosition = window.innerWidth < 1024 ? -600 : 0 // The width required to reveal the swoosh on small screens
 
       this.$scrollmagic.addScene(
         this.$scrollmagic.scene({
@@ -214,7 +227,7 @@
           triggerElement: this.$refs.footer,
           triggerHook: 0
         })
-          .setTween(TweenMax.fromTo(this.$refs.footer, 1, { backgroundPosition: window.innerWidth + 'px 0px' }, { backgroundPosition: yPosition + 'px 0px' }))
+          .setTween(TweenMax.to(this.$refs.footer, 1, { x: 0 }))
       )
     }
   }
@@ -439,15 +452,29 @@
     position: relative;
 
     .footer-content {
-      background: #18202A url('~@/assets/images/footer-bg.svg') no-repeat 0 0;
-      background-size: cover;
+      background-color: $dark-neutral;
       color: $light-neutral;
-      padding: 12.2% 0 48%;
+      padding: 12.2% 0 31%;
       position: relative;
       width: 100%;
 
       @include breakpoint(large) {
-        padding: 12.2% 0 17.3%;
+        padding: 12.2% 0 3.3%;
+      }
+
+      .footer-bg {
+        background: $dark-neutral url('~@/assets/images/footer-bg.svg') no-repeat 100% 100%;
+        height: 100%;
+        left: 0;
+        transform: translateX(400px);
+        position: absolute;
+        top: 0;
+        width: 100%;
+      }
+
+      .footer-grid {
+        position: relative;
+        z-index: 1;
       }
 
       .footer-nav {
@@ -471,6 +498,14 @@
     .contact-info {
       @include breakpoint(small only) {
         padding-top: 17.7%
+      }
+    }
+
+    .xsmall-text {
+      margin-top: 20.9%;
+
+      @include breakpoint(large) {
+        margin: 13% 0 0 0.9375rem;
       }
     }
   }

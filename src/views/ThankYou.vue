@@ -1,7 +1,10 @@
 <template>
   <div class="grid-container full">
     <div class="foreground dark-neutral">
-      <NavBar tintClass="dark" />
+      <NavBar
+        tintClass="dark"
+        :showRouteLabel="true"
+      />
 
       Thank You
     </div>

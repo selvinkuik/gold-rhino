@@ -13,7 +13,10 @@
       class="foreground dark-neutral"
       ref="darkSection"
     >
-      <NavBar tintClass="dark" />
+      <NavBar
+        tintClass="dark"
+        :showRouteLabel="true"
+      />
 
       <div class="rhino-labs grid-x grid-margin-x">
         <div class="cell small-10 small-offset-1 large-4 large-offset-2">
@@ -106,7 +109,10 @@
       class="padding-before-footer foreground light-neutral"
       ref="lightSection"
     >
-      <NavBar tintClass="light" />
+      <NavBar
+        tintClass="light"
+        :showRouteLabel="true"
+      />
 
       <div class="grid-x">
         <div class="cell small-10 small-offset-1 large-8 large-offset-2">
