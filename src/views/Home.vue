@@ -96,7 +96,7 @@
       font-size: 40px;
       margin-top: 3%;
       transform: translateY(10px);
-      transition: transform .4s cubic-bezier(0.19, 1, 0.22, 1);
+      transition: transform .4s cubic-bezier(0.22, 1, 0.36, 1);
 
       @include breakpoint(large) {
         font-size: 104px;

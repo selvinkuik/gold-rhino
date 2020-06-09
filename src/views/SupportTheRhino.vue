@@ -55,15 +55,15 @@
       <div class="grid-x contact divider">
         <div class="cell small-10 small-offset-1 large-8 large-offset-2">
           <p class="text large-text center">If you are interested in helping with our “More Rhinos Program”, TARP and Zoos SA’s Insurance Population Project in Australia, please email:</p>
-          <p class="text large-text center"><a class="light-link" href="mailto:morerhinos@goldrhino.com.au">morerhinos@goldrhino.com.au</a></p>
+          <p class="text large-text center"><a class="hover-link light thick" href="mailto:morerhinos@goldrhino.com.au">morerhinos@goldrhino.com.au</a></p>
           <p class="text large-text center">or</p>
           <p class="text large-text center">
             TARP<br>
-            <a class="light-link" href="https://www.theaustralianrhinoproject.org" target="_blank">www.theaustralianrhinoproject.org</a>
+            <a class="hover-link light thick" href="https://www.theaustralianrhinoproject.org" target="_blank">www.theaustralianrhinoproject.org</a>
           </p>
           <p class="text large-text center">
             Zoos SA<br>
-            <a class="light-link" href="https://www.zoossa.com.au" target="_blank">www.zoossa.com.au</a>
+            <a class="hover-link light thick" href="https://www.zoossa.com.au" target="_blank">www.zoossa.com.au</a>
           </p>
         </div>
       </div>

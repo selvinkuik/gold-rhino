@@ -105,7 +105,7 @@
     cursor: default;
     min-height: 43px;
     padding: 10px;
-    transition: border-color .4s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: border-color .4s cubic-bezier(0.22, 1, 0.36, 1);
 
     &.populated {
       color: $light-neutral;
@@ -130,7 +130,6 @@
     cursor: default;
     display: none;
     left: 0;
-    margin-top: -28px;
     height: 200px;
     position: absolute;
     padding: 10px;

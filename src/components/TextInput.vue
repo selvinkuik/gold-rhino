@@ -74,7 +74,7 @@
     color: #F8F7F1;
     font: 16px Montserrat;
     padding: 13px;
-    transition: border-color .4s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: border-color .4s cubic-bezier(0.22, 1, 0.36, 1);
     width: 100%;
 
     &::-webkit-outer-spin-button,

@@ -67,7 +67,7 @@
       background-color: $light-neutral;
       height: 18px; // 108 ÷ 6
       position: absolute;
-      transition: height 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+      transition: height 0.4s cubic-bezier(0.22, 1, 0.36, 1);
       width: 3px;
     }
   }

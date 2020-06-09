@@ -164,7 +164,7 @@
 
         <div class="footer-grid grid-x">
           <div class="cell small-7 small-offset-1 large-12 large-offset-0">
-            <p class="text xsmall-text">Copyright © {{ new Date().getFullYear() }}.  All rights reserved by Gold Rhino Pty Ltd under licence from White Lion (NZ) Trustees Limited.</p>
+            <p class="text xxsmall-text">Copyright © {{ new Date().getFullYear() }}.  All rights reserved by Gold Rhino Pty Ltd under licence from White Lion (NZ) Trustees Limited.</p>
           </div>
         </div>
 
@@ -252,7 +252,7 @@
     right: 16px;
     top: 16px;
     transform: scale(1);
-    transition: background-color 0.4s, border 0.4s, transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    transition: background-color 0.4s, border 0.4s, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     width: 48px;
     z-index: 4;
 
@@ -283,11 +283,11 @@
 
     &.open {
       background-color: $gold;
-      transform: scale(70);
-      transition: background-color 0.4s, border 0.4s, transform 6s cubic-bezier(0.19, 1, 0.22, 1);
+      transform: scale(75);
+      transition: background-color 0.4s, border 0.4s, transform 6s cubic-bezier(0.22, 1, 0.36, 1);
 
       @include breakpoint(large) {
-        transition: background-color 0.4s, border 0.4s, transform 1.6s cubic-bezier(0.19, 1, 0.22, 1);
+        transition: background-color 0.4s, border 0.4s, transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
       }
 
       .menu-icon {
@@ -404,7 +404,7 @@
     .nav-link {
       opacity: 0;
       transform: translateY(-20px);
-      transition: opacity .4s .4s, transform .4s .4s cubic-bezier(0.19, 1, 0.22, 1);
+      transition: opacity .4s .4s, transform .4s .4s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .menu-nav {
@@ -501,7 +501,7 @@
       }
     }
 
-    .xsmall-text {
+    .xxsmall-text {
       margin-top: 20.9%;
 
       @include breakpoint(large) {

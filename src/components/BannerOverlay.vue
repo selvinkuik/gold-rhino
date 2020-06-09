@@ -114,7 +114,7 @@
   }
 
   .animated-line {
-    animation: animated-line 2s cubic-bezier(0.19, 1, 0.22, 1) infinite;
+    animation: animated-line 2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
     background-color: $light-neutral;
     bottom: 0;
     content: ' ';

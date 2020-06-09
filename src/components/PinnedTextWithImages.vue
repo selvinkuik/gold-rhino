@@ -106,7 +106,7 @@
         } else if (this.layout == 'layout-2') {
           return 'small-offset-1 large-offset-2'
         } else if (this.layout == 'layout-3') {
-          return 'small-8 large-3 large-offset-1'
+          return 'small-offset-3 large-offset-5'
         } else if (this.layout == 'layout-4') {
           return 'large-4 large-offset-6'
         }
@@ -120,7 +120,7 @@
         } else if (this.layout == 'layout-2') {
           return 'small-8 small-offset-4 large-5 large-offset-6'
         } else if (this.layout == 'layout-3') {
-          return 'small-8 large-3 large-offset-1'
+          return 'small-5 small-offset-7 large-2 large-offset-8'
         } else if (this.layout == 'layout-4') {
           return 'large-3 large-offset-3'
         }
@@ -145,7 +145,7 @@
           this.$scrollmagic.scene({
             triggerElement: this.$refs.pinned,
             triggerHook: 0.2,
-            duration: parseInt(getComputedStyle(this.$refs.pinned).height) // Balances with...
+            duration: parseInt(getComputedStyle(this.$refs.pinned).height) + 450 // Balances with...
           })
             .setPin(this.$refs.pinned)
             .on('enter', () => {
@@ -154,7 +154,7 @@
         )
 
         let tween = new TimelineMax().add([
-          TweenMax.to(this.$refs.imageMask1, 1, { yPercent: -50 }) // Balances with...
+          TweenMax.to(this.$refs.imageMask1, 1, { yPercent: -40 })
         ])
 
         if (this.layout == 'layout-1') {
@@ -178,15 +178,15 @@
 
           if (this.layout == 'layout-1') {
             tween.add([
-              TweenMax.to(this.$refs.imageMask2, 1, { yPercent: -125 })
+              TweenMax.to(this.$refs.imageMask2, 1, { yPercent: -80 })
             ], 0)
           } else if (this.layout == 'layout-2') {
             tween.add([
-              TweenMax.to(this.$refs.imageMask2, 1, { yPercent: -200 })
+              TweenMax.to(this.$refs.imageMask2, 1, { yPercent: -100 })
             ], 0)
           } else {
             tween.add([
-              TweenMax.to(this.$refs.imageMask2, 1, { yPercent: -150 })
+              TweenMax.to(this.$refs.imageMask2, 1, { yPercent: -75 })
             ], 0)
           }
         }
@@ -250,13 +250,17 @@
     .images {
       pointer-events: none;
       position: absolute;
-      top: 30%; // Balances with...
+      top: 25%; // Balances with...
       width: 100%;
       z-index: 2;
 
       .image-mask {
         border: 1px solid transparent;
         overflow: hidden;
+      }
+
+      .image-2 {
+        padding-top: 400%;
       }
     }
   }

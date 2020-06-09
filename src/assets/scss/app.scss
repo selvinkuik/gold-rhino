@@ -27,11 +27,6 @@ a {
     text-decoration: underline;
   }
 
-  &.light-link {
-    color: $light-link;
-    text-decoration: underline;
-  }
-
   &.dark-link {
     color: $dark-link;
     text-decoration: underline;
@@ -51,8 +46,12 @@ a {
     text-align: center;
   }
 
-  &.xsmall-text {
+  &.xxsmall-text {
     font-size: 10px;
+  }
+
+  &.xsmall-text {
+    font-size: 14px;
   }
 
   &.small-text {
@@ -100,12 +99,26 @@ a {
     visibility: hidden;
     transform: scaleX(0);
     transform-origin: bottom left;
-    transition: transform 0.2s  cubic-bezier(0.19, 1, 0.22, 1);
+    transition: transform 0.2s  cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   &:hover:before {
     visibility: visible;
     transform: scaleX(1);
+  }
+
+  &.light {
+    color: $light-link;
+
+    &:before {
+      background-color: $light-link;
+    }
+  }
+
+  &.thick{
+    &:before {
+      height: 2px;
+    }
   }
 }
 

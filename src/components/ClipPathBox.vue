@@ -119,7 +119,7 @@
     }
 
     circle {
-      transition: cx 0.4s cubic-bezier(0.19, 1, 0.22, 1), cy 0.4s cubic-bezier(0.19, 1, 0.22, 1), r 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+      transition: cx 0.4s cubic-bezier(0.22, 1, 0.36, 1), cy 0.4s cubic-bezier(0.22, 1, 0.36, 1), r 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .box {
@@ -153,7 +153,7 @@
       bottom: 15.4%;
       position: absolute;
       right: 6.8%;
-      transition: transform 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+      transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     a:hover {
