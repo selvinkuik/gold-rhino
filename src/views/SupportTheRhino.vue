@@ -6,18 +6,18 @@
       The Southern White and Black African rhinoceroses are truly two of the most beautiful and rarest of animals facing a real. 
     </BannerOverlay>
 
-    <div class="padding-before-footer foreground white">
+    <div class="pb-large foreground white">
       <NavBar
         tintClass="light"
         :showRouteLabel="true"
       />
 
-      <div class="grid-x intro">
+      <div class="grid-x pt-large">
         <div class="cell small-10 small-offset-1 large-8 large-offset-2">
           <p class="text medium-text">In addition to Australia-based foundations, there are a number of South African and UK-based organisations working hard to protect, conserve, and increase the population of the Southern White and Black Rhinoceroses in South Africa.</p>
           <p class="text medium-text">In recent years, we have supported Save the Rhino International and Stop Rhino Poaching.  Save the Rhino International are working hard to increase the population of all five rhino species across Africa and Asia.  The world's most critically endangered rhino species, the Sumatran and Javan rhinos, have fewer than 80 animals remaining in the wild.  As partners of Save the Rhino International, Gold Rhino will be helping to tackle the key threats of poaching and habitat loss, working towards a world where all five species of rhinos thrive in the wild for generations to come.</p>
 
-          <div class="grid-x grid-margin-x logos">
+          <div class="grid-x grid-margin-x logos pt-small">
             <div class="cell small-8 small-offset-2 large-auto large-offset-0 logo">
               <a href="https://www.savetherhino.org/" target="_blank">
                 <img src="@/assets/images/save-the-rhino.svg" />
@@ -37,7 +37,7 @@
         </div>
       </div>
 
-      <div class="grid-x story">
+      <div class="grid-x mt-small">
         <div class="cell small-10 small-offset-1 large-4 large-offset-6">
           <p class="text small-text">
             These organisations desperately need your help. If you care about the conservation of this majestic creature, please support these causes.<br>
@@ -99,21 +99,11 @@
 </script>
 
 <style lang="scss" scoped>
-  .intro {
-    padding-top: 19.6%;
-  }
-
   .logos {
-    padding-top: 12%;
-
     .logo {
       align-items: center;
       display: flex;
     }
-  }
-
-  .story {
-    padding-top: 8.5%;
   }
 
   .rhino {

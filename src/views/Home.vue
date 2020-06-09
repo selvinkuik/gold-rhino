@@ -13,13 +13,16 @@
         :showRouteLabel="true"
       />
 
-      <TextWithHorizontalTicker ticker="Forward Together">
+      <TextWithHorizontalTicker
+        additionalClass="pt-large mb-large"
+        ticker="Forward Together"
+      >
         Gold Rhino is both a private equity firm, and also a company that is actively involved in the preservation of the South African rhinoceros population. Gold Rhino brings together the solidarity, dependability and resilience of the unique animal it is named after, combined with a track record of innovation, charging ahead of the competition, and moving <strong>Forward Together</strong>, with rhinoceros preservation remaining at our core.
       </TextWithHorizontalTicker>
       
       <div
         v-if="!holdingMode"
-        class="padding-before-footer grid-x"
+        class="pb-large grid-x"
       >
         <template v-for="(item, index) in $router.options.routes">
           <router-link

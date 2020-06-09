@@ -1,5 +1,5 @@
 <template>
-  <div class="clip-path-box grid-x">
+  <div class="clip-path-box grid-x mt-large">
     <router-link
       ref="box"
       class="box cell large-8 large-offset-2"
@@ -108,8 +108,6 @@
 
 <style lang="scss" scoped>
   .clip-path-box {
-    margin-top: 21%;
-
     svg {
       height: 100%;
       left: 0;

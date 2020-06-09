@@ -9,17 +9,17 @@
       As a Private Equity firm, Gold Rhino funds and works closely with Australasian-based software development companies.
     </BannerOverlay>
 
-    <div class="padding-before-footer foreground white">
+    <div class="pb-large foreground white">
       <NavBar
         tintClass="light"
         :showRouteLabel="true"
       />
 
-      <div class="grid-x intro">
+      <div class="grid-x pt-large pb-large">
         <div class="cell small-10 small-offset-1 large-3 large-offset-2">
           <ParallaxImage
             src="about-us-1.jpg"
-            marginTop="-150%"
+            marginTop="-80%"
           />
         </div>
 
@@ -31,7 +31,7 @@
 
       <ParallaxImageWithBorder src="about-us-2.jpg" />
 
-      <div class="grid-x grid-margin-x story">
+      <div class="grid-x grid-margin-x mt-large">
         <div class="small-10 small-offset-1 cell large-4 large-offset-2">
           <p class="text small-text">The provenance of our company’s name lies in the story of the Golden Rhinoceros of Mapungubwe (South Africa), an archaeological find that showed a civilisation existed in Southern Africa that was far more advanced than previously thought.</p>
         </div>
@@ -41,7 +41,7 @@
         </div>
       </div>
 
-      <div class="grid-x divider">
+      <div class="grid-x divider mt-large">
         <div class="small-10 small-offset-1 cell large-8 large-offset-2">
           <p class="text xlarge-text center">We are an investment company with a difference.</p>
         </div>
@@ -112,18 +112,12 @@
 
 <style lang="scss" scoped>
   .intro {
-    padding: 37.3% 0 22%;
-
     .small-text {
-      margin: 23.8% 20% 0 0;
+      margin: 23.58% 20% 0 0;
     }
   }
 
-  .story {
-    margin-top: 26.7%;
-  }
-
-  .tree {
+    .tree {
     margin-top: 9.6%;
   }
 

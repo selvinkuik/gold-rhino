@@ -1,5 +1,5 @@
 <template>
-  <div class="text-with-horizontal-ticker grid-x">
+  <div :class="`text-with-horizontal-ticker grid-x ${additionalClass}`">
     <div class="ticker">
       <div
         ref="ticker"
@@ -20,6 +20,7 @@
     name: 'TextWithHorizontalTicker',
 
     props: {
+      additionalClass: String,
       ticker: String
     },
 
@@ -57,7 +58,7 @@
     display: flex;
     font-size: 320px;
     font-weight: 300;
-    height: 100%;
+    height: 66%;
     opacity: .05;
     position: absolute;
     user-select: none;
@@ -71,8 +72,6 @@
   }
 
   .text {
-    margin-bottom: 21.2%;
-    margin-top: 19.8%;
     position: relative;
     z-index: 1;
 

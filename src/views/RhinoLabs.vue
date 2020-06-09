@@ -18,7 +18,7 @@
         :showRouteLabel="true"
       />
 
-      <div class="rhino-labs grid-x grid-margin-x">
+      <div class="rhino-labs grid-x grid-margin-x pt-large pb-large">
         <div class="cell small-10 small-offset-1 large-4 large-offset-2">
           At Gold Rhino, not only will you receive a commitment and a determination from us to financially support you, we also offer advice on how to establish or adjust your business to achieve your goals, charge ahead of your competition, and move <strong>Forward Together</strong> with the help of an experienced team.
         </div>
@@ -106,7 +106,7 @@
     </div>
 
     <div
-      class="padding-before-footer foreground light-neutral"
+      class="pb-large foreground light-neutral"
       ref="lightSection"
     >
       <NavBar
@@ -172,7 +172,6 @@
     color: $light-neutral;
     font-size: 20px;
     line-height: 1.375em;
-    padding: 19.6% 0 30%;
 
     @include breakpoint(large) {
       font-size: 32px;
@@ -184,6 +183,6 @@
   }
 
   .small-text {
-    margin-top: 18%;
+    margin-top: 19.65%;
   }
 </style>

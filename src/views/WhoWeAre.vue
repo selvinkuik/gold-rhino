@@ -1,6 +1,6 @@
 <template>
   <div class="grid-container full">
-    <div class="foreground dark-neutral padding-before-footer">
+    <div class="foreground dark-neutral pb-large">
       <NavBar
         tintClass="dark"
         :showRouteLabel="true"
@@ -48,7 +48,7 @@
         </div>
       </div>
 
-      <div class="grid-x grid-margin-x story">
+      <div class="grid-x grid-margin-x mt-large">
         <div class="small-10 small-offset-1 cell large-4 large-offset-2">
           <p class="text light-neutral small-text">As a two-time entrepreneurial founder, and someone who successfully self-funded OnePlace from start to finish, Tim believes he and his team can offer you the edge in shaping your company for growth, and making it attractive for investment or eventual sale.</p>
         </div>
@@ -117,19 +117,11 @@
     }
   }
 
-  .story {
-    margin-top: 30.2%;
-  }
-
   .tree {
     margin-top: 9.6%;
   }
 
   .divider {
     margin-top: 35.5%;
-  }
-
-  .clip-path-box {
-    margin-top: 35%;
   }
 </style>

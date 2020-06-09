@@ -19,6 +19,38 @@
   outline: none;
 }
 
+.mb-small {
+  margin-bottom: 9.83%;
+}
+
+.mt-small {
+  margin-top: 9.83%;
+}
+
+.pb-small {
+  padding-bottom: 9.83%;
+}
+
+.pt-small {
+  padding-top: 9.83%;
+}
+
+.mb-large {
+  margin-bottom: 19.65%;
+}
+
+.mt-large {
+  margin-top: 19.65%;
+}
+
+.pb-large {
+  padding-bottom: 19.65%;
+}
+
+.pt-large {
+  padding-top: 19.65%;
+}
+
 a {
   text-decoration: none;
 
@@ -123,8 +155,7 @@ a {
 }
 
 .divider {
-  margin-top: 21.3%;
-  padding-top: 9.9%;
+  padding-top: 9.83%;
   position: relative;
 
   &:before {
@@ -185,10 +216,6 @@ a {
   &.dark-neutral {
     background-color: $dark-neutral;
   }
-}
-
-.padding-before-footer {
-  padding-bottom: 30%;
 }
 
 .menu,

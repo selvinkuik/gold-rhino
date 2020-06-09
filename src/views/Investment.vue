@@ -1,6 +1,6 @@
 <template>
   <div class="grid-container full">
-    <div class="padding-before-footer foreground dark-neutral">
+    <div class="pb-large foreground dark-neutral">
       <NavBar
         tintClass="dark"
         :showRouteLabel="true"

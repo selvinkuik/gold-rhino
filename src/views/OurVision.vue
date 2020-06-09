@@ -6,13 +6,13 @@
       Our ultimate vision is to further support the protection and growth of the South African rhinoceros population.
     </BannerOverlay>
 
-    <div class="padding-before-footer foreground white">
+    <div class="pb-large foreground white">
       <NavBar
         tintClass="dark"
         :showRouteLabel="true"
       />
 
-      <div class="grid-x intro">
+      <div class="grid-x pt-large">
         <div class="cell small-10 small-offset-1 large-4 large-offset-2">
           <p class="text medium-text">We want to make a direct and more active contribution to this effort by helping to increase the rhinoceros population, and so remove the real threat of their extinction.</p>
         </div>
@@ -20,12 +20,12 @@
         <div class="cell small-10 small-offset-1 large-3 large-offset-1">
           <ParallaxImage
             src="our-vision-1.jpg"
-            marginTop="-100%"
+            marginTop="-80%"
           />
         </div>
       </div>
 
-      <div class="grid-x grid-margin-x story-1">
+      <div class="grid-x grid-margin-x mt-small mb-large">
         <div class="cell small-10 small-offset-1 large-4 large-offset-2">
           <p class="text small-text">By choosing to work with Gold Rhino, you are having a direct impact in assisting the fight to save the Southern White and Black African rhinoceros. Gold Rhino is committed to supporting a range of initiatives that help the global efforts to protect the rhino for future generations.</p>
           <p class="text small-text">The foundations and organisations that directly assist South African wildlife parks and African-based rhinoceros are carrying out incredible work to protect this species. Gold Rhino also understands that we need to actively grow rhinoceros insurance populations outside of Africa, if this majestic animal is to survive.</p>
@@ -38,7 +38,7 @@
 
       <ParallaxImageWithBorder src="our-vision-2.jpg" />
 
-      <div class="grid-x grid-margin-x story-2">
+      <div class="grid-x grid-margin-x mt-large">
         <div class="cell small-10 small-offset-1 large-4 large-offset-2">
           <p class="text small-text">Gold Rhino has committed to provide funding to assist in the relocation of ten Southern White Rhinoceros as part of an <strong>Insurance Population</strong> from Thaba Manzi Wildlife Sanctuary (South Africa) to open plain facilities in Australia and New Zealand.</p>
           <p class="text small-text">This is the first phase of plans to relocate a further twenty White Rhinos from South Africa, and further propagate the species in a safe haven outside of Africa.</p>
@@ -98,18 +98,6 @@
 </script>
 
 <style lang="scss" scoped>
-  .intro {
-    padding-top: 28.1%;
-  }
-
-  .story-1 {
-    padding: 9.8% 0 19.6%;
-  }
-
-  .story-2 {
-    padding-top: 20.1%;
-  }
-
   .logos {
     padding-top: 31%;
   }
