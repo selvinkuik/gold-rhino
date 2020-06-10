@@ -121,17 +121,25 @@
     }
 
     .box {
-      padding-top: 37.1%;
+      padding-top: 92%;
       position: relative;
+
+      @include breakpoint(large) {
+        padding-top: 37.1%;
+      }
     }
 
     .overlay {
       height: 100%;
-      padding: 5.2% 5.8%;
+      padding: 13% 10.8%;
       position: absolute;
       top: 0;
       width: 100%;
       z-index: 1;
+
+      @include breakpoint(large) {
+        padding: 5.2% 5.8%;
+      }
     }
 
     .counter {
@@ -142,16 +150,26 @@
 
     h4 {
       color: $light-neutral;
-      font-size: 56px;
+      font-size: 40px;
       line-height: 1.14em;
-      margin-top: 10px;
+      margin-top: 22px;
+
+      @include breakpoint(large) {
+        font-size: 56px;
+        margin-top: 10px;
+      }
     }
 
     .arrow {
       bottom: 15.4%;
       position: absolute;
-      right: 6.8%;
       transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+      width: 86px;
+
+      @include breakpoint(large) {
+        right: 6.8%;
+        width: auto;
+      }
     }
 
     a:hover {

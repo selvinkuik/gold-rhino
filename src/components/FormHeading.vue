@@ -38,6 +38,10 @@
     color: #747a7f;
     font: 10px Termina;
     letter-spacing: 2px;
-    padding: 8.5% 0 2.8%;
+    padding: 22.5% 0 12.5%;
+
+    @include breakpoint(large) {
+      padding: 8.5% 0 2.8%;
+    }
   }
 </style>

@@ -3,7 +3,7 @@
     <div class="media-sizer">
       <video
         v-if="video"
-        class="media"
+        class="video"
         autoplay
         loop
         muted
@@ -12,12 +12,12 @@
         :src="src"
       />
 
-      <img
+      <div
         v-else
-        class="media"
+        class="image"
         ref="media"
-        :src="require('@/assets/images/' + src)"
-      >
+        :style="{ 'background-image': `url(${require('@/assets/images/' + src)})` }"
+      ></div>
     </div>
   </div>
 </template>
@@ -61,14 +61,25 @@
   .media-sizer {
     overflow: hidden;
 
-    .media {
+    .video {
       height: 100%;
       left: 50%;
       min-width: 100%;
-      min-height: 55vw; /* 100 * 9 / 16 (rounded down a bit) */
+      min-height: 55vw; // 100 * 9 / 16 (rounded down a bit)
       position: relative;
       transform: translateX(-50.1%); // ?
-      width: 177.77777778vh; /* 100 * 16 / 9 */
+      // width: 177.77777778vh; /* 100 * 16 / 9 */
+      width: 144vh;
+    }
+
+    .image {
+      background-position: 20% 50%;
+      background-size: cover;
+      padding-top: 153.27vw;
+
+      @include breakpoint(large) {
+        padding-top: 55vw;
+      }
     }
   }
 </style>

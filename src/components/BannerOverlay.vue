@@ -9,16 +9,21 @@
       :showRouteLabel="true"
     />
 
-    <div class="cell small-10 small-offset-1 large-8 large-offset-2">
-      <img
-        v-if="src"
-        class="title"
-        :src="require('@/assets/images/' + src)"
-      />
+    <div
+      class="cell small-10 small-offset-1 large-8 large-offset-2 overlay-contents"
+      :class="{ 'has-slot': $slots.default }"
+    >
+      <div>
+        <img
+          v-if="src"
+          class="title"
+          :src="require('@/assets/images/' + src)"
+        />
 
-      <p class="intro">
-        <slot></slot>
-      </p>
+        <p class="intro">
+          <slot></slot>
+        </p>
+      </div>
     </div>
 
     <div
@@ -89,16 +94,16 @@
 
 <style lang="scss" scoped>
   .overlay {
-    padding-bottom: 19.6%;
+    min-height: 75vh;
     position: relative;
     z-index: 1;
 
-    &.tint {
-      background-color: rgba(0, 0, 0, .35);
+    @include breakpoint(large) {
+      min-height: 100vh;
     }
 
-    .title {
-      margin: 40% auto 0;
+    &.tint {
+      background-color: rgba(0, 0, 0, .35);
     }
 
     .intro {
@@ -113,16 +118,36 @@
     }
   }
 
+  .overlay-contents {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+
+    &.has-slot {
+      padding-bottom: 19.6%;
+
+      @include breakpoint(large) {
+        display: block;
+      }
+
+      .title {
+        margin: 40% auto 0;
+      }
+    }
+  }
+
   .animated-line {
-    animation: animated-line 2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
-    background-color: $light-neutral;
-    bottom: 0;
-    content: ' ';
-    height: 0;
-    position: absolute;
-    right: 9%;
-    width: 2px;
-    z-index: 1;
+    @include breakpoint(large) {
+      animation: animated-line 2s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+      background-color: $light-neutral;
+      bottom: 0;
+      content: ' ';
+      height: 0;
+      position: absolute;
+      right: 9%;
+      width: 2px;
+      z-index: 1;
+    }
 
     &.fixed {
       position: fixed;

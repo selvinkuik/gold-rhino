@@ -23,6 +23,12 @@
   margin-bottom: 9.83%;
 }
 
+.mb-small-small-only {
+  @include breakpoint(small only) {
+    margin-bottom: 9.83%;
+  }
+}
+
 .mt-small {
   margin-top: 9.83%;
 }
@@ -49,6 +55,12 @@
 
 .pt-large {
   padding-top: 19.65%;
+}
+
+.pb-large-large-only { // Padding before footer
+  @include breakpoint(large) {
+    padding-bottom: 19.65%;
+  }
 }
 
 a {
@@ -92,10 +104,11 @@ a {
 
   &.medium-text {
     font-size: 20px;
-    line-height: 1.375em;
+    line-height: 1.5em;
 
     @include breakpoint(large) {
       font-size: 32px;
+      line-height: 1.375em;
     }
   }
 
@@ -104,12 +117,20 @@ a {
   }
 
   &.xlarge-text {
-    font-size: 56px;
+    font-size: 40px;
+    
+    @include breakpoint(large) {
+      font-size: 56px;
+    }
   }
 
   &.xxlarge-text {
-    font-size: 64px;
+    font-size: 32px;
     line-height: 1.15em;
+
+    @include breakpoint(large) {
+      font-size: 64px;
+    }
   }
 
   + .text {
@@ -175,13 +196,21 @@ a {
 }
 
 .form-field {
-  padding-top: 2.8%;
+  padding-top: 10.5%;
+
+  @include breakpoint(large) {
+    padding-top: 2.8%;
+  }
 }
 
 .form-label {
   align-items: center;
   color: $light-neutral;
   display: flex;
+
+  @include breakpoint(small only) {
+    padding-bottom: 3%;
+  }
 }
 
 .app {

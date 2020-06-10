@@ -1,6 +1,6 @@
 <template>
   <div class="grid-container full">
-    <div class="pb-large foreground dark-neutral">
+    <div class="pb-large-large-only foreground dark-neutral">
       <NavBar
         tintClass="dark"
         :showRouteLabel="true"
@@ -312,7 +312,11 @@
 
 <style lang="scss" scoped>
   .intro {
-    padding-top: 13.5%;
+    padding-top: 40%;
+
+    @include breakpoint(large) {
+      padding-top: 13.5%;
+    }
   }
 
   .small-print {

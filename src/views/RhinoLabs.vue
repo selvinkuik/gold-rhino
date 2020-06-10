@@ -106,7 +106,7 @@
     </div>
 
     <div
-      class="pb-large foreground light-neutral"
+      class="pb-large-large-only foreground light-neutral"
       ref="lightSection"
     >
       <NavBar

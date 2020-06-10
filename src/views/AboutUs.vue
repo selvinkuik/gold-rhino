@@ -9,22 +9,25 @@
       As a Private Equity firm, Gold Rhino funds and works closely with Australasian-based software development companies.
     </BannerOverlay>
 
-    <div class="pb-large foreground white">
+    <div class="pb-large-large-only foreground white">
       <NavBar
         tintClass="light"
         :showRouteLabel="true"
       />
 
       <div class="grid-x pt-large pb-large">
-        <div class="cell small-10 small-offset-1 large-3 large-offset-2">
+        <div class="cell small-5 small-offset-1 large-3 large-offset-2 intro-image">
           <ParallaxImage
+            :overlapAndFade="true"
             src="about-us-1.jpg"
-            marginTop="-80%"
           />
         </div>
 
-        <div class="cell small-10 small-offset-1 large-5 large-offset-1">
+        <div class="cell small-6 small-offset-4 large-5 large-offset-6 intro-1">
           <p class="text medium-text">We help our investments accelerate growth, maximise returns, and get set-up for future success or eventual sale.</p>
+        </div>
+
+        <div class="cell small-10 small-offset-1 large-4 large-offset-6 intro-2">
           <p class="text small-text">Our ethos and mantra is simply, <strong>Forward Together</strong>. This guides all our actions – from the companies we invest in, to the services and support we offer. It also represents a much broader vision. We have to actively support the conservation and population growth of one of Africa’s most endangered wildlife animals, the rhinoceros. This is a cause that we are deeply passionate about, committed to, and have been for some time.</p>
         </div>
       </div>
@@ -53,15 +56,15 @@
         </div>
       </div>
 
-      <div class="grid-x experience">
-        <div class="cell small-10 small-offset-1 large-3 large-offset-2">
+      <div class="grid-x grid-margin-x experience mb-large">
+        <div class="cell small-5 small-offset-1 large-3 large-offset-2 experience-image">
           <ParallaxImage
+            :overlapAndFade="true"
             src="about-us-4.jpg"
-            marginTop="-100%"
           />
         </div>
 
-        <div class="small-10 small-offset-1 cell large-3 large-offset-1">
+        <div class="cell small-7 small-offset-4 large-3 large-offset-1 experience-text">
           <p class="text small-text">We play an active role in mentoring and helping the CEOs and founders of tech companies achieve their full potential. We openly share our knowledge, experience, and understanding of what it takes to build a successful business, and we have empathy for the founder journey.</p>
           <p class="text small-text">We’ve been there, and done that, with great success and it’s our desire to help others achieve the same.</p>
         </div>
@@ -111,17 +114,38 @@
 </script>
 
 <style lang="scss" scoped>
-  .intro {
-    .small-text {
-      margin: 23.58% 20% 0 0;
+  .intro-image {
+    margin-top: -18%;
+  }
+
+  .intro-1 {
+    position: relative;
+    z-index: 1;
+
+    @include breakpoint(small only) {
+      margin-top: 19.65%;
     }
   }
 
-    .tree {
+  .intro-2 {
+    margin-top: 9.83%;
+  }
+
+  .tree {
     margin-top: 9.6%;
   }
 
   .experience {
-    padding: 45.8% 0 25.8%;
+    padding-top: 45.8%;
+
+    .experience-image {
+      margin-top: -23%;
+    }
+
+    .experience-text {
+      @include breakpoint(small only) {
+        margin-top: 19.65%;
+      }
+    }
   }
 </style>

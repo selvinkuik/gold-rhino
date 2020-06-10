@@ -1,13 +1,15 @@
 <template>
-  <div
-    class="image-mask"
-    ref="imageMask"
-    :style="{ 'margin-top': marginTop || '-10%' }"
-  >
-    <img
-      ref="imageParallax"
-      :src="require('@/assets/images/' + src)"
-    />
+  <div class="parallax-image">
+    <div
+      :class="{ 'overlap-and-fade': overlapAndFade }"
+      class="image-mask"
+      ref="imageMask"
+    >
+      <img
+        ref="imageParallax"
+        :src="require('@/assets/images/' + src)"
+      />
+    </div>
   </div>
 </template>
 
@@ -19,8 +21,8 @@
     name: 'ParallaxImage',
     
     props: {
-      src: String,
-      marginTop: String
+      overlapAndFade: Boolean,
+      src: String
     },
 
     mounted() {
@@ -42,8 +44,21 @@
 </script>
 
 <style lang="scss" scoped>
+  .parallax-image {
+    position: relative;
+  }
+
   .image-mask {
     border: 1px solid transparent;
     overflow: hidden;
+  }
+
+  .overlap-and-fade {
+    opacity: .4;
+    position: absolute;
+
+    @include breakpoint(large) {
+      opacity: 1;
+    }
   }
 </style>

@@ -6,21 +6,21 @@
       Our ultimate vision is to further support the protection and growth of the South African rhinoceros population.
     </BannerOverlay>
 
-    <div class="pb-large foreground white">
+    <div class="pb-large-large-only foreground white">
       <NavBar
         tintClass="dark"
         :showRouteLabel="true"
       />
 
       <div class="grid-x pt-large">
-        <div class="cell small-10 small-offset-1 large-4 large-offset-2">
+        <div class="cell small-6 small-offset-4 large-4 large-offset-2 intro">
           <p class="text medium-text">We want to make a direct and more active contribution to this effort by helping to increase the rhinoceros population, and so remove the real threat of their extinction.</p>
         </div>
 
-        <div class="cell small-10 small-offset-1 large-3 large-offset-1">
+        <div class="cell small-5 small-offset-1 large-3 large-offset-1 intro-image">
           <ParallaxImage
+            :overlapAndFade="true"
             src="our-vision-1.jpg"
-            marginTop="-80%"
           />
         </div>
       </div>
@@ -50,7 +50,7 @@
           <p class="text small-text">At the same time as assisting TARP and Zoos SA, Gold Rhino will work with global media outlets to drive education in an effort to reduce Asian demand for rhinoceros horn.</p>
 
           <div class="grid-x grid-margin-x logos">
-            <div class="cell small-8 small-offset-2 large-6 large-offset-0">
+            <div class="cell small-8 small-offset-2 large-6 large-offset-0 mb-small-small-only">
               <a href="https://www.theaustralianrhinoproject.org/" target="_blank">
                 <img src="@/assets/images/tarp.svg" />
               </a>
@@ -98,6 +98,16 @@
 </script>
 
 <style lang="scss" scoped>
+  .intro {
+    @include breakpoint(small only) {
+      order: 1;
+    }
+  }
+
+  .intro-image {
+    margin-top: -20%;
+  }
+
   .logos {
     padding-top: 31%;
   }

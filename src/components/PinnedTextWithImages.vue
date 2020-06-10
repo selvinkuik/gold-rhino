@@ -92,9 +92,9 @@
     computed: {
       titleGridClasses: function () {
         if (this.layout == 'layout-4') {
-          return 'custom-h3 large-offset-5'
+          return 'custom-h3 small-offset-1 large-offset-5'
         } else if (this.layout == 'layout-5') {
-          return 'custom-h3 large-offset-2'
+          return 'custom-h3 small-offset-1 large-offset-2'
         }
 
         return ''
@@ -108,10 +108,10 @@
         } else if (this.layout == 'layout-3') {
           return 'small-offset-3 large-offset-5'
         } else if (this.layout == 'layout-4') {
-          return 'large-4 large-offset-6'
+          return 'small-8 small-offset-3 large-4 large-offset-6'
         }
 
-        return 'large-4 large-offset-4' // layout-5
+        return 'small-8 small-offset-3 large-4 large-offset-4' // layout-5
       },
 
       image1GridClasses: function () {
@@ -122,10 +122,10 @@
         } else if (this.layout == 'layout-3') {
           return 'small-5 small-offset-7 large-2 large-offset-8'
         } else if (this.layout == 'layout-4') {
-          return 'large-3 large-offset-3'
+          return 'small-5 small-offset-1 large-3 large-offset-3'
         }
 
-        return 'large-3 large-offset-1' // layout-5
+        return 'small-5 small-offset-1 large-3 large-offset-1' // layout-5
       },
 
       image2GridClasses: function () {
@@ -145,7 +145,7 @@
           this.$scrollmagic.scene({
             triggerElement: this.$refs.pinned,
             triggerHook: 0.2,
-            duration: parseInt(getComputedStyle(this.$refs.pinned).height) + 450 // Balances with...
+            duration: parseInt(getComputedStyle(this.$refs.pinned).height) + (this.image2 ? 450 : 0) // Balances with...
           })
             .setPin(this.$refs.pinned)
             .on('enter', () => {

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueGtm from 'vue-gtm'
 import VueScrollmagic from 'vue-scrollmagic'
+import VueScreen from 'vue-screen'
 import App from '@/App.vue'
 import router from '@/router'
 
@@ -14,6 +15,7 @@ if (process.env.NODE_ENV == 'production') {
 }
 
 Vue.use(VueScrollmagic)
+Vue.use(VueScreen, 'foundation');
 
 new Vue({
   router,

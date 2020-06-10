@@ -1,22 +1,28 @@
 <template>
   <div class="grid-container full">
-    <div class="foreground dark-neutral pb-large">
+    <div class="foreground dark-neutral pb-large-large-only">
       <NavBar
         tintClass="dark"
         :showRouteLabel="true"
       />
 
-      <FadingImage src="tim-smith-bg.jpg">
+      <div ref="fadingTim">
+        <div ref="fadingTimImage">
+          <div
+            class="fading-tim"
+            :style="{ 'background-image': `url(${require('@/assets/images/tim-smith-bg.jpg')})` }" />
+        </div>
+
         <div class="grid-x intro">
-          <div class="cell large-4 large-offset-2">
+          <div class="cell small-10 small-offset-1 large-4 large-offset-2">
             <p class="text light-neutral xxlarge-text">Tim Smith</p>
-            <p class="text light-neutral medium-text">Managing Director</p>
+            <p class="text light-neutral medium-text position">Managing Director</p>
 
             <p class="bio text light-neutral medium-text">An energetic, passionate Australian, Tim grew up in Perth and currently resides in Singapore.</p>
             <p class="text light-neutral medium-text">He is the founder, owner and Principal Investor of Gold Rhino, and the driving force behind two entrepreneurial software companies: <strong>HardHat</strong> and <strong>OnePlace</strong>.</p>
           </div>
         </div>
-      </FadingImage>
+      </div>
 
       <PinnedTextWithImages
         image1="hardhat.jpg"
@@ -37,10 +43,9 @@
 
       <div class="grid-x">
         <div class="cell small-10 small-offset-1 large-4 large-offset-1">
-          <ParallaxImage
-            src="tim-smith.jpg"
-            marginTop="-70%"
-          />
+          <div class="tim">
+            <ParallaxImage src="tim-smith.jpg" />
+          </div>
         </div>
 
         <div class="cell small-10 small-offset-1 large-5 large-offset-1">
@@ -65,16 +70,22 @@
         </div>
       </div>
 
-      <FadingImage
-        :fadeIn="true"
-        src="who-we-are-2.jpg"
+      <div
+        class="rhino"
+        ref="fadingRhino"
       >
+        <div ref="fadingRhinoImage">
+          <div
+            class="fading-rhino"
+            :style="{ 'background-image': `url(${require('@/assets/images/who-we-are-2.jpg')})` }" />
+        </div>
+
         <div class="grid-x divider light-neutral">
           <div class="cell small-10 small-offset-1 large-8 large-offset-2">
             <p class="text light-neutral xlarge-text center">Looking ahead, Gold Rhino’s vision is to take an even more active role in the conservation of the species.</p>
           </div>
         </div>
-      </FadingImage>
+      </div>
 
       <div class="clip-path-box">
         <ClipPathBox
@@ -89,8 +100,9 @@
 </template>
 
 <script>
+  import imagesLoaded from 'imagesloaded'
+  import { TimelineMax, TweenMax } from 'gsap'
   import ClipPathBox from '@/components/ClipPathBox.vue'
-  import FadingImage from '@/components/FadingImage.vue'
   import NavBar from '@/components/NavBar.vue'
   import ParallaxImage from '@/components/ParallaxImage.vue'
   import PinnedTextWithImages from '@/components/PinnedTextWithImages.vue'
@@ -100,28 +112,117 @@
     
     components: {
       ClipPathBox,
-      FadingImage,
       NavBar,
       ParallaxImage,
       PinnedTextWithImages
+    },
+
+    mounted() {
+      imagesLoaded(this.$refs.fadingTimImage, () => {
+        this.$scrollmagic.addScene(
+          this.$scrollmagic.scene({
+            offset: 0,
+            triggerElement: this.$refs.fadingTim,
+            triggerHook: 0,
+            duration: this.$screen.large ? '150%' : '80%'
+          })
+            .setPin(this.$refs.fadingTimImage, { spacerClass: 'no-push-followers-pin-spacer' })
+            .setTween(new TimelineMax().add([
+              TweenMax.to(this.$refs.fadingTimImage, 10, { opacity: 0, delay: 20 })
+            ]))
+        )
+      })
+
+      imagesLoaded(this.$refs.fadingRhinoImage, () => {
+        this.$scrollmagic.addScene(
+          this.$scrollmagic.scene({
+            offset: -400,
+            triggerElement: this.$refs.fadingRhino,
+            triggerHook: 0,
+            duration: this.$screen.large ? '80%' : '50%'
+          })
+            .setPin(this.$refs.fadingRhinoImage, { spacerClass: 'no-push-followers-pin-spacer' })
+            .setTween(new TimelineMax()
+                .from(this.$refs.fadingRhinoImage, 10, { opacity: 0 })
+                .to(this.$refs.fadingRhinoImage, 10, { opacity: 0, delay: 2 })
+            )
+        )
+      })
     }
   }
 </script>
 
 <style lang="scss" scoped>
+  .no-push-followers-pin-spacer > div { // ScrollMagic fudge
+    position: fixed !important;
+    top: 0 !important;
+  }
+
+  .fading-tim {
+    background-position: 100% 50%;
+    background-size: cover;
+    padding-top: 144vw;
+
+    @include breakpoint(large) {
+      padding-top: 81.5vw;
+    }
+  }
+
   .intro {
-    padding: 21.5% 0 34.2%;
+    padding: 97% 0 34.2%;
+    position: relative;
+    z-index: 1;
+
+    @include breakpoint(large) {
+      padding-top: 21.5%;
+    }
+
+    .position {
+      @include breakpoint(small only) {
+        margin-top: 0;
+      }
+    }
 
     .bio {
-      margin-top: 57%;
+      margin-top: 31%;
+
+      @include breakpoint(large) {
+        margin-top: 57%;
+      }
+    }
+  }
+
+  .tim {
+    margin: -90% 0 70%;
+
+    @include breakpoint(large) {
+      margin: -70% 0 0;
     }
   }
 
   .tree {
     margin-top: 9.6%;
+    position: relative;
+    z-index: 1;
   }
 
-  .divider {
-    margin-top: 35.5%;
+  .rhino  {
+    @include breakpoint(small only) {
+      margin-bottom: 50%;
+    }
+
+    .divider {
+      margin-top: 35.5%;
+    }
+
+    .fading-rhino {
+      background-position: 50% 50%;
+      background-size: cover;
+      padding-top: 100vh;
+
+      @include breakpoint(large) {
+        padding-top: 64vw;
+      }
+    }
   }
 </style>

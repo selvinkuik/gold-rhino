@@ -6,7 +6,7 @@
       The Southern White and Black African rhinoceroses are truly two of the most beautiful and rarest of animals facing a real. 
     </BannerOverlay>
 
-    <div class="pb-large foreground white">
+    <div class="pb-large-large-only foreground white">
       <NavBar
         tintClass="light"
         :showRouteLabel="true"
@@ -18,12 +18,12 @@
           <p class="text medium-text">In recent years, we have supported Save the Rhino International and Stop Rhino Poaching.  Save the Rhino International are working hard to increase the population of all five rhino species across Africa and Asia.  The world's most critically endangered rhino species, the Sumatran and Javan rhinos, have fewer than 80 animals remaining in the wild.  As partners of Save the Rhino International, Gold Rhino will be helping to tackle the key threats of poaching and habitat loss, working towards a world where all five species of rhinos thrive in the wild for generations to come.</p>
 
           <div class="grid-x grid-margin-x logos pt-small">
-            <div class="cell small-8 small-offset-2 large-auto large-offset-0 logo">
+            <div class="cell small-8 small-offset-2 large-auto large-offset-0 logo mb-small-small-only">
               <a href="https://www.savetherhino.org/" target="_blank">
                 <img src="@/assets/images/save-the-rhino.svg" />
               </a>
             </div>
-            <div class="cell small-8 small-offset-2 large-auto large-offset-1 logo">
+            <div class="cell small-8 small-offset-2 large-auto large-offset-1 logo mb-small-small-only">
               <a href="https://www.oursorai.com/" target="_blank">
                 <img src="@/assets/images/sorai.jpg" />
               </a>
@@ -54,16 +54,28 @@
 
       <div class="grid-x contact divider">
         <div class="cell small-10 small-offset-1 large-8 large-offset-2">
-          <p class="text large-text center">If you are interested in helping with our “More Rhinos Program”, TARP and Zoos SA’s Insurance Population Project in Australia, please email:</p>
-          <p class="text large-text center"><a class="hover-link light thick" href="mailto:morerhinos@goldrhino.com.au">morerhinos@goldrhino.com.au</a></p>
-          <p class="text large-text center">or</p>
           <p class="text large-text center">
+            If you are interested in helping with our “More Rhinos Program”, TARP and Zoos SA’s Insurance Population Project in Australia,
+            <span class="link large">please email:</span>
+            <span class="link small"><a class="hover-link light thick" href="mailto:morerhinos@goldrhino.com.au">please email.</a></span>
+          </p>
+          <p class="text large-text center link large"><a class="hover-link light thick" href="mailto:morerhinos@goldrhino.com.au">morerhinos@goldrhino.com.au</a></p>
+          <p class="text large-text center">or visit</p>
+
+          <p class="text large-text center link large">
             TARP<br>
             <a class="hover-link light thick" href="https://www.theaustralianrhinoproject.org" target="_blank">www.theaustralianrhinoproject.org</a>
           </p>
-          <p class="text large-text center">
+          <p class="text large-text center link large">
             Zoos SA<br>
             <a class="hover-link light thick" href="https://www.zoossa.com.au" target="_blank">www.zoossa.com.au</a>
+          </p>
+
+          <p class="text large-text center link small">
+            <a class="hover-link light thick" href="https://www.theaustralianrhinoproject.org" target="_blank">TARP</a>
+          </p>
+          <p class="text large-text center link small">
+            <a class="hover-link light thick" href="https://www.zoossa.com.au" target="_blank">Zoos SA</a>
           </p>
         </div>
       </div>
@@ -112,5 +124,25 @@
 
   .contact {
     margin-top: 35%;
+  }
+
+  .link {
+    &.small {
+      @include breakpoint(large) {
+        display: none;
+      }
+    }
+
+    &.large {
+      display: none;
+
+      @include breakpoint(large) {
+        display: block;
+      }
+    }
+  }
+
+  .hover-link {
+    display: inline-block;
   }
 </style>
