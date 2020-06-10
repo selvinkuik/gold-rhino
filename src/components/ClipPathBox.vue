@@ -9,7 +9,10 @@
         <div class="counter">{{ counter }}</div>
         <h4>{{ text }}</h4>
 
-        <img class="arrow" src="@/assets/images/arrow.svg" />
+        <img
+          class="arrow"
+          src="@/assets/images/arrow.svg"
+        />
       </div>
 
       <svg

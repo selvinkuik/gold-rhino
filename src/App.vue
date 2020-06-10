@@ -1,5 +1,56 @@
 <template>
   <div class="app">
+    <div :class="`wipe ${wipeStatus}`">
+      <div
+        class="circle-in"
+        ref="circleIn"
+      >
+        <svg
+          viewBox="0 0 200 200"
+          preserveAspectRatio="none"
+        >
+          <circle
+            fill="#1C2936"
+            cx="100"
+            cy="100"
+            r="0"
+          />
+        </svg>
+      </div>
+
+      <div
+        class="circle-out"
+        ref="circleOut"
+      >
+        <svg
+          viewBox="0 0 200 200"
+          preserveAspectRatio="none"
+        >
+          <defs>
+            <mask id="hole">
+              <rect
+                width="100%"
+                height="100%"
+                fill="white"
+              />
+              <circle
+                fill="black"
+                cx="100"
+                cy="100"
+                r="0"
+              />
+            </mask>
+          </defs>
+          <rect
+            fill="#1C2936"
+            width="100%"
+            height="100%"
+            mask="url(#hole)"
+          />
+        </svg>
+      </div>
+    </div>
+
     <div
       v-if="!holdingMode"
       class="menu-circle-transform white"
@@ -85,10 +136,7 @@
       class="content"
       ref="app"
     >
-      <transition
-        name="fade"
-        mode="out-in"
-      >
+      <transition>
         <router-view />
       </transition>
     </div>
@@ -188,7 +236,8 @@
         holdingMode: process.env.VUE_APP_HOLDING_MODE == 'true',
         animating: false,
         menuOverflowing: false,
-        menuOpen: false
+        menuOpen: false,
+        wipeStatus: ''
       }
     },
 
@@ -229,20 +278,68 @@
         })
           .setTween(TweenMax.to(this.$refs.footer, 1, { x: 0 }))
       )
+    },
+
+    watch: {
+      '$route': function() {
+        this.wipeStatus = 'wiping-in'
+
+        this.$refs.circleIn.addEventListener('transitionend', () => {
+          this.wipeStatus = 'wiping-out'
+        })
+
+        this.$refs.circleOut.addEventListener('transitionend', () => {
+          this.wipeStatus = ''
+        })
+      }
     }
   }
 </script>
 
 <style lang="scss" scoped>
-  // .fade-enter-active,
-  // .fade-leave-active {
-  //   transition: opacity 0.2s;
-  // }
+  .v-enter-active,
+  .v-leave-active {
+    transition-duration: 1.2s;
+  }
 
-  // .fade-enter,
-  // .fade-leave-active {
-  //   opacity: 0;
-  // }
+  .wipe {
+    left: -100%;
+    pointer-events: none;
+    position: fixed;
+    top: -250%;
+    width: 200%;
+    z-index: 9;
+
+    .circle-in,
+    .circle-out {
+      visibility: hidden;
+      position: absolute;
+      top: 0;
+      width: 100%;
+    }
+
+    &.wiping-in {
+      .circle-in {
+        visibility: visible;
+
+        circle {
+          r: 70%;
+          transition: r 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+      }
+    }
+
+    &.wiping-out {
+      .circle-out {
+        visibility: visible;
+
+        circle {
+          r: 70%;
+          transition: r 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+      }
+    }
+  }
 
   .menu-circle-transform {
     border-radius: 50%;

@@ -113,11 +113,13 @@ router.beforeEach((to, from, next) => {
   const nearestWithTitle = to.matched.slice().reverse().find(r => r.meta && r.meta.title)
 
   // If a route with a title was found, set the document (page) title to that value.
-  if(nearestWithTitle) document.title = nearestWithTitle.meta.title
+  if(nearestWithTitle) {
+    document.title = nearestWithTitle.meta.title
+  }
 
   setTimeout(() => {
     window.scrollTo(0, 0)
-  }, 100)
+  }, 1200)
 
   return next()
 })
