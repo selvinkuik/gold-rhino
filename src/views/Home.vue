@@ -139,15 +139,17 @@
       }
     }
 
-    @media (hover: hover) {
-      &:hover {
-        .name {
-          transform: translateY(0);
-        }
+    @include breakpoint(large) {
+      @media (hover: hover) {
+        &:hover {
+          .name {
+            transform: translateY(0);
+          }
 
-        .description,
-        .image {
-          opacity: 1;
+          .description,
+          .image {
+            opacity: 1;
+          }
         }
       }
     }

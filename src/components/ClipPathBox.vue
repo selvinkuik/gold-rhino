@@ -121,6 +121,10 @@
 
     circle {
       transition: cx 0.4s cubic-bezier(0.22, 1, 0.36, 1), cy 0.4s cubic-bezier(0.22, 1, 0.36, 1), r 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+
+      @include breakpoint(small only) {
+        r: 0;
+      }
     }
 
     .box {

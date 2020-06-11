@@ -117,10 +117,6 @@ router.beforeEach((to, from, next) => {
     document.title = nearestWithTitle.meta.title
   }
 
-  setTimeout(() => {
-    window.scrollTo(0, 0)
-  }, 1200)
-
   return next()
 })
 

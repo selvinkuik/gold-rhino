@@ -286,6 +286,8 @@
 
         this.$refs.circleIn.addEventListener('transitionend', () => {
           this.wipeStatus = 'wiping-out'
+
+          window.scrollTo(0, 0)
         })
 
         this.$refs.circleOut.addEventListener('transitionend', () => {
@@ -299,16 +301,22 @@
 <style lang="scss" scoped>
   .v-enter-active,
   .v-leave-active {
-    transition-duration: 1.2s;
+    transition-duration: 1s;
   }
 
   .wipe {
-    left: -100%;
+    left: -200%;
     pointer-events: none;
     position: fixed;
-    top: -250%;
-    width: 200%;
+    top: -100%;
+    width: 430%;
     z-index: 9;
+
+    @include breakpoint(large) {
+      left: -100%;
+      top: -250%;
+      width: 200%;
+    }
 
     .circle-in,
     .circle-out {
