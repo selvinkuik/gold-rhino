@@ -3,18 +3,18 @@ let scrollTop = 0
 
 function enable() {
   $body.style.removeProperty('position')
-  $body.style.removeProperty('overflowY')
+  $body.style.removeProperty('overflow-y')
 
   window.scrollTo(0, scrollTop)
 }
 
-function disable() {
+function disable(delay) {
   setTimeout(() => {
     scrollTop = (window.pageYOffset || document.documentElement.scrollTop)  - (document.documentElement.clientTop || 0)
 
     $body.style.position = 'fixed'
     $body.style.overflowY = 'scroll'
-  }, 800) // Half the length of the menu transition
+  }, delay)
 }
 
 export default { enable, disable }

@@ -10,6 +10,7 @@
           preserveAspectRatio="none"
         >
           <circle
+            class="fill"
             fill="#1C2936"
             cx="100"
             cy="100"
@@ -42,6 +43,7 @@
             </mask>
           </defs>
           <rect
+            class="fill"
             fill="#1C2936"
             width="100%"
             height="100%"
@@ -136,7 +138,7 @@
       class="content"
       ref="app"
     >
-      <transition>
+      <transition mode="out-in">
         <router-view />
       </transition>
     </div>
@@ -257,7 +259,7 @@
           }, 1600)
 
           if (this.menuOpen) {
-            ScrollLock.disable()
+            ScrollLock.disable(800) // Half the length of the menu transition
 
             this.menuOverflowing = this.$refs.menuOverflow.scrollHeight > this.$refs.menuOverflow.clientHeight
           } else {
@@ -281,11 +283,11 @@
     },
 
     watch: {
-      '$route': function() {
-        this.wipeStatus = 'wiping-in'
+      '$route': function(to, from) {
+        this.wipeStatus = 'wiping-in ' + from.meta.color
 
         this.$refs.circleIn.addEventListener('transitionend', () => {
-          this.wipeStatus = 'wiping-out'
+          this.wipeStatus = 'wiping-out ' + from.meta.color
 
           window.scrollTo(0, 0)
         })
@@ -316,6 +318,12 @@
       left: -100%;
       top: -250%;
       width: 200%;
+    }
+
+    &.light-neutral {
+      .fill {
+        fill: $light-neutral;
+      }
     }
 
     .circle-in,

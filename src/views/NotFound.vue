@@ -1,11 +1,45 @@
 <template>
   <div class="grid-container full">
-    404
+    <div class="pb-large foreground dark-neutral">
+      <NavBar tintClass="dark" />
+
+      <div class="grid-x intro">
+        <div class="cell small-10 small-offset-1 large-6 large-offset-2">
+          <p class="text xxlarge-text light-neutral">404</p>
+        </div>
+      </div>
+
+      <div class="grid-x small-print">
+        <div class="cell small-10 small-offset-1 large-7 large-offset-2">
+          <p class="text xsmall-text light-neutral">Page not found.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+  import NavBar from '@/components/NavBar.vue'
+
   export default {
-    name: 'NotFound'
+    name: 'NotFound',
+
+    components: {
+      NavBar
+    }
   }
 </script>
+
+<style lang="scss" scoped>
+  .intro {
+    padding-top: 40%;
+
+    @include breakpoint(large) {
+      padding-top: 13.5%;
+    }
+  }
+
+  .small-print {
+    padding-top: 6.3%;
+  }
+</style>
