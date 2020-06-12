@@ -312,9 +312,8 @@
         if (from.name) { // No name indicates first load
           this.miniLoader = true
           this.wipeAnimatingIn = true
-          this.wipeColor = this.menuAnimating ? 'gold' : from.meta.color
+          this.wipeColor = this.menuOpen ? 'gold' : from.meta.color
           this.wipeStatus = 'wiping-in ' + this.wipeColor
-          console.log(this.wipeColor)
         }
       },
 
