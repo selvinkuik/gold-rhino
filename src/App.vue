@@ -259,21 +259,23 @@
     methods: {
       toggleMenu() {
         if (!this.menuAnimating) {
-          this.menuOpen = !this.menuOpen
-
           this.menuAnimating = true
+
+          setTimeout(() => {
+            this.menuOpen = !this.menuOpen
+
+            if (this.menuOpen) {
+              ScrollLock.disable(800) // Half the length of the menu transition
+
+              this.menuOverflowing = this.$refs.menuOverflow.scrollHeight > this.$refs.menuOverflow.clientHeight
+            } else {
+              ScrollLock.enable()
+            }
+          }, 800)
 
           setTimeout(() => {
             this.menuAnimating = false // Prevent double-clicking for the duration of the animation
           }, 1600)
-
-          if (this.menuOpen) {
-            ScrollLock.disable(800) // Half the length of the menu transition
-
-            this.menuOverflowing = this.$refs.menuOverflow.scrollHeight > this.$refs.menuOverflow.clientHeight
-          } else {
-            ScrollLock.enable()
-          }
         }
       }
     },
@@ -310,16 +312,14 @@
         if (from.name) { // No name indicates first load
           this.miniLoader = true
           this.wipeAnimatingIn = true
-          this.wipeColor = from.meta.color
+          this.wipeColor = this.menuAnimating ? 'gold' : from.meta.color
           this.wipeStatus = 'wiping-in ' + this.wipeColor
           console.log(this.wipeColor)
         }
       },
 
       loading: function(val) {
-        console.log(val, this.wipeAnimatingIn)
         if (!val && !this.wipeAnimatingIn) {
-          console.log('event received')
           this.wipeStatus = 'wiping-out ' + this.wipeColor
 
           window.scrollTo(0, 0)
@@ -352,6 +352,12 @@
     &.light-neutral {
       .fill {
         fill: $light-neutral;
+      }
+    }
+
+    &.gold {
+      .fill {
+        fill: $gold;
       }
     }
 
@@ -453,6 +459,15 @@
         &:before,
         &:after {
           background: $light-neutral;
+        }
+      }
+    }
+
+    &.gold {
+      .spinner {
+        &:before,
+        &:after {
+          background: $gold;
         }
       }
     }

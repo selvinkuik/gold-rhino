@@ -120,9 +120,7 @@
     },
 
     mounted() {
-      console.log('mounted')
       imagesLoaded(this.$refs.page, () => {
-        console.log('images loaded')
         this.$emit('update:loading', false)
       })
     }
