@@ -1,5 +1,8 @@
 <template>
-  <div class="grid-container full">
+  <div
+    ref="page"
+    class="grid-container full"
+  >
     <div class="foreground dark-neutral pb-large-large-only">
       <NavBar
         tintClass="dark"
@@ -147,6 +150,10 @@
                 .to(this.$refs.fadingRhinoImage, 10, { opacity: 0, delay: 2 })
             )
         )
+      })
+
+      imagesLoaded(this.$refs.page, () => {
+        this.$emit('update:loading', false)
       })
     }
   }

@@ -1,5 +1,8 @@
 <template>
-  <div class="grid-container full">
+  <div
+    ref="page"
+    class="grid-container full"
+  >
     <Banner
       src="/videos/rhino-labs.mp4"
       :video="true"
@@ -138,6 +141,7 @@
 </template>
 
 <script>
+  import imagesLoaded from 'imagesloaded'
   import Banner from '@/components/Banner.vue'
   import BannerOverlay from '@/components/BannerOverlay.vue'
   import ClipPathBox from '@/components/ClipPathBox.vue'
@@ -163,6 +167,12 @@
       return {
         scrollPosition: 1
       }
+    },
+
+    mounted() {
+      imagesLoaded(this.$refs.page, () => {
+        this.$emit('update:loading', false)
+      })
     }
   }
 </script>

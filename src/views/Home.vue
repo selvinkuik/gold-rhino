@@ -1,5 +1,8 @@
 <template>
-  <div class="grid-container full">
+  <div
+    ref="page"
+    class="grid-container full"
+  >
     <Banner
       src="/videos/home.mp4"
       :video="true"
@@ -50,6 +53,7 @@
 </template>
 
 <script>
+  import imagesLoaded from 'imagesloaded'
   import Banner from '@/components/Banner.vue'
   import BannerOverlay from '@/components/BannerOverlay.vue'
   import NavBar from '@/components/NavBar.vue'
@@ -69,6 +73,12 @@
       return {
         holdingMode: process.env.VUE_APP_HOLDING_MODE == 'true'
       }
+    },
+
+    mounted() {
+      imagesLoaded(this.$refs.page, () => {
+        this.$emit('update:loading', false)
+      })
     }
   }
 </script>

@@ -1,5 +1,8 @@
 <template>
-  <div class="grid-container full">
+  <div
+    ref="page"
+    class="grid-container full"
+  >
     <Banner
       src="/videos/about-us.mp4"
       :video="true"
@@ -92,6 +95,7 @@
 </template>
 
 <script>
+  import imagesLoaded from 'imagesloaded'
   import Banner from '@/components/Banner.vue'
   import BannerOverlay from '@/components/BannerOverlay.vue'
   import ClipPathBox from '@/components/ClipPathBox.vue'
@@ -109,6 +113,18 @@
       NavBar,
       ParallaxImage,
       ParallaxImageWithBorder
+    },
+
+    props: {
+      loading: Boolean
+    },
+
+    mounted() {
+      console.log('mounted')
+      imagesLoaded(this.$refs.page, () => {
+        console.log('images loaded')
+        this.$emit('update:loading', false)
+      })
     }
   }
 </script>

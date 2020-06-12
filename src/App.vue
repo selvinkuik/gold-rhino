@@ -53,6 +53,11 @@
       </div>
     </div>
 
+    <div :class="['loader', wipeStatus, miniLoader ? 'mini' : '']">
+      <img class="loader-logo" src="@/assets/images/gold-rhino.svg" />
+      <div class="spinner"></div>
+    </div>
+
     <div
       v-if="!holdingMode"
       class="menu-circle-transform white"
@@ -139,7 +144,7 @@
       ref="app"
     >
       <transition mode="out-in">
-        <router-view />
+        <router-view :loading.sync="loading" />
       </transition>
     </div>
     
@@ -236,10 +241,14 @@
     data() {
       return {
         holdingMode: process.env.VUE_APP_HOLDING_MODE == 'true',
-        animating: false,
+        loading: true,
+        miniLoader: false,
+        menuAnimating: false,
         menuOverflowing: false,
         menuOpen: false,
-        wipeStatus: ''
+        wipeAnimatingIn: false,
+        wipeColor: '',
+        wipeStatus: 'wiping-in'
       }
     },
 
@@ -249,13 +258,13 @@
 
     methods: {
       toggleMenu() {
-        if (!this.animating) {
+        if (!this.menuAnimating) {
           this.menuOpen = !this.menuOpen
 
-          this.animating = true
+          this.menuAnimating = true
 
           setTimeout(() => {
-            this.animating = false // Prevent double-clicking for the duration of the animation
+            this.menuAnimating = false // Prevent double-clicking for the duration of the animation
           }, 1600)
 
           if (this.menuOpen) {
@@ -280,21 +289,41 @@
         })
           .setTween(TweenMax.to(this.$refs.footer, 1, { x: 0 }))
       )
+
+      this.$refs.circleIn.addEventListener('transitionend', () => {
+        this.wipeAnimatingIn = false
+
+        if (!this.loading) {
+          this.wipeStatus = 'wiping-out ' + this.wipeColor
+
+          window.scrollTo(0, 0)
+        }
+      })
+
+      this.$refs.circleOut.addEventListener('transitionend', () => {
+        this.wipeStatus = ''
+      })
     },
 
     watch: {
       '$route': function(to, from) {
-        this.wipeStatus = 'wiping-in ' + from.meta.color
+        if (from.name) { // No name indicates first load
+          this.miniLoader = true
+          this.wipeAnimatingIn = true
+          this.wipeColor = from.meta.color
+          this.wipeStatus = 'wiping-in ' + this.wipeColor
+          console.log(this.wipeColor)
+        }
+      },
 
-        this.$refs.circleIn.addEventListener('transitionend', () => {
-          this.wipeStatus = 'wiping-out ' + from.meta.color
+      loading: function(val) {
+        console.log(val, this.wipeAnimatingIn)
+        if (!val && !this.wipeAnimatingIn) {
+          console.log('event received')
+          this.wipeStatus = 'wiping-out ' + this.wipeColor
 
           window.scrollTo(0, 0)
-        })
-
-        this.$refs.circleOut.addEventListener('transitionend', () => {
-          this.wipeStatus = ''
-        })
+        }
       }
     }
   }
@@ -351,9 +380,122 @@
 
         circle {
           r: 70%;
-          transition: r 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+          transition: r 1.2s cubic-bezier(0.22, 1, 0.36, 1) .4s;
         }
       }
+    }
+  }
+
+  .loader {
+    left: 50%;
+    margin: -10em 0 0 -10em;
+    opacity: 0;
+    pointer-events: none;
+    position: fixed;
+    top: 50%;
+    transition: opacity .4s;
+    z-index: 9;
+
+    &.wiping-in {
+      opacity: 1;
+      transition-delay: .4s;
+    }
+
+    .loader-logo {
+      position: absolute;
+      margin: 111px 0 0 84px;
+      width: 150px;
+      z-index: 10;
+    }
+
+    .spinner {
+      border-radius: 50%;
+      color: #4a525b;
+      margin: 0 auto;
+      position: relative;
+      width: 20em;
+      height: 20em;
+      box-shadow: inset 0 0 0 .2em;
+      transform: translateZ(0);
+
+      &:before,
+      &:after {
+        border-radius: 50%;
+        content: ' ';
+        position: absolute;
+      }
+
+      &:before {
+        width: 10.4em;
+        height: 20.4em;
+        background: $dark-neutral;
+        border-radius: 20.4em 0 0 20.4em;
+        top: -0.2em;
+        left: -0.2em;
+        transform-origin: 10.2em 10.2em;
+        animation: loader 2s infinite ease 1.5s;
+      }
+
+      &:after {
+        width: 10.4em;
+        height: 20.4em;
+        background: $dark-neutral;
+        border-radius: 0 20.4em 20.4em 0;
+        top: -0.2em;
+        left: 9.8em;
+        transform-origin: 0.2em 10.2em;
+        animation: loader 2s infinite ease;
+      }
+    }
+
+    &.light-neutral {
+      .spinner {
+        &:before,
+        &:after {
+          background: $light-neutral;
+        }
+      }
+    }
+
+    &.mini {
+      margin: -2.5em 0 0 -2.5em;
+
+      .loader-logo {
+        display: none;
+      }
+
+      .spinner {
+        width: 5em;
+        height: 5em;
+
+        &:before {
+          width: 2.6em;
+          height: 5.1em;
+          border-radius: 5.1em 0 0 5.1em;
+          top: -0.05em;
+          left: -0.05em;
+          transform-origin: 2.55em 2.55em;
+        }
+
+        &:after {
+          width: 2.6em;
+          height: 5.1em;
+          border-radius: 0 5.1em 5.1em 0;
+          top: -0.05em;
+          left: 2.45em;
+          transform-origin: 0.05em 2.55em;
+        }
+      }
+    }
+  }
+
+  @keyframes loader {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
     }
   }
 

@@ -1,5 +1,8 @@
 <template>
-  <div class="grid-container full">
+  <div
+    ref="page"
+    class="grid-container full"
+  >
     <div class="pb-large foreground dark-neutral">
       <NavBar tintClass="dark" />
 
@@ -19,6 +22,7 @@
 </template>
 
 <script>
+  import imagesLoaded from 'imagesloaded'
   import NavBar from '@/components/NavBar.vue'
 
   export default {
@@ -26,6 +30,12 @@
 
     components: {
       NavBar
+    },
+
+    mounted() {
+      imagesLoaded(this.$refs.page, () => {
+        this.$emit('update:loading', false)
+      })
     }
   }
 </script>

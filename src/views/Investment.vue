@@ -1,5 +1,8 @@
 <template>
-  <div class="grid-container full">
+  <div
+    ref="page"
+    class="grid-container full"
+  >
     <div class="pb-large-large-only foreground dark-neutral">
       <NavBar
         tintClass="dark"
@@ -205,6 +208,7 @@
 
 <script>
   import axios from 'axios'
+  import imagesLoaded from 'imagesloaded'
   import ClipPathBox from '@/components/ClipPathBox.vue'
   import NavBar from '@/components/NavBar.vue'
   import FileInput from '@/components/FileInput.vue'
@@ -306,6 +310,12 @@
             }
           })
       }
+    },
+
+    mounted() {
+      imagesLoaded(this.$refs.page, () => {
+        this.$emit('update:loading', false)
+      })
     }
   }
 </script>
