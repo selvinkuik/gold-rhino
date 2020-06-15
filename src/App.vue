@@ -271,7 +271,7 @@
             } else {
               ScrollLock.enable()
             }
-          }, 800)
+          }, this.menuOpen ? 800 : 0) // Delay on close to allow the wipe animation to run first
 
           setTimeout(() => {
             this.menuAnimating = false // Prevent double-clicking for the duration of the animation
@@ -312,7 +312,7 @@
         if (from.name) { // No name indicates first load
           this.miniLoader = true
           this.wipeAnimatingIn = true
-          this.wipeColor = this.menuOpen ? 'gold' : from.meta.color
+          this.wipeColor = this.menuOpen ? 'light-neutral' : from.meta.color
           this.wipeStatus = 'wiping-in ' + this.wipeColor
         }
       },
@@ -354,9 +354,9 @@
       }
     }
 
-    &.gold {
+    &.dark-neutral {
       .fill {
-        fill: $gold;
+        fill: $dark-neutral;
       }
     }
 
@@ -462,11 +462,11 @@
       }
     }
 
-    &.gold {
+    &.dark-neutral {
       .spinner {
         &:before,
         &:after {
-          background: $gold;
+          background: $dark-neutral;
         }
       }
     }

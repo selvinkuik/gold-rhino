@@ -22,7 +22,15 @@
     
     props: {
       overlapAndFade: Boolean,
-      src: String
+      scale: {
+        type: Number,
+        default: 1.2
+      },
+      src: String,
+      y: {
+        type: Number,
+        default: 50
+      }
     },
 
     mounted() {
@@ -34,8 +42,8 @@
             duration: '200%'
           })
             .setTween(new TimelineMax().add([
-              TweenMax.to(this.$refs.imageParallax, 1, { scale: 1.2 }),
-              TweenMax.to(this.$refs.imageMask, 1, { yPercent: 50 })
+              TweenMax.to(this.$refs.imageParallax, 1, { scale: this.scale }),
+              TweenMax.to(this.$refs.imageMask, 1, { yPercent: this.y })
             ]))
         )
       })

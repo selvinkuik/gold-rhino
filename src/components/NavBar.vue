@@ -1,6 +1,9 @@
 <template>
   <div :class="{ 'clip-area': !open, 'menu-open': open }">
-    <div class="nav-bar">
+    <div
+      class="nav-bar"
+      :class="{ 'scrolling-down': scrollingDown }"
+    >
       <div
         class="tint"
         :class="tintClass"
@@ -48,6 +51,8 @@
 </template>
 
 <script>
+  import throttle from 'lodash/throttle'
+
   export default {
     name: 'NavBar',
 
@@ -60,8 +65,26 @@
 
     data() {
       return {
-        holdingMode: process.env.VUE_APP_HOLDING_MODE == 'true'
+        holdingMode: process.env.VUE_APP_HOLDING_MODE == 'true',
+        lastScrollY: 0,
+        scrollingDown: false
       }
+    },
+
+    methods: {
+      handleScroll() {
+        this.scrollingDown = window.scrollY > this.lastScrollY
+        this.lastScrollY = window.scrollY
+      }
+    },
+
+    created() {
+      this.handleDebouncedScroll = throttle(this.handleScroll, 100)
+      window.addEventListener('scroll', this.handleDebouncedScroll)
+    },
+
+    beforeDestroy() {
+      window.removeEventListener('scroll', this.handleDebouncedScroll)
     }
   }
 </script>
@@ -80,8 +103,13 @@
     pointer-events: none;
     position: fixed;
     top: 0;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
     width: 100%;
     z-index: 3;
+
+    &.scrolling-down {
+      transform: translateY(-80px);
+    }
 
     .logo {
       display: inline-block;

@@ -9,7 +9,7 @@ const routes = [
   {
     component: Home,
     meta: {
-      color: 'light-neutral',
+      color: 'dark-neutral',
       title: 'Gold Rhino'
     },
     name: 'Home',
@@ -20,7 +20,7 @@ const routes = [
     component: () => import('@/views/AboutUs.vue'),
     image: 'hover-about-us.jpg',
     meta: {
-      color: 'light-neutral',
+      color: 'dark-neutral',
       title: 'About us | Gold Rhino'
     },
     name: 'About us',
@@ -32,7 +32,7 @@ const routes = [
     component: () => import('@/views/RhinoLabs.vue'),
     image: 'hover-rhino-labs.jpg',
     meta: {
-      color: 'dark-neutral',
+      color: 'light-neutral',
       title: 'Rhino Labs | Gold Rhino'
     },
     name: 'Rhino Labs',
@@ -44,7 +44,7 @@ const routes = [
     component: () => import('@/views/Investment.vue'),
     image: 'hover-investment.jpg',
     meta: {
-      color: 'dark-neutral',
+      color: 'light-neutral',
       title: 'Investment | Gold Rhino'
     },
     name: 'Investment',
@@ -64,7 +64,7 @@ const routes = [
     component: () => import('@/views/WhoWeAre.vue'),
     image: 'hover-who-we-are.jpg',
     meta: {
-      color: 'dark-neutral',
+      color: 'light-neutral',
       title: 'Who we are | Gold Rhino'
     },
     name: 'Who we are',
@@ -76,7 +76,7 @@ const routes = [
     component: () => import('@/views/OurVision.vue'),
     image: 'hover-our-vision.jpg',
     meta: {
-      color: 'light-neutral',
+      color: 'dark-neutral',
       title: 'Our vision | Gold Rhino'
     },
     name: 'Our vision',
@@ -88,7 +88,7 @@ const routes = [
     component: () => import('@/views/SupportTheRhino.vue'),
     image: 'hover-support-the-rhino.jpg',
     meta: {
-      color: 'light-neutral',
+      color: 'dark-neutral',
       title: 'Support the rhino | Gold Rhino'
     },
     name: 'Support the rhino',

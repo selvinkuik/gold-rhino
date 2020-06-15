@@ -126,6 +126,15 @@
       align-items: center;
       display: flex;
     }
+
+    img {
+      transform: scale(.95);
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+
+      &:hover {
+        transform: scale(1);
+      }
+    }
   }
 
   .rhino {

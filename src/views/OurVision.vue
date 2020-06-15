@@ -23,7 +23,9 @@
         <div class="cell small-5 small-offset-1 large-3 large-offset-1 intro-image">
           <ParallaxImage
             :overlapAndFade="true"
+            :scale="this.$screen.large ? 1 : 1.2"
             src="our-vision-1.jpg"
+            :y="this.$screen.large ? 0 : 50"
           />
         </div>
       </div>
@@ -116,9 +118,22 @@
 
   .intro-image {
     margin-top: -20%;
+
+    @include breakpoint(large) {
+      margin-top: -10%;
+    }
   }
 
   .logos {
     padding-top: 31%;
+
+    img {
+      transform: scale(.95);
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+
+      &:hover {
+        transform: scale(1);
+      }
+    }
   }
 </style>
