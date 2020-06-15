@@ -40,11 +40,14 @@
               <div class="description">{{ item.description }}</div>
             </div>
 
-            <img
-              class="image"
-              :class="`image-hover-${index}`"
-              :src="require('@/assets/images/' + item.image)"
-            />
+            <div class="image-opacity-limiter">
+              <img
+                class="image"
+                :class="`image-hover-${index}`"
+                ref="routerImages"
+                :src="require('@/assets/images/' + item.image)"
+              />
+            </div>
           </router-link>
         </template>
       </div>
@@ -54,6 +57,7 @@
 
 <script>
   import imagesLoaded from 'imagesloaded'
+  import { TimelineMax } from 'gsap'
   import Banner from '@/components/Banner.vue'
   import BannerOverlay from '@/components/BannerOverlay.vue'
   import NavBar from '@/components/NavBar.vue'
@@ -76,9 +80,34 @@
     },
 
     mounted() {
+      console.log(this.$refs.page.querySelectorAll('img'))
+
       imagesLoaded(this.$refs.page, () => {
+        if (!this.$screen.large) {
+          this.$refs.routerImages.forEach(element => {
+            this.$scrollmagic.addScene(
+              this.$scrollmagic.scene({
+                offset: -400,
+                triggerElement: element,
+                triggerHook: 0,
+                duration: '20%'
+              })
+                .setTween(new TimelineMax()
+                  .from(element, 1, { opacity: 0 })
+                  .to(element, 1, { opacity: 0, delay: 2 })
+                )
+            )
+          })
+        }
+
         this.$emit('update:loading', false)
+
+        console.log('BOOM!')
       })
+        .on('progress', (instance, image) => {
+          var result = image.isLoaded ? 'loaded' : 'broken'
+          console.log( 'image is ' + result + ' for ' + image.img.src )
+        })
     }
   }
 </script>
@@ -122,12 +151,22 @@
       transition: opacity .4s;
     }
 
+    .image-opacity-limiter {
+      @include breakpoint(small only) {
+        opacity: .4;
+      }
+    }
+
     .image {
-      height: 396px;
-      opacity: 0;
+      height: 216px;
       position: absolute;
       top: -23%;
-      transition: opacity .4s;
+
+      @include breakpoint(large) {
+        height: 396px;
+        opacity: 0;
+        transition: opacity .4s;
+      }
 
       &.image-hover-1 {
         right: 14.8%;
