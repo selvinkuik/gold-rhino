@@ -108,7 +108,9 @@
     z-index: 3;
 
     &.scrolling-down {
-      transform: translateY(-80px);
+      @include breakpoint(small only) {
+        transform: translateY(-80px);
+      }
     }
 
     .logo {
