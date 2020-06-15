@@ -32,10 +32,21 @@
       NavBar
     },
 
+    data() {
+      return {
+        imageLoadCounter: 0
+      }
+    },
+
     mounted() {
       imagesLoaded(this.$refs.page, () => {
-        this.$emit('update:loading', false)
+        this.$emit('update:progress', 1)
       })
+        .on('progress', () => {
+          this.imageLoadCounter++
+
+          this.$emit('update:progress', this.imageLoadCounter / this.$refs.page.querySelectorAll('img').length)
+        })
     }
   }
 </script>

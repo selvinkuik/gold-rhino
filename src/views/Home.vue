@@ -75,13 +75,12 @@
 
     data() {
       return {
-        holdingMode: process.env.VUE_APP_HOLDING_MODE == 'true'
+        holdingMode: process.env.VUE_APP_HOLDING_MODE == 'true',
+        imageLoadCounter: 0
       }
     },
 
     mounted() {
-      console.log(this.$refs.page.querySelectorAll('img'))
-
       imagesLoaded(this.$refs.page, () => {
         if (!this.$screen.large) {
           this.$refs.routerImages.forEach(element => {
@@ -100,13 +99,12 @@
           })
         }
 
-        this.$emit('update:loading', false)
-
-        console.log('BOOM!')
+        this.$emit('update:progress', 1)
       })
-        .on('progress', (instance, image) => {
-          var result = image.isLoaded ? 'loaded' : 'broken'
-          console.log( 'image is ' + result + ' for ' + image.img.src )
+        .on('progress', () => {
+          this.imageLoadCounter++
+
+          this.$emit('update:progress', this.imageLoadCounter / this.$refs.page.querySelectorAll('img').length)
         })
     }
   }

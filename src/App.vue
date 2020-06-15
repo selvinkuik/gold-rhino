@@ -55,7 +55,12 @@
 
     <div :class="['loader', wipeStatus, miniLoader ? 'mini' : '']">
       <img class="loader-logo" src="@/assets/images/gold-rhino.svg" />
-      <div class="spinner"></div>
+
+      <ProgressRing
+        :radius="miniLoader ? 60 : 160"
+        :progress="progress"
+        :stroke="4"
+      />
     </div>
 
     <div
@@ -144,7 +149,7 @@
       ref="app"
     >
       <transition mode="out-in">
-        <router-view :loading.sync="loading" />
+        <router-view :progress.sync="progress" />
       </transition>
     </div>
     
@@ -236,12 +241,13 @@
   import { TweenMax } from 'gsap'
   import ScrollLock from '@/utils/ScrollLock'
   import NavBar from '@/components/NavBar.vue'
+  import ProgressRing from '@/components/ProgressRing'
 
   export default {
     data() {
       return {
         holdingMode: process.env.VUE_APP_HOLDING_MODE == 'true',
-        loading: true,
+        progress: .5,
         miniLoader: false,
         menuAnimating: false,
         menuOverflowing: false,
@@ -253,7 +259,8 @@
     },
 
     components: {
-      NavBar
+      NavBar,
+      ProgressRing
     },
 
     methods: {
@@ -295,7 +302,7 @@
       this.$refs.circleIn.addEventListener('transitionend', () => {
         this.wipeAnimatingIn = false
 
-        if (!this.loading) {
+        if (this.progress == 1) {
           this.wipeStatus = 'wiping-out ' + this.wipeColor
 
           window.scrollTo(0, 0)
@@ -304,6 +311,8 @@
 
       this.$refs.circleOut.addEventListener('transitionend', () => {
         this.wipeStatus = ''
+
+        this.progress = 0
       })
     },
 
@@ -317,8 +326,8 @@
         }
       },
 
-      loading: function(val) {
-        if (!val && !this.wipeAnimatingIn) {
+      progress: function(val) {
+        if (val == 1 && !this.wipeAnimatingIn) {
           this.wipeStatus = 'wiping-out ' + this.wipeColor
 
           window.scrollTo(0, 0)
@@ -413,92 +422,11 @@
       z-index: 10;
     }
 
-    .spinner {
-      border-radius: 50%;
-      color: #4a525b;
-      margin: 0 auto;
-      position: relative;
-      width: 20em;
-      height: 20em;
-      box-shadow: inset 0 0 0 .2em;
-      transform: translateZ(0);
-
-      &:before,
-      &:after {
-        border-radius: 50%;
-        content: ' ';
-        position: absolute;
-      }
-
-      &:before {
-        width: 10.4em;
-        height: 20.4em;
-        background: $dark-neutral;
-        border-radius: 20.4em 0 0 20.4em;
-        top: -0.2em;
-        left: -0.2em;
-        transform-origin: 10.2em 10.2em;
-        animation: loader 2s infinite ease 1.5s;
-      }
-
-      &:after {
-        width: 10.4em;
-        height: 20.4em;
-        background: $dark-neutral;
-        border-radius: 0 20.4em 20.4em 0;
-        top: -0.2em;
-        left: 9.8em;
-        transform-origin: 0.2em 10.2em;
-        animation: loader 2s infinite ease;
-      }
-    }
-
-    &.light-neutral {
-      .spinner {
-        &:before,
-        &:after {
-          background: $light-neutral;
-        }
-      }
-    }
-
-    &.dark-neutral {
-      .spinner {
-        &:before,
-        &:after {
-          background: $dark-neutral;
-        }
-      }
-    }
-
     &.mini {
-      margin: -2.5em 0 0 -2.5em;
+      margin: -3.6em 0 0 -3.6em;
 
       .loader-logo {
         display: none;
-      }
-
-      .spinner {
-        width: 5em;
-        height: 5em;
-
-        &:before {
-          width: 2.6em;
-          height: 5.1em;
-          border-radius: 5.1em 0 0 5.1em;
-          top: -0.05em;
-          left: -0.05em;
-          transform-origin: 2.55em 2.55em;
-        }
-
-        &:after {
-          width: 2.6em;
-          height: 5.1em;
-          border-radius: 0 5.1em 5.1em 0;
-          top: -0.05em;
-          left: 2.45em;
-          transform-origin: 0.05em 2.55em;
-        }
       }
     }
   }
