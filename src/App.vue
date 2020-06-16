@@ -106,7 +106,7 @@
               >
                 <router-link
                   :to="item.path"
-                  @click.native="toggleMenu"
+                  @click.native="toggleMenu(true)"
                 >
                   {{ item.name }}
                 </router-link>
@@ -264,7 +264,7 @@
     },
 
     methods: {
-      toggleMenu() {
+      toggleMenu(waitForWipe) {
         if (!this.menuAnimating) {
           this.menuAnimating = true
 
@@ -278,7 +278,7 @@
             } else {
               ScrollLock.enable()
             }
-          }, this.menuOpen ? 800 : 0) // Delay on close to allow the wipe animation to run first
+          }, waitForWipe === true ? 800 : 0) // Delay on close to allow the wipe animation to run first
 
           setTimeout(() => {
             this.menuAnimating = false // Prevent double-clicking for the duration of the animation
