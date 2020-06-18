@@ -5,7 +5,7 @@
   >
     <div class="foreground dark-neutral pb-large-large-only">
       <NavBar
-        tintClass="dark"
+        :tintClass="pageHasScrolled ? 'dark' : ''"
         :showRouteLabel="true"
       />
 
@@ -104,6 +104,7 @@
 
 <script>
   import imagesLoaded from 'imagesloaded'
+  import throttle from 'lodash/throttle'
   import { TimelineMax, TweenMax } from 'gsap'
   import ClipPathBox from '@/components/ClipPathBox.vue'
   import NavBar from '@/components/NavBar.vue'
@@ -122,8 +123,24 @@
 
     data() {
       return {
-        imageLoadCounter: 0
+        imageLoadCounter: 0,
+        pageHasScrolled: false
       }
+    },
+
+    methods: {
+      handleScroll() {
+        this.pageHasScrolled = window.scrollY > 100
+      }
+    },
+
+    created() {
+      this.handleDebouncedScroll = throttle(this.handleScroll, 100)
+      window.addEventListener('scroll', this.handleDebouncedScroll)
+    },
+
+    beforeDestroy() {
+      window.removeEventListener('scroll', this.handleDebouncedScroll)
     },
 
     mounted() {

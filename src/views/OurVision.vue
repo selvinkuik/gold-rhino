@@ -11,7 +11,7 @@
 
     <div class="pb-large-large-only foreground white">
       <NavBar
-        tintClass="dark"
+        tintClass="light"
         :showRouteLabel="true"
       />
 

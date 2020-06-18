@@ -32,7 +32,7 @@ const routes = [
     component: () => import('@/views/RhinoLabs.vue'),
     image: 'hover-rhino-labs.jpg',
     meta: {
-      color: 'light-neutral',
+      color: 'dark-neutral',
       title: 'Rhino Labs | Gold Rhino'
     },
     name: 'Rhino Labs',

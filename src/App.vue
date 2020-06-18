@@ -265,7 +265,7 @@
 
     methods: {
       toggleMenu(waitForWipe) {
-        if (!this.menuAnimating) {
+        if (!this.menuAnimating || waitForWipe === true) {
           this.menuAnimating = true
 
           setTimeout(() => {
@@ -481,7 +481,7 @@
     &.open {
       background-color: $gold;
       transform: scale(75);
-      transition: background-color 0.4s, border 0.4s, transform 6s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: background-color 0.4s, border 0.4s, transform 1.8s cubic-bezier(0.22, 1, 0.36, 1);
 
       @include breakpoint(large) {
         transition: background-color 0.4s, border 0.4s, transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);

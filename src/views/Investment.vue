@@ -5,7 +5,7 @@
   >
     <div class="pb-large-large-only foreground dark-neutral">
       <NavBar
-        tintClass="dark"
+        :tintClass="pageHasScrolled ? 'dark' : ''"
         :showRouteLabel="true"
       />
 
@@ -209,6 +209,7 @@
 <script>
   import axios from 'axios'
   import imagesLoaded from 'imagesloaded'
+  import throttle from 'lodash/throttle'
   import ClipPathBox from '@/components/ClipPathBox.vue'
   import NavBar from '@/components/NavBar.vue'
   import FileInput from '@/components/FileInput.vue'
@@ -233,6 +234,7 @@
     data() {
       return {
         imageLoadCounter: 0,
+        pageHasScrolled: false,
         scrollPosition: 1,
         firstName: '',
         lastName: '',
@@ -310,7 +312,20 @@
               this.$router.push('/investment/thank-you')
             }
           })
+      },
+
+      handleScroll() {
+        this.pageHasScrolled = window.scrollY > 100
       }
+    },
+
+    created() {
+      this.handleDebouncedScroll = throttle(this.handleScroll, 100)
+      window.addEventListener('scroll', this.handleDebouncedScroll)
+    },
+
+    beforeDestroy() {
+      window.removeEventListener('scroll', this.handleDebouncedScroll)
     },
 
     mounted() {

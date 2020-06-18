@@ -133,6 +133,7 @@
   @include breakpoint(small only) {
     .tint {
       padding-bottom: 12px;
+      transition: background-color 0.8s;
 
       &.dark {
         background-color: rgba(11, 15, 20, .8);
