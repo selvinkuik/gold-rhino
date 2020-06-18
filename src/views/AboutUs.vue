@@ -75,7 +75,7 @@
 
       <div class="grid-x grid-margin-x">
         <div class="small-10 small-offset-1 cell large-4 large-offset-2">
-          <p class="text small-text">In addition to providing smart money (funding and advice), we also offer Accelerator Services through <router-link class="dark-link" to="/rhino-labs">RhinoLabs</router-link> where we bring trusted third-party partners into the mix to co-assist the companies we invest in to create a better first impression, develop distinct branding, and build out a cohesive strategy and plan.</p>
+          <p class="text small-text">In addition to providing smart money (funding and advice), we also offer Accelerator Services through <router-link class="dark-link" to="/rhino-labs">Rhino Labs</router-link> where we bring trusted third-party partners into the mix to co-assist the companies we invest in to create a better first impression, develop distinct branding, and build out a cohesive strategy and plan.</p>
         </div>
 
         <div class="small-10 small-offset-1 cell large-4 large-offset-0">

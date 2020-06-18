@@ -9,7 +9,7 @@
     />
 
     <BannerOverlay src="rhino-labs.svg">
-      At Rhino Labs we offer a commitment to financially support you and offer an Accelerator programme to help you achieve your business goals.
+      At Rhino Labs we offer a commitment to financially support you and offer an Accelerator program to help you achieve your business goals.
     </BannerOverlay>
 
     <div
