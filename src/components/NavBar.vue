@@ -19,6 +19,11 @@
           />
 
           <img
+            v-else-if="color == 'inverted'"
+            src="@/assets/images/gold-rhino-inverted.svg"
+          />
+
+          <img
             v-else
             src="@/assets/images/gold-rhino.svg"
           />

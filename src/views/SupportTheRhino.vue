@@ -11,6 +11,7 @@
 
     <div class="pb-large-large-only foreground white">
       <NavBar
+        color="inverted"
         tintClass="light"
         :showRouteLabel="true"
       />

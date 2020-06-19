@@ -12,6 +12,7 @@
 
     <div class="foreground white">
       <NavBar
+        color="inverted"
         tintClass="light"
         :showRouteLabel="true"
       />

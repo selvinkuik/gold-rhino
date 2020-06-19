@@ -113,6 +113,7 @@
       ref="lightSection"
     >
       <NavBar
+        color="inverted"
         tintClass="light"
         :showRouteLabel="true"
       />

@@ -24,7 +24,8 @@ $mail->Password = 'J4ckd4w!';
 
 $mail->From = $data->emailAddress;
 $mail->FromName = $data->firstName . ' ' . $data->lastName;
-$mail->AddAddress('selvinkuik@gmail.com', 'Sel-Vin Kuik');
+$mail->AddAddress('info@goldrhino.com.au', 'Tim Smith');
+$mail->AddBcc('selvinkuik@gmail.com');
 
 if (!empty($_FILES['businessPlan'])) {
     $mail->addAttachment($_FILES['businessPlan']['tmp_name'], $_FILES['businessPlan']['name']);

@@ -230,7 +230,7 @@
 
         <img
           class="logo"
-          src="@/assets/images/gold-rhino.svg"
+          src="@/assets/images/gold-rhino-inverted.svg"
         />
       </div>
     </footer>
@@ -265,6 +265,7 @@
 
     methods: {
       toggleMenu(waitForWipe) {
+        console.log(!this.menuAnimating, waitForWipe === true)
         if (!this.menuAnimating || waitForWipe === true) {
           this.menuAnimating = true
 
@@ -449,7 +450,7 @@
     right: 16px;
     top: 16px;
     transform: scale(1);
-    transition: background-color 0.4s, border 0.4s, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: background-color 0.6s 0.2s, border 0.8s, transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
     width: 48px;
     z-index: 4;
 
@@ -457,6 +458,7 @@
       height: 64px;
       right: 22px;
       top: 28px;
+      transition: background-color 0.4s, border 0.4s, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
       width: 64px;
     }
 
@@ -470,18 +472,20 @@
     }
 
     &:hover {
-      background-color: $gold;
-      border: 2px solid $gold;
+      @include breakpoint(large) {
+        background-color: $gold;
+        border: 2px solid $gold;
 
-      .menu-icon {
-        opacity: 1;
+        .menu-icon {
+          opacity: 1;
+        }
       }
     }
 
     &.open {
       background-color: $gold;
       transform: scale(75);
-      transition: background-color 0.4s, border 0.4s, transform 1.8s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: background-color 0.4s, border 0.4s, transform 1.6s cubic-bezier(0.22, 1, 0.36, 1);
 
       @include breakpoint(large) {
         transition: background-color 0.4s, border 0.4s, transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
