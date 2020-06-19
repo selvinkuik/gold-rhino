@@ -21,10 +21,10 @@
 
       <div class="grid-x">
         <div
-          class="cell small-8 large-3"
+          class="cell small-8 large-4"
           :class="slotGridClasses"
         >
-          <p><slot></slot></p>
+          <p class="slot"><slot></slot></p>
         </div>
       </div>
     </div>
@@ -85,6 +85,10 @@
       image2: String,
       layout: String,
       title: String,
+      triggerHook: {
+        type: Number,
+        default: 0.2
+      },
       scrollCounter: Number,
       scrollMax: Number
     },
@@ -144,7 +148,7 @@
         this.$scrollmagic.addScene(
           this.$scrollmagic.scene({
             triggerElement: this.$refs.pinned,
-            triggerHook: 0.2,
+            triggerHook: this.triggerHook,
             duration: parseInt(getComputedStyle(this.$refs.pinned).height) + (this.image2 ? 450 : 0) // Balances with...
           })
             .setPin(this.$refs.pinned)
@@ -178,15 +182,15 @@
 
           if (this.layout == 'layout-1') {
             tween.add([
-              TweenMax.to(this.$refs.imageMask2, 1, { yPercent: -80 })
+              TweenMax.to(this.$refs.imageMask2, 1, { yPercent: -90 })
             ], 0)
           } else if (this.layout == 'layout-2') {
             tween.add([
-              TweenMax.to(this.$refs.imageMask2, 1, { yPercent: -100 })
+              TweenMax.to(this.$refs.imageMask2, 1, { yPercent: -110 })
             ], 0)
           } else {
             tween.add([
-              TweenMax.to(this.$refs.imageMask2, 1, { yPercent: -75 })
+              TweenMax.to(this.$refs.imageMask2, 1, { yPercent: -85 })
             ], 0)
           }
         }
@@ -241,10 +245,11 @@
       }
     }
 
-    p {
+    .slot {
       color: $light-neutral;
+      font-size: 24px;
       line-height: 1.5em;
-      margin-top: 134px;
+      margin-top: 120px;
     }
 
     .images {

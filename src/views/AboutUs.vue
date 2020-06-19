@@ -165,7 +165,7 @@
     padding-top: 45.8%;
 
     .experience-image {
-      margin-top: -23%;
+      margin-top: -25%;
     }
 
     .experience-text {

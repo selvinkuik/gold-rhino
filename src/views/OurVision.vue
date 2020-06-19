@@ -21,7 +21,7 @@
           <p class="text medium-text">We want to make a direct and more active contribution to this effort by helping to increase the rhinoceros population, and so remove the real threat of their extinction.</p>
         </div>
 
-        <div class="cell small-5 small-offset-1 large-3 large-offset-1 intro-image">
+        <div class="cell small-5 small-offset-1 large-3 large-offset-1 xxlarge-2 xxlarge-offset-2 intro-image">
           <ParallaxImage
             :overlapAndFade="true"
             :scale="this.$screen.large ? 1 : 1.2"
@@ -46,13 +46,13 @@
 
       <div class="grid-x grid-margin-x mt-large">
         <div class="cell small-10 small-offset-1 large-4 large-offset-2">
-          <p class="text small-text">Gold Rhino has committed to provide funding to assist in the relocation of ten Southern White Rhinoceros as part of an <strong>Insurance Population</strong> from Thaba Manzi Wildlife Sanctuary (South Africa) to open plain facilities in Australia and New Zealand.</p>
-          <p class="text small-text">This is the first phase of plans to relocate a further twenty White Rhinos from South Africa, and further propagate the species in a safe haven outside of Africa.</p>
-          <p class="text small-text">Many of these rhinos will make Monarto Safari Park in South Australia, one of the world’s largest open range safari parks outside of Africa, their home. We have also contributed to the funding to construct a quarantine rhino management facility at Orana Wildlife Park (Christchurch, New Zealand), where the White Rhinos are required to be quarantined for a period of time.</p>
+          <p class="text small-text">Gold Rhino has committed to provide funding to assist in the relocation of ten Southern White Rhinoceros as part of an <strong>Insurance Population</strong> from Thaba Manzi Wildlife Sanctuary (South Africa), to open plain facilities in Australia and New Zealand.</p>
+          <p class="text small-text">This is the first phase of a plan to relocate a further twenty White Rhinos from South Africa, and further propagate the species to a safe haven outside of Africa.</p>
+          <p class="text small-text">Many of these rhinos will be taken to Monarto Safari Park in South Australia, one of the world’s largest open range safari parks outside of their African home. We have also contributed to the funding to construct a quarantine rhino management facility at Orana Wildlife Park (Christchurch, New Zealand), where the White Rhinos are required to be quarantined for a period of time.</p>
         </div>
 
         <div class="cell small-10 small-offset-1 large-4 large-offset-0">
-          <p class="text small-text">In addition, Gold Rhino is contributing directly to the Zoos South Australia’s Black Rhino project to expand the Black Rhino facility at Monarto Safari Park with the longer term objective to establish a breeding population of Black Rhinos (which are even more endangered than White Rhinos). This initiative will help facilitate the future possibility of relocating female Southern Black Rhinoceroses to Monarto Safari Park.</p>
+          <p class="text small-text">In addition, Gold Rhino is contributing directly to Zoos SA’s Black Rhino Project to expand the Black Rhino facility at Monarto Safari Park. The longer term objective is to establish a breeding population of Black Rhinos, which are even more endangered than White Rhinos. This initiative will help facilitate the future possibility of relocating the female Southern Black Rhino to Monarto Safari Park.</p>
           <p class="text small-text">At the same time as assisting TARP and Zoos SA, Gold Rhino will work with global media outlets to drive education in an effort to reduce Asian demand for rhinoceros horn.</p>
 
           <div class="grid-x grid-margin-x logos">
@@ -132,7 +132,7 @@
     margin-top: -20%;
 
     @include breakpoint(large) {
-      margin-top: -10%;
+      margin-top: -12.5%;
     }
   }
 
@@ -140,10 +140,12 @@
     padding-top: 31%;
 
     img {
+      filter: grayscale(100%);
       transform: scale(.95);
-      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      transition: filter 0.4s, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 
       &:hover {
+        filter: grayscale(0%);
         transform: scale(1);
       }
     }

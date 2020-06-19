@@ -31,6 +31,7 @@
         image1="hardhat.jpg"
         layout="layout-4"
         title="HardHat"
+        :triggerHook="0.08"
       >
         HardHat is an enterprise project collaboration solution built on the Salesforce Customer 360 platform, specifically for the Resources (Mining, Oil & Gas), Engineering & Construction, Architecture & Design sectors.<br>
         OnePlace, also built on the Salesforce platform, is a client lifecycle management solution for the professional services industry.
