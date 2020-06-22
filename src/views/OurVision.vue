@@ -3,7 +3,10 @@
     ref="page"
     class="grid-container full"
   >
-    <Banner src="our-vision-banner.jpg" />
+  <Banner
+      src="/videos/our-vision.mp4"
+      :video="true"
+    />
 
     <BannerOverlay>
       Our ultimate vision is to further support the protection and growth of the South African rhinoceros population.

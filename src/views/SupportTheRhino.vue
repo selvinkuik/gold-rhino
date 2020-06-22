@@ -3,7 +3,10 @@
     ref="page"
     class="grid-container full"
   >
-    <Banner src="support-the-rhino-banner.jpg" />
+  <Banner
+      src="/videos/support-the-rhino.mp4"
+      :video="true"
+    />
 
     <BannerOverlay>
       The Southern White and Black African rhinoceroses are truly two of the most beautiful and rarest of animals facing a real threat of extinction. 
