@@ -232,7 +232,7 @@
     margin: -90% 0 70%;
 
     @include breakpoint(large) {
-      margin: -70% 0 0;
+      margin: -90% 0 0;
     }
   }
 

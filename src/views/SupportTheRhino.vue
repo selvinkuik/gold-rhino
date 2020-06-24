@@ -8,7 +8,7 @@
       :video="true"
     />
 
-    <BannerOverlay h1="SUPPORT THE RHINO">
+    <BannerOverlay>
       The Southern White and Black African rhinoceroses are truly two of the most beautiful and rarest of animals facing a real threat of extinction. 
     </BannerOverlay>
 

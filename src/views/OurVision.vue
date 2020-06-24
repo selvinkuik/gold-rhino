@@ -8,7 +8,7 @@
       :video="true"
     />
 
-    <BannerOverlay h1="OUR VISION">
+    <BannerOverlay>
       Our ultimate vision is to further support the protection and growth of the South African rhinoceros population.
     </BannerOverlay>
 

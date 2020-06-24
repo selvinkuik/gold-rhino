@@ -122,7 +122,7 @@
         if (this.layout == 'layout-1') {
           return 'small-5 small-offset-7 large-2 large-offset-9'
         } else if (this.layout == 'layout-2') {
-          return 'small-8 small-offset-4 large-5 large-offset-6'
+          return 'small-8 small-offset-4 large-4 large-offset-7'
         } else if (this.layout == 'layout-3') {
           return 'small-5 small-offset-7 large-2 large-offset-8'
         } else if (this.layout == 'layout-4') {
@@ -277,7 +277,7 @@
       }
 
       .image-2 {
-        padding-top: 400%;
+        padding-top: 100%;
       }
 
       @include breakpoint(small only) {
