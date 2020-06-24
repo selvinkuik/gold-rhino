@@ -29,12 +29,11 @@
             :overlapAndFade="true"
             :scale="this.$screen.large ? 1 : 1.2"
             src="our-vision-1.jpg"
-            :y="this.$screen.large ? 0 : 50"
           />
         </div>
       </div>
 
-      <div class="grid-x grid-margin-x mt-small mb-large">
+      <div class="grid-x grid-margin-x mt-large mb-large">
         <div class="cell small-10 small-offset-1 large-4 large-offset-2">
           <p class="text small-text">By choosing to work with Gold Rhino, you are having a direct impact in assisting the fight to save the Southern White and Black African rhinoceros. Gold Rhino is committed to supporting a range of initiatives that help the global efforts to protect the rhino for future generations.</p>
           <p class="text small-text">The foundations and organisations that directly assist South African wildlife parks and African-based rhinoceros are carrying out incredible work to protect this species. Gold Rhino also understands that we need to actively grow rhinoceros insurance populations outside of Africa, if this majestic animal is to survive.</p>
@@ -45,7 +44,11 @@
         </div>
       </div>
 
-      <ParallaxImageWithBorder src="our-vision-2.jpg" />
+      <div class="grid-x birds">
+        <div class="cell small-10 small-offset-1 large-8 large-offset-2">
+          <ParallaxImage src="our-vision-2.jpg" />
+        </div>
+      </div>
 
       <div class="grid-x grid-margin-x mt-large">
         <div class="cell small-10 small-offset-1 large-4 large-offset-2">
@@ -91,7 +94,6 @@
   import ClipPathBox from '@/components/ClipPathBox.vue'
   import NavBar from '@/components/NavBar.vue'
   import ParallaxImage from '@/components/ParallaxImage.vue'
-  import ParallaxImageWithBorder from '@/components/ParallaxImageWithBorder.vue'
 
   export default {
     name: 'OurVision',
@@ -101,8 +103,7 @@
       BannerOverlay,
       ClipPathBox,
       NavBar,
-      ParallaxImage,
-      ParallaxImageWithBorder
+      ParallaxImage
     },
 
     data() {
@@ -135,7 +136,7 @@
     margin-top: -20%;
 
     @include breakpoint(large) {
-      margin-top: -12.5%;
+      margin-top: -15%;
     }
   }
 
@@ -152,5 +153,10 @@
         transform: scale(1);
       }
     }
+  }
+
+  .birds {
+    margin-top: -15%;
+    padding-bottom: 10%;
   }
 </style>
