@@ -4,7 +4,7 @@
     class="grid-container full"
   >
   <Banner
-      src="/videos/our-vision-not-optimised.mp4"
+      src="/videos/our-vision.mp4"
       :video="true"
     />
 

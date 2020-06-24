@@ -4,7 +4,7 @@
     class="grid-container full"
   >
   <Banner
-      src="/videos/support-the-rhino-not-optimised.mp4"
+      src="/videos/support-the-rhino.mp4"
       :video="true"
     />
 
