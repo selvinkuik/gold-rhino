@@ -54,7 +54,17 @@
     </div>
 
     <div :class="['loader', wipeStatus, miniLoader ? 'mini' : '']">
-      <img class="loader-logo" src="@/assets/images/gold-rhino.svg" />
+      <img
+        v-if="miniLoader"
+        class="loader-logo"
+        :src="wipeColor == 'dark-neutral' ? require('@/assets/images/gold-rhino-only.svg') : require('@/assets/images/gold-rhino-inverted-only.svg')"
+      />
+
+      <img
+        v-else
+        class="loader-logo"
+        :src="wipeColor == 'dark-neutral' ? require('@/assets/images/gold-rhino.svg') : require('@/assets/images/gold-rhino-inverted.svg')"
+      />
 
       <ProgressRing
         :radius="miniLoader ? 60 : 160"
@@ -426,7 +436,8 @@
       margin: -3.6em 0 0 -3.6em;
 
       .loader-logo {
-        display: none;
+        margin: 45px 0 0 29px;
+        width: 60px;
       }
     }
   }
