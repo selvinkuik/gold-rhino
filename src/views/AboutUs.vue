@@ -141,7 +141,7 @@
 
 <style lang="scss" scoped>
   .intro-image {
-    margin-top: -18%;
+    margin-top: -15%;
   }
 
   .intro-1 {

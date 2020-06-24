@@ -466,7 +466,7 @@
 
     .menu-icon {
       opacity: 0;
-      transition: opacity 0.4s;
+      transition: opacity 0.2s;
     }
 
     .menu-line {

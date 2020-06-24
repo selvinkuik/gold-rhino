@@ -20,14 +20,10 @@
           :src="require('@/assets/images/' + src)"
         />
 
-        <h1
-          v-if="h1"
-          class="title"
+        <p
+          v-if="$slots.default"
+          class="intro"
         >
-          {{ h1 }}
-        </h1>
-
-        <p class="intro">
           <slot></slot>
         </p>
       </div>
@@ -113,17 +109,6 @@
     &.tint {
       background-color: rgba(0, 0, 0, .35);
     }
-
-    .intro {
-      color: $light-neutral;
-      font-size: 32px;
-      line-height: 1.125em;
-      margin-top: 18%;
-
-      @include breakpoint(large) {
-        font-size: 64px;
-      }
-    }
   }
 
   .overlay-contents {
@@ -132,23 +117,24 @@
     justify-content: center;
 
     &.has-slot {
-      padding-bottom: 19.6%;
-
-      @include breakpoint(large) {
-        display: block;
+      .title {
+        margin: 40% auto 0;
       }
     }
 
-    .title {
+    .intro {
       color: $light-neutral;
-      font: 25px Termina;
-      letter-spacing: 13.5px;
-      margin: 40% auto 0;
-      text-align: center;
+      font-size: 32px;
+      line-height: 1.125em;
 
       @include breakpoint(large) {
-        font-size: 48px;
+        font-size: 64px;
       }
+    }
+
+    .title + .intro {
+      margin-top: 18%;
+      padding-bottom: 19.6%;
     }
   }
 
