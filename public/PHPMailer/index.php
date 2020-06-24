@@ -24,7 +24,8 @@ $mail->Password = 'J4ckd4w!';
 
 $mail->From = $data->emailAddress;
 $mail->FromName = $data->firstName . ' ' . $data->lastName;
-$mail->AddAddress('info@goldrhino.com.au', 'Tim Smith');
+// $mail->AddAddress('info@goldrhino.com.au', 'Tim Smith');
+$mail->AddAddress('matt@vebu.co.uk', 'Matt Gardner');
 $mail->AddBcc('selvinkuik@gmail.com');
 
 if (!empty($_FILES['businessPlan'])) {

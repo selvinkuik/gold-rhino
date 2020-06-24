@@ -20,6 +20,13 @@
           :src="require('@/assets/images/' + src)"
         />
 
+        <h1
+          v-if="h1"
+          class="title"
+        >
+          {{ h1 }}
+        </h1>
+
         <p class="intro">
           <slot></slot>
         </p>
@@ -42,6 +49,7 @@
     name: 'BannerOverlay',
     
     props: {
+      h1: String,
       src: String,
       tint: Boolean
     },
@@ -129,9 +137,17 @@
       @include breakpoint(large) {
         display: block;
       }
+    }
 
-      .title {
-        margin: 40% auto 0;
+    .title {
+      color: $light-neutral;
+      font: 25px Termina;
+      letter-spacing: 13.5px;
+      margin: 40% auto 0;
+      text-align: center;
+
+      @include breakpoint(large) {
+        font-size: 48px;
       }
     }
   }

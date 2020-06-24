@@ -4,11 +4,11 @@
     class="grid-container full"
   >
   <Banner
-      src="/videos/support-the-rhino.mp4"
+      src="/videos/support-the-rhino-not-optimised.mp4"
       :video="true"
     />
 
-    <BannerOverlay>
+    <BannerOverlay h1="SUPPORT THE RHINO">
       The Southern White and Black African rhinoceroses are truly two of the most beautiful and rarest of animals facing a real threat of extinction. 
     </BannerOverlay>
 

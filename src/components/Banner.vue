@@ -68,8 +68,7 @@
       min-height: 55vw; // 100 * 9 / 16 (rounded down a bit)
       position: relative;
       transform: translateX(-50.1%); // ?
-      // width: 177.77777778vh; /* 100 * 16 / 9 */
-      width: 144vh;
+      width: 177.77777778vh; /* 100 * 16 / 9 */
     }
 
     .image {

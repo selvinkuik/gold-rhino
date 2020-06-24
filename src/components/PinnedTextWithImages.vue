@@ -145,11 +145,23 @@
 
     mounted() {
       imagesLoaded(this.$refs.images, () => {
+        let pinDuration = parseInt(getComputedStyle(this.$refs.pinned).height)
+
+        if (this.layout == 'layout-1') {
+          pinDuration /= 3
+        } else if (this.layout == 'layout-2') {
+          pinDuration /= 8
+        } else if (this.layout == 'layout-3') {
+          pinDuration /= 4
+        } else {
+          pinDuration += (this.image2 ? 450 : 0) // Balances with...
+        }
+
         this.$scrollmagic.addScene(
           this.$scrollmagic.scene({
             triggerElement: this.$refs.pinned,
             triggerHook: this.triggerHook,
-            duration: parseInt(getComputedStyle(this.$refs.pinned).height) + (this.image2 ? 450 : 0) // Balances with...
+            duration: pinDuration
           })
             .setPin(this.$refs.pinned)
             .on('enter', () => {
@@ -214,6 +226,7 @@
 
     .pinned {
       height: 100vh;
+      z-index: 2;
     }
 
     .counter {
@@ -257,7 +270,6 @@
       position: absolute;
       top: 25%; // Balances with...
       width: 100%;
-      z-index: 2;
 
       .image-mask {
         border: 1px solid transparent;
@@ -266,6 +278,16 @@
 
       .image-2 {
         padding-top: 400%;
+      }
+
+      @include breakpoint(small only) {
+        opacity: .5;
+      }
+    }
+
+    &.layout-2 {
+      .images {
+        top: 50%;
       }
     }
   }

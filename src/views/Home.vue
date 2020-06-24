@@ -196,7 +196,7 @@
 
           .description,
           .image {
-            opacity: 1;
+            opacity: .5;
           }
         }
       }

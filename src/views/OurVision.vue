@@ -4,11 +4,11 @@
     class="grid-container full"
   >
   <Banner
-      src="/videos/our-vision.mp4"
+      src="/videos/our-vision-not-optimised.mp4"
       :video="true"
     />
 
-    <BannerOverlay>
+    <BannerOverlay h1="OUR VISION">
       Our ultimate vision is to further support the protection and growth of the South African rhinoceros population.
     </BannerOverlay>
 

@@ -352,9 +352,9 @@
     z-index: 9;
 
     @include breakpoint(large) {
-      left: -100%;
+      left: -125%;
       top: -250%;
-      width: 200%;
+      width: 250%;
     }
 
     &.light-neutral {
@@ -371,9 +371,9 @@
 
     .circle-in,
     .circle-out {
-      visibility: hidden;
       position: absolute;
       top: 0;
+      visibility: hidden;
       width: 100%;
     }
 

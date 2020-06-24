@@ -49,7 +49,6 @@
 
       <PinnedTextWithImages
         image1="strategy-1.jpg"
-        image2="strategy-2.jpg"
         layout="layout-2"
         title="Strategy"
         :scrollCounter="2"
@@ -86,7 +85,6 @@
 
       <PinnedTextWithImages
         image1="gtm-1.jpg"
-        image2="gtm-2.jpg"
         layout="layout-2"
         title="Go-To-Market"
         :triggerHook="0.15"

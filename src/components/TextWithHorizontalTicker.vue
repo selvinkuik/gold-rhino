@@ -59,7 +59,7 @@
     font-size: 320px;
     font-weight: 300;
     height: 66%;
-    opacity: .05;
+    opacity: .12;
     position: absolute;
     user-select: none;
     width: 100%;
