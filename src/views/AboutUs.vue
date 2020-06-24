@@ -8,7 +8,7 @@
       :video="true"
     />
 
-    <BannerOverlay :tint="true">
+    <BannerOverlay>
       As a Private Equity firm, Gold Rhino funds and works closely with Australasian-based software development companies.
     </BannerOverlay>
 
