@@ -118,7 +118,7 @@
 
     &.has-slot {
       .title {
-        margin: 40% auto 0;
+        margin: 45vh auto 0;
       }
     }
 
@@ -135,6 +135,10 @@
     .title + .intro {
       margin-top: 18%;
       padding-bottom: 19.6%;
+
+      @include breakpoint(large) {
+        margin-top: 50vh;
+      }
     }
   }
 

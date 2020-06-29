@@ -132,7 +132,7 @@
       position: relative;
 
       @include breakpoint(large) {
-        padding-top: 37.1%;
+        padding-top: 37.04%;
       }
     }
 

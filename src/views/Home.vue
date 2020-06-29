@@ -140,7 +140,7 @@
       transition: transform .4s cubic-bezier(0.22, 1, 0.36, 1);
 
       @include breakpoint(large) {
-        font-size: 104px;
+        font-size: 96px;
       }
     }
 

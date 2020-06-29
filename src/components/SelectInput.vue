@@ -28,7 +28,7 @@
         </div>
         <OverlayScrollbarsComponent
           class="select-items"
-          :class="{ active: active }"
+          :class="{ active: active, small: items.length <= 2, medium: items.length == 3, large: items.length == 4 }"
         >
           <div
             class="item"
@@ -135,7 +135,19 @@
     padding: 10px;
     right: 0;
     top: 100%;
-    z-index: 1;
+    z-index: 2;
+
+    &.small {
+      height: 100px;
+    }
+
+    &.medium {
+      height: 140px;
+    }
+
+    &.large {
+      height: 180px;
+    }
 
     .item {
       cursor: default;

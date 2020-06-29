@@ -8,6 +8,18 @@
 
 @include foundation-xy-grid-classes;
 
+@media print, screen and (max-width: 39.99875em) {
+  .hide-for-small-only {
+    display: none !important;
+  }
+}
+
+@media screen and (max-width: 0em), screen and (min-width: 40em) {
+  .show-for-small-only {
+    display: none !important;
+  }
+}
+
 @font-face {
   font-family: Termina;
   src: url('../fonts/termina-medium.woff2') format('woff2'),
@@ -40,6 +52,22 @@
 
 .pt-small {
   padding-top: 8.4%;
+}
+
+.mb-medium {
+  margin-bottom: 12.6%;
+}
+
+.mt-medium {
+  margin-top: 12.6%;
+}
+
+.pb-medium {
+  padding-bottom: 12.6%;
+}
+
+.pt-medium {
+  padding-top: 12.6%;
 }
 
 .mb-large {
@@ -107,9 +135,11 @@ a {
     font-size: 20px;
     line-height: 1.5em;
 
-    @include breakpoint(large) {
-      font-size: 32px;
-      line-height: 1.375em;
+    &.responsive {
+      @include breakpoint(large) {
+        font-size: 32px;
+        line-height: 1.375em;
+      }
     }
   }
 
@@ -161,11 +191,11 @@ a {
     transform: scaleX(1);
   }
 
-  &.light {
-    color: $light-link;
+  &.gold {
+    color: $gold;
 
     &:before {
-      background-color: $light-link;
+      background-color: $gold;
     }
   }
 

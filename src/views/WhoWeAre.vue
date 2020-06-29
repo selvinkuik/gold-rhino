@@ -21,8 +21,8 @@
             <p class="text light-neutral xxlarge-text">Tim Smith</p>
             <p class="text light-neutral medium-text position">Managing Director</p>
 
-            <p class="bio text light-neutral medium-text">An energetic, passionate Australian, Tim grew up in Perth and currently resides in Singapore.</p>
-            <p class="text light-neutral medium-text">He is the founder, owner and Principal Investor of Gold Rhino, and the driving force behind two entrepreneurial software companies: <strong>HardHat</strong> and <strong>OnePlace</strong>.</p>
+            <p class="bio text light-neutral medium-text responsive">An energetic, passionate Australian, Tim grew up in Perth and currently resides in Singapore.</p>
+            <p class="text light-neutral medium-text responsive">He is the founder, owner and Principal Investor of Gold Rhino, and the driving force behind two entrepreneurial software companies: <strong>HardHat</strong> and <strong>OnePlace</strong>.</p>
           </div>
         </div>
       </div>
@@ -53,11 +53,18 @@
         </div>
 
         <div class="cell small-10 small-offset-1 large-5 large-offset-1">
-          <p class="text light-neutral medium-text">Prior to entering the start-up space, Tim worked in the finance industry, and in project management and technology consultant roles for professional service firms (legal and accounting).</p>
+          <p class="text light-neutral medium-text responsive">Prior to entering the start-up space, Tim worked in the finance industry, and in project management and technology consultant roles for professional service firms (legal and accounting).</p>
+
+          <div class="hide-for-small-only mt-small">
+            <p class="text light-neutral small-text">As a two-time entrepreneurial founder, and someone who successfully self-funded OnePlace from start to finish, Tim believes he and his team can offer you the edge in shaping your company for growth, and making it attractive for investment or eventual sale.</p>
+
+            <p class="text light-neutral small-text">Outside of software development, Tim is a fanatic of cricket, rugby union, and Formula 1.</p>
+            <p class="text light-neutral small-text">He also has a deep-rooted passion for South Africa, and the conservation of the rhinoceros population there. OnePlace, and now HardHat, have both been underpinned by a strong desire to provide financial support to causes and charities that exist to protect rhinoceroses.</p>
+          </div>
         </div>
       </div>
 
-      <div class="grid-x grid-margin-x mt-large">
+      <div class="grid-x grid-margin-x mt-large show-for-small-only">
         <div class="small-10 small-offset-1 cell large-4 large-offset-2">
           <p class="text light-neutral small-text">As a two-time entrepreneurial founder, and someone who successfully self-funded OnePlace from start to finish, Tim believes he and his team can offer you the edge in shaping your company for growth, and making it attractive for investment or eventual sale.</p>
         </div>
@@ -232,7 +239,7 @@
     margin: -90% 0 70%;
 
     @include breakpoint(large) {
-      margin: -90% 0 0;
+      margin: -60% 0 0;
     }
   }
 

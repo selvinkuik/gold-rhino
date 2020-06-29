@@ -127,15 +127,16 @@
 
       <div class="grid-x">
         <div class="cell small-10 small-offset-1 large-6 large-offset-3">
-          <p class="text medium-text">We work in partnership with a range of trusted experts and advisors to deliver these services, including Ernst & Young, a highly-credentialed branding and marketing agency, and a finance and book-keeping services team, all of which we have worked closely with for over a decade.</p>
+          <p class="text medium-text responsive para-1">We work in partnership with a range of trusted experts and advisors to deliver these services, including Ernst & Young, a highly-credentialed branding and marketing agency, and a finance and book-keeping services team, all of which we have worked closely with for over a decade.</p>
 
-          <p class="text small-text">With this gold-standard team, we help you set up your business operations properly, giving you a jump-start past the usual hurdles of the start-up world, and catapulting you into a different class of business very quickly.</p>
+          <p class="text medium-text para-2">With this gold-standard team, we help you set up your business operations properly, giving you a jump-start past the usual hurdles of the start-up world, and catapulting you into a different class of business very quickly.</p>
         </div>
       </div>
 
       <ClipPathBox
         counter="03"
         text="Investment"
+        image="investment-banner.jpg"
         to="/investment"
       />
     </div>
@@ -196,11 +197,11 @@
     }
   }
 
-  .medium-text {
+  .para-1 {
     margin-top: 60%;
   }
 
-  .small-text {
+  .para-2 {
     margin-top: 19.65%;
   }
 </style>

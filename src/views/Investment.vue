@@ -18,6 +18,7 @@
       <div class="grid-x small-print">
         <div class="cell small-10 small-offset-1 large-7 large-offset-2">
           <p class="text xsmall-text light-neutral">The information you provide to us will be treated as completely confidential, and will not be shared in any way with any other third party outside of Gold Rhino.</p>
+          <p class="text xsmall-text light-neutral">Gold Rhino only invests in Australian and New Zealand based companies.</p>
         </div>
       </div>
 
@@ -73,7 +74,7 @@
 
         <SelectInput
           name="Country"
-          :items="['Afghanistan', 'Albania', 'Algeria', 'Andorra', 'Angola', 'Antigua and Barbuda', 'Argentina', 'Armenia', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados', 'Belarus', 'Belgium', 'Belize', 'Benin', 'Bhutan', 'Bolivia', 'Bosnia and Herzegovina', 'Botswana', 'Brazil', 'Brunei', 'Bulgaria', 'Burkina Faso', 'Burundi', 'Côte d’Ivoire', 'Cabo Verde', 'Cambodia', 'Cameroon', 'Canada', 'Central African Republic', 'Chad', 'Chile', 'China', 'Colombia', 'Comoros', 'Congo (Congo-Brazzaville)', 'Costa Rica', 'Croatia', 'Cuba', 'Cyprus', 'Czechia (Czech Republic)', 'Democratic Republic of the Congo', 'Denmark', 'Djibouti', 'Dominica', 'Dominican Republic', 'Ecuador', 'Egypt', 'El Salvador', 'Equatorial Guinea', 'Eritrea', 'Estonia', 'Eswatini (formerly Swaziland)', 'Ethiopia', 'Fiji', 'Finland', 'France', 'Gabon', 'Gambia', 'Georgia', 'Germany', 'Ghana', 'Greece', 'Grenada', 'Guatemala', 'Guinea', 'Guinea-Bissau', 'Guyana', 'Haiti', 'Holy See', 'Honduras', 'Hungary', 'Iceland', 'India', 'Indonesia', 'Iran', 'Iraq', 'Ireland', 'Israel', 'Italy', 'Jamaica', 'Japan', 'Jordan', 'Kazakhstan', 'Kenya', 'Kiribati', 'Kuwait', 'Kyrgyzstan', 'Laos', 'Latvia', 'Lebanon', 'Lesotho', 'Liberia', 'Libya', 'Liechtenstein', 'Lithuania', 'Luxembourg', 'Madagascar', 'Malawi', 'Malaysia', 'Maldives', 'Mali', 'Malta', 'Marshall Islands', 'Mauritania', 'Mauritius', 'Mexico', 'Micronesia', 'Moldova', 'Monaco', 'Mongolia', 'Montenegro', 'Morocco', 'Mozambique', 'Myanmar (formerly Burma)', 'Namibia', 'Nauru', 'Nepal', 'Netherlands', 'New Zealand', 'Nicaragua', 'Niger', 'Nigeria', 'North Korea', 'North Macedonia', 'Norway', 'Oman', 'Pakistan', 'Palau', 'Palestine State', 'Panama', 'Papua New Guinea', 'Paraguay', 'Peru', 'Philippines', 'Poland', 'Portugal', 'Qatar', 'Romania', 'Russia', 'Rwanda', 'Saint Kitts and Nevis', 'Saint Lucia', 'Saint Vincent and the Grenadines', 'Samoa', 'San Marino', 'Sao Tome and Principe', 'Saudi Arabia', 'Senegal', 'Serbia', 'Seychelles', 'Sierra Leone', 'Singapore', 'Slovakia', 'Slovenia', 'Solomon Islands', 'Somalia', 'South Africa', 'South Korea', 'South Sudan', 'Spain', 'Sri Lanka', 'Sudan', 'Suriname', 'Sweden', 'Switzerland', 'Syria', 'Tajikistan', 'Tanzania', 'Thailand', 'Timor-Leste', 'Togo', 'Tonga', 'Trinidad and Tobago', 'Tunisia', 'Turkey', 'Turkmenistan', 'Tuvalu', 'Uganda', 'Ukraine', 'United Arab Emirates', 'United Kingdom', 'United States of America', 'Uruguay', 'Uzbekistan', 'Vanuatu', 'Venezuela', 'Vietnam', 'Yemen', 'Zambia', 'Zimbabwe']"
+          :items="['Australia', 'New Zealand']"
           v-model="country"
         />
 
@@ -91,8 +92,9 @@
           type="number"
         />
 
-        <TextInput
+        <SelectInput
           name="Stage of business"
+          :items="['Early stage start-up (<$500k ARR)', 'Mid-stage start-up ($500k-$1m ARR)', 'Late stage start-up ($1m-$2m ARR)', 'Established business ($2> ARR)']"
           v-model="stageOfBusiness"
         />
 
@@ -105,15 +107,20 @@
         <TextInput
           name="Percent owned by shareholders"
           v-model="percentOwnedByShareholders"
+          suffix="%"
+          type="number"
         />
 
         <TextInput
           name="Debt"
           v-model="debt"
+          prefix="$"
+          type="number"
         />
 
-        <TextInput
+        <SelectInput
           name="Debt source"
+          :items="['Family & Friends', 'Bank', 'Private Equity / Venture Capital']"
           v-model="debtSource"
         />
 
@@ -123,8 +130,9 @@
           type="number"
         />
 
-        <TextInput
-          name="Industry"
+        <SelectInput
+          name="Industry (ANZSIC Division)"
+          :items="['Accommodation and Food Services', 'Administrative and Support Services', 'Agriculture, Forestry and Fishing', 'Arts and Recreation Services', 'Construction', 'Education and Training', 'Electricity, Gas, Water and Waste Services', 'Financial and Insurance Services', 'Health Care and Social Assistance', 'Information Media and Telecommunications', 'Manufacturing', 'Mining', 'Professional, Scientific and Technical Services', 'Public Administration and Safety', 'Rental, Hiring and Real Estate Services', 'Retail Trade', 'Transport, Postal and Warehousing', 'Wholesale Trade', 'Other Services']"
           v-model="industry"
         />
 
@@ -161,6 +169,8 @@
         <TextInput
           name="Funding sought"
           v-model="fundingSought"
+          prefix="$"
+          type="number"
         />
 
         <TextInput
@@ -184,6 +194,8 @@
         <TextInput
           name="Estimated sale price"
           v-model="estimatedSalePrice"
+          prefix="$"
+          type="number"
         />
 
         <div class="grid-x submit">
@@ -200,6 +212,7 @@
       <ClipPathBox
         counter="05"
         text="Who we are"
+        image="who-we-are-banner.jpg"
         to="/who-we-are"
       />
     </div>
@@ -278,19 +291,19 @@
           yearBusinessWasIncorporated: this.yearBusinessWasIncorporated,
           stageOfBusiness: this.stageOfBusiness,
           numberOfShareholders: this.numberOfShareholders,
-          percentOwnedByShareholders: this.percentOwnedByShareholders,
-          debt: this.debt,
+          percentOwnedByShareholders: this.percentOwnedByShareholders + '%',
+          debt: '$' + this.debt,
           debtSource: this.debtSource,
           numberOfStaff: this.numberOfStaff,
           industry: this.industry,
           descriptionOfBusiness: this.descriptionOfBusiness,
           competition: this.competition,
           elevatorPitch: this.elevatorPitch,
-          fundingSought: this.fundingSought,
+          fundingSought: '$' + this.fundingSought,
           useOfFunding: this.useOfFunding,
           exitStrategy: this.exitStrategy,
           potentialAcquiror: this.potentialAcquiror,
-          estimatedSalePrice: this.estimatedSalePrice
+          estimatedSalePrice: '$' + this.estimatedSalePrice
         })
 
         let formData = new FormData()

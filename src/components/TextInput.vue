@@ -21,13 +21,34 @@
         />
       </div>
 
-      <input
+      <div
         v-else
-        :placeholder="type == 'number' ? '-' : 'Type here'"
-        :type="type || 'text'"
-        :value="value"
-        @input="$emit('input', $event.target.value)"
-      />
+        class="textinput"
+      >
+        <span
+          v-if="prefix"
+          class="prefix"
+        >
+          {{ prefix }}
+        </span>
+
+        <input
+          :placeholder="type == 'number' ? '-' : 'Type here'"
+          :type="type || 'text'"
+          :value="value"
+          @input="handleInput"
+          @wheel="$event.target.blur()"
+        />
+
+        <span
+          v-if="suffix"
+          class="suffix"
+          ref="suffix"
+          :style="{ left: `${suffixLeft}px` }"
+        >
+          {{ suffix }}
+        </span>
+      </div>
     </div>
   </div>
 </template>
@@ -41,13 +62,19 @@
     
     props: {
       name: String,
+      prefix: String,
+      suffix: String,
       type: String,
       value: String
     },
 
     data() {
+      let canvas = document.createElement('canvas')
+
       return {
-        osInstance: null
+        canvasContext: canvas.getContext('2d'),
+        osInstance: null,
+        suffixLeft: 18
       }
     },
 
@@ -61,6 +88,22 @@
       if (OverlayScrollbars.valid(this.osInstance)) { 
         this.osInstance.destroy()
       }
+    },
+
+    methods: {
+      getTextWidth(text, font) {
+        this.canvasContext.font = font
+        let metrics = this.canvasContext.measureText(text)
+        return metrics.width
+      },
+
+      handleInput(event) {
+        if (this.suffix) {
+          this.suffixLeft = event.target.value ? this.getTextWidth(event.target.value, '16px Montserrat') + 13 : 18
+        }
+
+        this.$emit('input', event.target.value)
+      }
     }
   }
 </script>
@@ -71,7 +114,7 @@
     background-color: transparent;
     border: 2px solid #49515A;
     border-radius: 8px;
-    color: #F8F7F1;
+    color: $light-neutral;
     font: 16px Montserrat;
     padding: 13px;
     transition: border-color .4s cubic-bezier(0.22, 1, 0.36, 1);
@@ -89,6 +132,28 @@
 
     &:focus {
       border-color: $light-neutral;
+    }
+  }
+
+  .textinput {
+    position: relative;
+
+    .prefix {
+      color: $light-neutral;
+      position: absolute;
+      left: 13px;
+      top: 15px;
+
+      + input {
+        padding-left: 23px;
+      }
+    }
+
+    .suffix {
+      position: absolute;
+      top: 15px;
+      color: $light-neutral;
+      padding-left: 5px;
     }
   }
 </style>

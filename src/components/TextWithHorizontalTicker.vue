@@ -9,15 +9,28 @@
       </div>
     </div>
 
-    <div class="text medium-text cell small-10 small-offset-1 large-5 large-offset-6">
+    <div class="cell hide-for-small-only large-3 large-offset-2 home-image">
+      <ParallaxImage
+        :overlapAndFade="true"
+        src="home.jpg"
+      />
+    </div>
+
+    <div class="cell small-10 small-offset-1 large-5 large-offset-1 text medium-text responsive">
       <slot></slot>
     </div>
   </div>
 </template>
 
 <script>
+  import ParallaxImage from '@/components/ParallaxImage.vue'
+
   export default {
     name: 'TextWithHorizontalTicker',
+
+    components: {
+      ParallaxImage
+    },
 
     props: {
       additionalClass: String,
@@ -53,6 +66,10 @@
     position: relative;
   }
 
+  .home-image {
+    margin-top: -15%;
+  }
+
   .ticker {
     align-items: center;
     display: flex;
@@ -63,6 +80,7 @@
     position: absolute;
     user-select: none;
     width: 100%;
+    z-index: 1;
 
     div {
       position: absolute;
@@ -73,7 +91,7 @@
 
   .text {
     position: relative;
-    z-index: 1;
+    z-index: 2;
 
     @include breakpoint(large) {
       font-size: 32px;

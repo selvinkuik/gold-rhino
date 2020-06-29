@@ -28,7 +28,7 @@
         </div>
 
         <div class="cell small-6 small-offset-4 large-5 large-offset-6 intro-1">
-          <p class="text medium-text">We help our investments accelerate growth, maximise returns, and get set-up for future success or eventual sale.</p>
+          <p class="text medium-text responsive">We help our investments accelerate growth, maximise returns, and get set-up for future success or eventual sale.</p>
         </div>
 
         <div class="cell small-10 small-offset-1 large-4 large-offset-6 intro-2">
@@ -38,7 +38,7 @@
 
       <ParallaxImageWithBorder src="about-us-2.jpg" />
 
-      <div class="grid-x grid-margin-x mt-large">
+      <div class="grid-x grid-margin-x mt-medium">
         <div class="small-10 small-offset-1 cell large-4 large-offset-2">
           <p class="text small-text">The provenance of our company’s name lies in the story of the Golden Rhinoceros of Mapungubwe (South Africa), an archaeological find that showed a civilisation existed in Southern Africa that was far more advanced than previously thought.</p>
         </div>
@@ -48,7 +48,7 @@
         </div>
       </div>
 
-      <div class="grid-x divider mt-large">
+      <div class="grid-x divider mt-medium">
         <div class="small-10 small-offset-1 cell large-8 large-offset-2">
           <p class="text xlarge-text center">We are an investment company with a difference.</p>
         </div>
@@ -68,13 +68,20 @@
           />
         </div>
 
-        <div class="cell small-7 small-offset-4 large-3 large-offset-1 experience-text">
+        <div class="cell small-7 small-offset-4 large-4 large-offset-1 experience-text">
           <p class="text small-text">We play an active role in mentoring and helping the CEOs and founders of tech companies achieve their full potential. We openly share our knowledge, experience, and understanding of what it takes to build a successful business, and we have empathy for the founder journey.</p>
           <p class="text small-text">We’ve been there, and done that, with great success and it’s our desire to help others achieve the same.</p>
+
+          <div class="hide-for-small-only">
+            <p class="text small-text">In addition to providing smart money (funding and advice), we also offer Accelerator Services through <router-link class="dark-link" to="/rhino-labs">Rhino Labs</router-link> where we bring trusted third-party partners into the mix to co-assist the companies we invest in to create a better first impression, develop distinct branding, and build out a cohesive strategy and plan.</p>
+
+            <p class="text small-text">The backbone of our business has always been to financially assist South African rhinoceros conservation charities.</p>
+            <p class="text small-text">Our vision is to take an even more active role, by increasing the rhinoceros population in a non-threatening environment, and reducing the demand for rhinoceros horn in Asia.</p>
+          </div>
         </div>
       </div>
 
-      <div class="grid-x grid-margin-x">
+      <div class="grid-x grid-margin-x show-for-small-only">
         <div class="small-10 small-offset-1 cell large-4 large-offset-2">
           <p class="text small-text">In addition to providing smart money (funding and advice), we also offer Accelerator Services through <router-link class="dark-link" to="/rhino-labs">Rhino Labs</router-link> where we bring trusted third-party partners into the mix to co-assist the companies we invest in to create a better first impression, develop distinct branding, and build out a cohesive strategy and plan.</p>
         </div>
@@ -162,10 +169,10 @@
   }
 
   .experience {
-    padding-top: 45.8%;
+    padding-top: 30%;
 
     .experience-image {
-      margin-top: -25%;
+      margin-top: -10%;
     }
 
     .experience-text {

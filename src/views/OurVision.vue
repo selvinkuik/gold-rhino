@@ -3,10 +3,7 @@
     ref="page"
     class="grid-container full"
   >
-  <Banner
-      src="/videos/our-vision.mp4"
-      :video="true"
-    />
+    <Banner src="our-vision-banner.jpg" />
 
     <BannerOverlay>
       Our ultimate vision is to further support the protection and growth of the South African rhinoceros population.
@@ -21,7 +18,7 @@
 
       <div class="grid-x pt-large">
         <div class="cell small-6 small-offset-4 large-4 large-offset-2 intro">
-          <p class="text medium-text">We want to make a direct and more active contribution to this effort by helping to increase the rhinoceros population, and so remove the real threat of their extinction.</p>
+          <p class="text medium-text responsive">We want to make a direct and more active contribution to this effort by helping to increase the rhinoceros population, and so remove the real threat of their extinction.</p>
         </div>
 
         <div class="cell small-5 small-offset-1 large-3 large-offset-1 xxlarge-2 xxlarge-offset-2 intro-image">
@@ -136,7 +133,7 @@
     margin-top: -20%;
 
     @include breakpoint(large) {
-      margin-top: -15%;
+      margin-top: -16%;
     }
   }
 

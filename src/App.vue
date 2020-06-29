@@ -257,13 +257,13 @@
     data() {
       return {
         holdingMode: process.env.VUE_APP_HOLDING_MODE == 'true',
-        progress: .5,
+        progress: 0,
         miniLoader: false,
         menuAnimating: false,
         menuOverflowing: false,
         menuOpen: false,
         wipeAnimatingIn: false,
-        wipeColor: '',
+        wipeColor: 'dark-neutral',
         wipeStatus: 'wiping-in'
       }
     },
@@ -477,7 +477,6 @@
 
     .menu-icon {
       opacity: 0;
-      transition: opacity 0.2s;
     }
 
     .menu-line {
