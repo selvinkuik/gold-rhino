@@ -162,9 +162,10 @@
       top: -23%;
 
       @include breakpoint(large) {
-        height: 396px;
-        opacity: 0;
-        transition: opacity .4s;
+        height: 150%;
+        opacity: .25;
+        transform: scale(.9);
+        transition: opacity .4s, transform .4s;
       }
 
       &.image-hover-1 {
@@ -194,9 +195,13 @@
             transform: translateY(0);
           }
 
-          .description,
+          .description {
+            opacity: .5;
+          }
+
           .image {
             opacity: .5;
+            transform: scale(1);
           }
         }
       }
