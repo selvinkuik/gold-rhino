@@ -66,10 +66,6 @@
     position: relative;
   }
 
-  .home-image {
-    margin-top: -15%;
-  }
-
   .ticker {
     align-items: center;
     display: flex;

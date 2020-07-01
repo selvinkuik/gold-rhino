@@ -217,7 +217,7 @@
     z-index: 1;
 
     @include breakpoint(large) {
-      padding-top: 21.5%;
+      padding-top: 40vh;
     }
 
     .position {
@@ -230,7 +230,7 @@
       margin-top: 31%;
 
       @include breakpoint(large) {
-        margin-top: 57%;
+        margin-top: 46vh;
       }
     }
   }

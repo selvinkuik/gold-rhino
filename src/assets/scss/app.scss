@@ -5,6 +5,7 @@
 @import 'variables';
 @import 'settings';
 @import 'foundation-sites/scss/foundation';
+@import 'overlayscrollbars/css/OverlayScrollbars';
 
 @include foundation-xy-grid-classes;
 
@@ -30,6 +31,12 @@
 
 * {
   outline: none;
+}
+
+.styled-select {
+  .os-scrollbar-handle {
+    background-color: #49515A !important;
+  }
 }
 
 .mb-small {
@@ -141,6 +148,11 @@ a {
         line-height: 1.375em;
       }
     }
+  }
+
+  &.medium-alt-text {
+    font-size: 26px;
+    line-height: 1.5em;
   }
 
   &.large-text {

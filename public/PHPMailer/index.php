@@ -24,8 +24,9 @@ $mail->Password = 'J4ckd4w!';
 
 $mail->From = $data->emailAddress;
 $mail->FromName = $data->firstName . ' ' . $data->lastName;
-$mail->AddAddress('tim.smith@goldrhino.com.au', 'Tim Smith');
-$mail->AddBcc('selvinkuik@gmail.com');
+// $mail->AddAddress('tim.smith@goldrhino.com.au', 'Tim Smith');
+// $mail->AddBcc('selvinkuik@gmail.com');
+$mail->AddAddress('selvinkuik@gmail.com', 'Sel-Vin Kuik');
 
 if (!empty($_FILES['businessPlan'])) {
     $mail->addAttachment($_FILES['businessPlan']['tmp_name'], $_FILES['businessPlan']['name']);
@@ -38,30 +39,30 @@ if (!empty($_FILES['businessPlan'])) {
 // ob_end_clean();
 
 $mail->Subject = 'Message from Gold Rhino website';
-$mail->Body = "First name: {$data->firstName}
-Last name: {$data->lastName}
-Email address: {$data->emailAddress}
-Job title: {$data->jobTitle}
-Company name: {$data->companyName}
-Trading name: {$data->tradingName}
-City: {$data->city}
-Country: {$data->country}
-Year business was incorporated: {$data->yearBusinessWasIncorporated}
-Stage of business: {$data->stageOfBusiness}
-Number of shareholders: {$data->numberOfShareholders}
-Percent owned by shareholders: {$data->percentOwnedByShareholders}
-Debt: {$data->debt}
-Debt source: {$data->debtSource}
-Number of staff: {$data->numberOfStaff}
-Industry (ANZSIC Division): {$data->industry}
-Description of business: {$data->descriptionOfBusiness}
-Competition: {$data->competition}
-Elevator pitch: {$data->elevatorPitch}
-Business plan: " . (empty($_FILES['businessPlan']) ? 'N/A' : 'Attached') . "
-Funding sought: {$data->fundingSought}
-Use of funding: {$data->useOfFunding}
-Exit strategy: {$data->exitStrategy}
-Potential acquiror: {$data->potentialAcquiror}
+$mail->Body = "First name: {$data->firstName}\r\n
+Last name: {$data->lastName}\r\n
+Email address: {$data->emailAddress}\r\n
+Job title: {$data->jobTitle}\r\n
+Company name: {$data->companyName}\r\n
+Trading name: {$data->tradingName}\r\n
+City: {$data->city}\r\n
+Country: {$data->country}\r\n
+Year business was incorporated: {$data->yearBusinessWasIncorporated}\r\n
+Stage of business: {$data->stageOfBusiness}\r\n
+Number of shareholders: {$data->numberOfShareholders}\r\n
+Percent owned by shareholders: {$data->percentOwnedByShareholders}\r\n
+Debt: {$data->debt}\r\n
+Debt source: {$data->debtSource}\r\n
+Number of staff: {$data->numberOfStaff}\r\n
+Industry (ANZSIC Division): {$data->industry}\r\n
+Description of business: {$data->descriptionOfBusiness}\r\n
+Competition: {$data->competition}\r\n
+Elevator pitch: {$data->elevatorPitch}\r\n
+Business plan: " . (empty($_FILES['businessPlan']) ? 'N/A' : 'Attached') . "\r\n
+Funding sought: {$data->fundingSought}\r\n
+Use of funding: {$data->useOfFunding}\r\n
+Exit strategy: {$data->exitStrategy}\r\n
+Potential acquiror: {$data->potentialAcquiror}\r\n
 Estimated sale price: {$data->estimatedSalePrice}";
 
 if(!$mail->Send()) {

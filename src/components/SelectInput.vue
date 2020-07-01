@@ -29,6 +29,7 @@
         <OverlayScrollbarsComponent
           class="select-items"
           :class="{ active: active, small: items.length <= 2, medium: items.length == 3, large: items.length == 4 }"
+          :options="{ scrollbars: { visibility: 'visible' } }"
         >
           <div
             class="item"
@@ -46,7 +47,6 @@
 </template>
 
 <script>
-  import 'overlayscrollbars/css/OverlayScrollbars.css'
   import { OverlayScrollbarsComponent } from 'overlayscrollbars-vue'
 
   export default {

@@ -254,7 +254,7 @@
       }
 
       @include breakpoint(large) {
-        font-size: 136px;
+        font-size: 102px;
       }
     }
 
