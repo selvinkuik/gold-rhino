@@ -629,8 +629,8 @@
       line-height: 1em;
 
       @include breakpoint(large) {
-        font-size: 64px;
-        line-height: 1.125em;
+        font-size: 48px;
+        line-height: 1.5em;
       }
 
       @include breakpoint(small only) {

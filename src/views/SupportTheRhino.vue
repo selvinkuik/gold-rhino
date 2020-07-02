@@ -24,12 +24,12 @@
           <div class="grid-x logos pt-small">
             <div class="cell large-6 logo mb-small-small-only">
               <div class="grid-x grid-margin-x">
-                <div class="cell large-auto logo mb-small-small-only">
+                <div class="cell small-8 small-offset-2 large-auto logo mb-small-small-only">
                   <a href="https://www.savetherhino.org/" target="_blank">
                     <img src="@/assets/images/save-the-rhino.svg" />
                   </a>
                 </div>
-                <div class="cell large-auto large-offset-1 logo">
+                <div class="cell small-8 small-offset-2 large-auto large-offset-1 logo">
                   <a href="http://www.stoprhinopoaching.com/" target="_blank">
                     <img src="@/assets/images/stop-rhino-poaching.jpg" />
                   </a>

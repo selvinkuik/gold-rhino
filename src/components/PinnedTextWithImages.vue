@@ -242,7 +242,7 @@
 
     h3 {
       color: $light-neutral;
-      font-size: 48px;
+      font-size: 40px;
       font-weight: 300;
       line-height: 1em;
       margin-top: 25px;
@@ -260,9 +260,14 @@
 
     .slot {
       color: $light-neutral;
-      font-size: 24px;
+      font-size: 16px;
       line-height: 1.5em;
-      margin-top: 120px;
+      margin-top: 40px;
+
+      @include breakpoint(large) {
+        font-size: 24px;
+        margin-top: 120px;
+      }
     }
 
     .images {
