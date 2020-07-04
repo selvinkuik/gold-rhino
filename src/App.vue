@@ -69,7 +69,7 @@
       <ProgressRing
         :radius="miniLoader ? 60 : 160"
         :progress="progress"
-        :stroke="4"
+        :stroke="miniLoader ? 2 : 4"
       />
     </div>
 
