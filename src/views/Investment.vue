@@ -312,8 +312,7 @@
 
         axios
           .post(
-            // 'http://goldrhino.com.au/PHPMailer/',
-            'https://goldrhino.selvinkuik.com/PHPMailer/',
+            process.env.VUE_APP_PHP_MAILER,
             formData,
             {
               headers: {
