@@ -189,7 +189,7 @@
 <style lang="scss" scoped>
   .rhino-labs {
     color: $light-neutral;
-    font-size: 20px;
+    font-size: 18px;
     line-height: 1.375em;
 
     @include breakpoint(large) {

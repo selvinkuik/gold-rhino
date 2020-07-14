@@ -242,7 +242,7 @@
 
     h3 {
       color: $light-neutral;
-      font-size: 40px;
+      font-size: 34px;
       font-weight: 300;
       line-height: 1em;
       margin-top: 25px;

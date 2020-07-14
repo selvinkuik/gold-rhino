@@ -124,7 +124,7 @@
 
     .intro {
       color: $light-neutral;
-      font-size: 32px;
+      font-size: 28px;
       line-height: 1.125em;
 
       @include breakpoint(large) {

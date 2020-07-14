@@ -134,7 +134,7 @@
     }
 
     .name {
-      font-size: 40px;
+      font-size: 34px;
       margin-top: 3%;
       transform: translateY(10px);
       transition: transform .4s cubic-bezier(0.22, 1, 0.36, 1);

@@ -628,7 +628,7 @@
     }
 
     .menu-nav {
-      font-size: 40px;
+      font-size: 34px;
       line-height: 1em;
 
       @include breakpoint(large) {
