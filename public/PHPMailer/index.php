@@ -1,7 +1,7 @@
 <?php
 
-// header('Access-Control-Allow-Origin: *');
-// header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
+header('Access-Control-Allow-Origin: https://goldrhino.net');
+header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
