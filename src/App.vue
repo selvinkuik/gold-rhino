@@ -129,25 +129,34 @@
               <p>Email:</p>
               <a
                 class="hover-link"
-                href="mailto:info@goldrhino.com.au"
+                href="mailto:info@goldrhino.net"
               >
-                info@goldrhino.com.au
+                info@goldrhino.net
               </a>
             </div>
 
             <div class="address">
               <p>
-                50 Miller Street<br />
-                North Sydney NSW 2060<br />
-                Australia
+                <a
+                  href="https://goo.gl/maps/bTYQ1dRHUXwUaCQm6"
+                  target="_blank"
+                >
+                  103 Carlton Gore Road<br />
+                  Auckland 1023<br />
+                  New Zealand
+                </a>
               </p>
-              <a
-                class="hover-link"
-                href="https://goo.gl/maps/Fma5qx6YFUAck2Ya9"
-                target="_blank"
-              >
-                Map
-              </a>
+
+              <p>
+                <a
+                  href="https://goo.gl/maps/Fma5qx6YFUAck2Ya9"
+                  target="_blank"
+                >
+                  50 Miller Street<br />
+                  North Sydney NSW 2060<br />
+                  Australia
+                </a>
+              </p>
             </div>
           </div>
         </div>
@@ -209,25 +218,34 @@
               <p>Email:</p>
               <a
                 class="hover-link"
-                href="mailto:info@goldrhino.com.au"
+                href="mailto:info@goldrhino.net"
               >
-                info@goldrhino.com.au
+                info@goldrhino.net
               </a>
             </div>
 
             <div class="address">
               <p>
-                50 Miller Street<br />
-                North Sydney NSW 2060<br />
-                Australia
+                <a
+                  href="https://goo.gl/maps/bTYQ1dRHUXwUaCQm6"
+                  target="_blank"
+                >
+                  103 Carlton Gore Road<br />
+                  Auckland 1023<br />
+                  New Zealand
+                </a>
               </p>
-              <a
-                class="hover-link"
-                href="https://goo.gl/maps/Fma5qx6YFUAck2Ya9"
-                target="_blank"
-              >
-                Map
-              </a>
+
+              <p>
+                <a
+                  href="https://goo.gl/maps/Fma5qx6YFUAck2Ya9"
+                  target="_blank"
+                >
+                  50 Miller Street<br />
+                  North Sydney NSW 2060<br />
+                  Australia
+                </a>
+              </p>
             </div>
           </div>
         </div>
@@ -235,8 +253,8 @@
         <div class="footer-grid grid-x">
           <div class="cell small-7 small-offset-1 large-12 large-offset-0">
             <p class="text xxsmall-text">
-              Copyright © {{ new Date().getFullYear() }}. All rights reserved by Gold Rhino Pty Ltd under licence from White Lion (NZ) Trustees Limited.<br />
-              “Gold Rhino” and “Forward Together” are trade marks of Gold Rhino Pty Ltd.
+              Copyright © {{ new Date().getFullYear() }}. All rights reserved by Gold Rhino Limited under licence from White Lion (NZ) Trustees Limited.<br />
+              “Gold Rhino” and “Forward Together” are trade marks of Gold Rhino Limited.
             </p>
           </div>
         </div>
@@ -558,17 +576,13 @@
         line-height: 1.5em;
         opacity: .6;
       }
-
-      a {
-        font-size: 20px;
-
-        @include breakpoint(large) {
-          font-size: 24px;
-        }
-      }
     }
 
     .address {
+      p:first-child {
+        margin-bottom: 20px;
+      }
+
       @include breakpoint(small only) {
         padding-top: 14%;
       }

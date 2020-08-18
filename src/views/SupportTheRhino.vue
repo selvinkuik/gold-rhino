@@ -64,9 +64,9 @@
           <p class="text medium-alt-text">
             If you are interested in helping with our “More Rhinos Program”, TARP and Zoos SA’s Insurance Population Project in Australia,
             <span class="link large inline">please email:</span>
-            <span class="link small"><a class="hover-link gold thick" href="mailto:morerhinos@goldrhino.com.au">please email.</a></span>
+            <span class="link small"><a class="hover-link gold thick" href="mailto:morerhinos@goldrhino.net">please email.</a></span>
           </p>
-          <p class="text medium-alt-text link large"><a class="hover-link gold thick" href="mailto:morerhinos@goldrhino.com.au">morerhinos@goldrhino.com.au</a></p>
+          <p class="text medium-alt-text link large"><a class="hover-link gold thick" href="mailto:morerhinos@goldrhino.net">morerhinos@goldrhino.net</a></p>
           <p class="text medium-alt-text">or visit</p>
 
           <p class="text medium-alt-text link large">
