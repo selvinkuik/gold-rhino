@@ -253,8 +253,7 @@
         <div class="footer-grid grid-x">
           <div class="cell small-7 small-offset-1 large-12 large-offset-0">
             <p class="text xxsmall-text">
-              Copyright © {{ new Date().getFullYear() }}. All rights reserved by Gold Rhino Limited under licence from White Lion (NZ) Trustees Limited.<br />
-              “Gold Rhino” and “Forward Together” are trade marks of Gold Rhino Limited.
+              Copyright © {{ new Date().getFullYear() }} Gold Rhino Limited. “Gold Rhino” and “Forward Together” are trade marks of Gold Rhino Limited.
             </p>
           </div>
         </div>
