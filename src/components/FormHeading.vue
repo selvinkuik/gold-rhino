@@ -19,7 +19,7 @@
     },
 
     mounted() {
-      this.$nextTick(() => {
+      setTimeout(() => {
         this.$scrollmagic.addScene(
           this.$scrollmagic.scene({
             triggerElement: this.$refs.formHeading,
@@ -30,7 +30,7 @@
               this.$emit('update:scrollPosition', this.scrollCounter)
             })
         )
-      })
+      }, 4000) // No idea why this is broken
     }
   }
 </script>
