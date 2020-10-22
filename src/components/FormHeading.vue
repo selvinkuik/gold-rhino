@@ -19,18 +19,16 @@
     },
 
     mounted() {
-      setTimeout(() => {
-        this.$scrollmagic.addScene(
-          this.$scrollmagic.scene({
-            triggerElement: this.$refs.formHeading,
-            triggerHook: 0,
-            duration: parseInt(getComputedStyle(this.$refs.formHeading).height)
+      this.$scrollmagic.addScene(
+        this.$scrollmagic.scene({
+          triggerElement: this.$refs.formHeading,
+          triggerHook: 0,
+          // duration: parseInt(getComputedStyle(this.$refs.formHeading).height) Broken on Netlify
+        })
+          .on('enter', () => {
+            this.$emit('update:scrollPosition', this.scrollCounter)
           })
-            .on('enter', () => {
-              this.$emit('update:scrollPosition', this.scrollCounter)
-            })
-        )
-      }, 4000) // No idea why this is broken
+      )
     }
   }
 </script>
