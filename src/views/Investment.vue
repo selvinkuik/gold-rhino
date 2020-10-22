@@ -27,7 +27,19 @@
         :scrollPosition="scrollPosition"
       />
 
-      <form @submit.prevent="checkForm">
+      <form
+        @submit.prevent="checkForm"
+        :name="formName"
+        method="post"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+      >
+        <input
+          type="hidden"
+          name="form-name"
+          :value="formName"
+        />
+
         <FormHeading
           :scrollCounter="1"
           :scrollMax="3"
@@ -94,7 +106,7 @@
 
         <SelectInput
           name="Stage of business"
-          :items="['Early stage start-up (<$500k ARR)', 'Mid-stage start-up ($500k-$1m ARR)', 'Late stage start-up ($1m-$2m ARR)', 'Established business ($2> ARR)']"
+          :items="['Early stage start-up (<$500k Revenue)', 'Mid-stage start-up ($500k-$1m Revenue)', 'Late stage start-up ($1m-$2m Revenue)', 'Established business ($2> Revenue)']"
           v-model="stageOfBusiness"
         />
 
@@ -132,7 +144,7 @@
 
         <SelectInput
           name="Industry (ANZSIC Division)"
-          :items="['Accommodation and Food Services', 'Administrative and Support Services', 'Agriculture, Forestry and Fishing', 'Arts and Recreation Services', 'Construction', 'Education and Training', 'Electricity, Gas, Water and Waste Services', 'Financial and Insurance Services', 'Health Care and Social Assistance', 'Information Media and Telecommunications', 'Manufacturing', 'Mining', 'Professional, Scientific and Technical Services', 'Public Administration and Safety', 'Rental, Hiring and Real Estate Services', 'Retail Trade', 'Transport, Postal and Warehousing', 'Wholesale Trade', 'Other Services']"
+          :items="['Technology', 'Non-Technology']"
           v-model="industry"
         />
 
@@ -177,25 +189,6 @@
           name="Use of funding"
           v-model="useOfFunding"
           type="textarea"
-        />
-
-        <TextInput
-          name="Exit strategy"
-          v-model="exitStrategy"
-          type="textarea"
-        />
-
-        <TextInput
-          name="Potential acquiror"
-          v-model="potentialAcquiror"
-          type="textarea"
-        />
-
-        <TextInput
-          name="Estimated sale price"
-          v-model="estimatedSalePrice"
-          prefix="$"
-          type="number"
         />
 
         <div class="grid-x submit">
@@ -246,9 +239,12 @@
 
     data() {
       return {
+        formName: 'gold-rhino',
+
         imageLoadCounter: 0,
         pageHasScrolled: false,
         scrollPosition: 1,
+
         firstName: '',
         lastName: '',
         emailAddress: '',
@@ -268,57 +264,59 @@
         descriptionOfBusiness: '',
         competition: '',
         elevatorPitch: '',
-        businessPlan: '',
         fundingSought: '',
         useOfFunding: '',
-        exitStrategy: '',
-        potentialAcquiror: '',
-        estimatedSalePrice: ''
+
+        businessPlan: ''
       }
     },
 
     methods: {
+      encode(data) {
+        return Object
+          .keys(data)
+          .map(
+            key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
+          )
+          .join('&')
+      },
+      
       checkForm() {
-        const rawData = JSON.stringify({
-          firstName: this.firstName,
-          lastName: this.lastName,
-          emailAddress: this.emailAddress,
-          jobTitle: this.jobTitle,
-          companyName: this.companyName,
-          tradingName: this.tradingName,
-          city: this.city,
-          country: this.country,
-          yearBusinessWasIncorporated: this.yearBusinessWasIncorporated,
-          stageOfBusiness: this.stageOfBusiness,
-          numberOfShareholders: this.numberOfShareholders,
-          percentOwnedByShareholders: this.percentOwnedByShareholders + '%',
-          debt: '$' + this.debt,
-          debtSource: this.debtSource,
-          numberOfStaff: this.numberOfStaff,
-          industry: this.industry,
-          descriptionOfBusiness: this.descriptionOfBusiness,
-          competition: this.competition,
-          elevatorPitch: this.elevatorPitch,
-          fundingSought: '$' + this.fundingSought,
-          useOfFunding: this.useOfFunding,
-          exitStrategy: this.exitStrategy,
-          potentialAcquiror: this.potentialAcquiror,
-          estimatedSalePrice: '$' + this.estimatedSalePrice
-        })
-
-        let formData = new FormData()
-        formData.append('businessPlan', this.businessPlan)
-        formData.append('data', rawData)
-
         axios
           .post(
-            process.env.VUE_APP_PHP_MAILER,
-            formData,
-            {
-              headers: {
-                'Content-Type': 'multipart/form-data'
-              }
-            }
+            '/',
+            this.encode({
+              'form-name': this.formName,
+
+              'first-name': this.firstName,
+              'last-name': this.lastName,
+              'email-address': this.emailAddress,
+              'job-title': this.jobTitle,
+              'company-name': this.companyName,
+              'trading-name': this.tradingName,
+              'city': this.city,
+              'country': this.country,
+              'year-business-was-incorporated': this.yearBusinessWasIncorporated,
+              'stage-of-business': this.stageOfBusiness,
+              'number-of-shareholders': this.numberOfShareholders,
+              'percent-owned-by-shareholders': this.percentOwnedByShareholders + '%',
+              'debt': '$' + this.debt,
+              'debt-source': this.debtSource,
+              'number-of-staff': this.numberOfStaff,
+              'industry': this.industry,
+              'description-of-business': this.descriptionOfBusiness,
+              'competition': this.competition,
+              'elevator-pitch': this.elevatorPitch,
+              'funding-sought': '$' + this.fundingSought,
+              'use-of-funding': this.useOfFunding,
+
+              'business-plan': this.businessPlan
+            })
+            // {
+            //   headers: {
+            //     'Content-Type': 'multipart/form-data'
+            //   }
+            // }
           )
           .then((response) => {
             if (response.status == 200) {
