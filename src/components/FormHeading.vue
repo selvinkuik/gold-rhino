@@ -23,7 +23,7 @@
         this.$scrollmagic.scene({
           triggerElement: this.$refs.formHeading,
           triggerHook: 0,
-          // duration: parseInt(getComputedStyle(this.$refs.formHeading).height) Broken on Netlify
+          duration: parseInt(getComputedStyle(this.$refs.formHeading).height)
         })
           .on('enter', () => {
             this.$emit('update:scrollPosition', this.scrollCounter)

@@ -333,7 +333,7 @@
               'use-of-funding': this.useOfFunding,
 
               'business-plan': this.businessPlan
-            })
+            }),
             {
               headers: {
                 'Content-Type': 'multipart/form-data'
