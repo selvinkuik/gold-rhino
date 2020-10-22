@@ -1,5 +1,5 @@
 <template>
-  <div class="app" data-server-rendered="true">
+  <div class="app">
     <div :class="`wipe ${wipeStatus}`">
       <div
         class="circle-in"
