@@ -29,14 +29,14 @@
 
       <form
         @submit.prevent="checkForm"
-        :name="formName"
+        :label="formName"
         method="post"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
       >
         <input
           type="hidden"
-          name="form-name"
+          label="form-name"
           :value="formName"
         />
 
@@ -49,44 +49,52 @@
         </FormHeading>
 
         <TextInput
-          name="First name"
+          label="First name"
+          name="first-name"
           v-model="firstName"
         />
 
         <TextInput
-          name="Last name"
+          label="Last name"
+          name="last-name"
           v-model="lastName"
         />
 
         <TextInput
-          name="Email address"
+          label="Email address"
+          name="email-address"
           v-model="emailAddress"
           type="email"
         />
 
         <TextInput
-          name="Job title"
+          label="Job title"
+          name="job-title"
           v-model="jobTitle"
         />
 
         <TextInput
-          name="Company name"
+          label="Company name"
+          name="company-name"
           v-model="companyName"
         />
 
         <TextInput
-          name="Trading name (if different)"
+          label="Trading name (if different)"
+          name="trading-name"
           v-model="tradingName"
         />
 
         <TextInput
-          name="City"
+          label="City"
+          name="city"
           v-model="city"
         />
 
         <SelectInput
-          name="Country"
+          label="Country"
           :items="['Australia', 'New Zealand']"
+          name="country"
           v-model="country"
         />
 
@@ -99,63 +107,73 @@
         </FormHeading>
 
         <TextInput
-          name="Year business was incorporated"
+          label="Year business was incorporated"
+          name="year-business-was-incorporated"
           v-model="yearBusinessWasIncorporated"
           type="number"
         />
 
         <SelectInput
-          name="Stage of business"
+          label="Stage of business"
           :items="['Early stage start-up (<$500k Revenue)', 'Mid-stage start-up ($500k-$1m Revenue)', 'Late stage start-up ($1m-$2m Revenue)', 'Established business ($2> Revenue)']"
+          name="stage-of-business"
           v-model="stageOfBusiness"
         />
 
         <TextInput
-          name="Number of shareholders"
+          label="Number of shareholders"
+          name="number-of-shareholders"
           v-model="numberOfShareholders"
           type="number"
         />
 
         <TextInput
-          name="Percent owned by shareholders"
+          label="Percent owned by shareholders"
+          name="percent-owned-by-shareholders"
           v-model="percentOwnedByShareholders"
           suffix="%"
           type="number"
         />
 
         <TextInput
-          name="Debt"
+          label="Debt"
+          name="debt"
           v-model="debt"
           prefix="$"
           type="number"
         />
 
         <SelectInput
-          name="Debt source"
+          label="Debt source"
           :items="['Family & Friends', 'Bank', 'Private Equity / Venture Capital']"
+          name="debt-source"
           v-model="debtSource"
         />
 
         <TextInput
-          name="Number of staff (FTE)"
+          label="Number of staff (FTE)"
+          name="number-of-staff"
           v-model="numberOfStaff"
           type="number"
         />
 
         <SelectInput
-          name="Industry (ANZSIC Division)"
+          label="Industry (ANZSIC Division)"
           :items="['Technology', 'Non-Technology']"
+          name="industry"
           v-model="industry"
         />
 
         <TextInput
-          name="Description of business"
+          label="Description of business"
+          name="description-of-business"
           v-model="descriptionOfBusiness"
           type="textarea"
         />
 
         <TextInput
-          name="Competition"
+          label="Competition"
+          name="competition"
           v-model="competition"
         />
 
@@ -168,25 +186,29 @@
         </FormHeading>
 
         <TextInput
-          name="Elevator pitch (what makes your business unique, and why you need our assistance)"
+          label="Elevator pitch (what makes your business unique, and why you need our assistance)"
+          name="elevator-pitch"
           v-model="elevatorPitch"
           type="textarea"
         />
 
         <FileInput
-          name="Business plan (PDF)"
+          label="Business plan (PDF)"
+          name="business-plan"
           v-model="businessPlan"
         />
 
         <TextInput
-          name="Funding sought"
+          label="Funding sought"
+          name="funding-sought"
           v-model="fundingSought"
           prefix="$"
           type="number"
         />
 
         <TextInput
-          name="Use of funding"
+          label="Use of funding"
+          name="use-of-funding"
           v-model="useOfFunding"
           type="textarea"
         />

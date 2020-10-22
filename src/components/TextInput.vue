@@ -1,7 +1,7 @@
 <template>
   <div class="form-field grid-x">
     <label class="form-label cell small-10 small-offset-1 large-3 large-offset-2">
-      {{ name }}:
+      {{ label }}:
     </label>
 
     <div
@@ -16,6 +16,7 @@
           placeholder="Type here"
           ref="textarea"
           style="height: 165px;"
+          :name="name"
           :value="value"
           @input="$emit('input', $event.target.value)"
         />
@@ -35,6 +36,7 @@
         <input
           :placeholder="type == 'number' ? '-' : 'Type here'"
           :type="type || 'text'"
+          :name="name"
           :value="value"
           @input="handleInput"
           @wheel="$event.target.blur()"
@@ -61,6 +63,7 @@
     name: 'TextInput',
     
     props: {
+      label: String,
       name: String,
       prefix: String,
       suffix: String,

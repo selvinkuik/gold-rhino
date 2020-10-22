@@ -74,7 +74,6 @@
     </div>
 
     <div
-      v-if="!holdingMode"
       class="menu-circle-transform white"
       :class="{ open: menuOpen }"
       @click="toggleMenu"
@@ -86,7 +85,6 @@
     </div>
 
     <div
-      v-if="!holdingMode"
       class="menu-overlay"
       :class="{ open: menuOpen, visible: menuOpen || menuAnimating }"
       ref="menu"
@@ -188,7 +186,7 @@
           <div class="footer-nav cell small-10 small-offset-1 large-5 large-offset-2">
             <template v-for="item in $router.options.routes">
               <div
-                v-if="item.showInNav && !holdingMode"
+                v-if="item.showInNav"
                 :key="item.path"
               >
                 <router-link
@@ -199,18 +197,6 @@
                 </router-link>
               </div>
             </template>
-
-            <div
-              v-if="holdingMode"
-              class="pdf"
-            >
-              <a
-                class="white-link"
-                href="/presentation"
-              >
-                Click here to find out more
-              </a>
-            </div>
           </div>
 
           <div class="contact-info cell small-10 small-offset-1 large-5 large-offset-0">
@@ -276,7 +262,6 @@
   export default {
     data() {
       return {
-        holdingMode: process.env.VUE_APP_HOLDING_MODE == 'true',
         progress: 0,
         miniLoader: false,
         menuAnimating: false,

@@ -30,7 +30,6 @@
         </router-link>
 
         <div
-          v-if="!holdingMode"
           class="menu"
           :class="{ white: color == 'white' }"
           @click="$emit('toggleMenu')"
@@ -70,7 +69,6 @@
 
     data() {
       return {
-        holdingMode: process.env.VUE_APP_HOLDING_MODE == 'true',
         lastScrollY: 0,
         scrollingDown: false
       }

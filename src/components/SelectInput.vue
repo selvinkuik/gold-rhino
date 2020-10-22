@@ -1,12 +1,15 @@
 <template>
   <div class="form-field grid-x">
     <label class="form-label cell small-10 small-offset-1 large-3 large-offset-2">
-      {{ name }}:
+      {{ label }}:
     </label>
 
     <div class="cell small-10 small-offset-1 large-4 large-offset-0">
       <div class="styled-select">
-        <select @input="$emit('input', $event.target.value)">
+        <select
+          @input="$emit('input', $event.target.value)"
+          :name="name"
+        >
           <option value=""></option>
           <option
             v-for="item in items"
@@ -53,6 +56,7 @@
     name: 'SelectInput',
     
     props: {
+      label: String,
       name: String,
       items: Array,
       value: String

@@ -1,7 +1,7 @@
 <template>
   <div class="form-field grid-x">
     <label class="form-label cell small-10 small-offset-1 large-3 large-offset-2">
-      {{ name }}:
+      {{ label }}:
     </label>
 
     <div class="cell small-10 small-offset-1 large-4 large-offset-0">
@@ -10,6 +10,7 @@
         ref="fileInput"
         type="file"
         :id="`file-input-${_uid}`"
+        :name="name"
         @input="$emit('input', $event.target.files[0])"
       />
 
@@ -33,6 +34,7 @@
     name: 'FileInput',
     
     props: {
+      label: String,
       name: String
     },
 
