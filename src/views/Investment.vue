@@ -235,7 +235,6 @@
 </template>
 
 <script>
-  // import axios from 'axios'
   import imagesLoaded from 'imagesloaded'
   import throttle from 'lodash/throttle'
   import ClipPathBox from '@/components/ClipPathBox.vue'
@@ -338,10 +337,9 @@
           })
         })
         .then((response) => {
-          console.log(response)
-          // if (response.status == 200) {
-          //   this.$router.push('/investment/thank-you')
-          // }
+          if (response.status == 200) {
+            this.$router.push('/investment/thank-you')
+          }
         })
       },
 
