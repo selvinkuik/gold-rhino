@@ -294,46 +294,41 @@
     },
 
     methods: {
-      encode(data) {
-        return Object
-          .keys(data)
-          .map(
-            key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
-          )
-          .join('&')
-      },
-      
       checkForm() {
+        const rawData = JSON.stringify({
+          'form-name': this.formName,
+
+          'first-name': this.firstName,
+          'last-name': this.lastName,
+          'email-address': this.emailAddress,
+          'job-title': this.jobTitle,
+          'company-name': this.companyName,
+          'trading-name': this.tradingName,
+          'city': this.city,
+          'country': this.country,
+          'year-business-was-incorporated': this.yearBusinessWasIncorporated,
+          'stage-of-business': this.stageOfBusiness,
+          'number-of-shareholders': this.numberOfShareholders,
+          'percent-owned-by-shareholders': this.percentOwnedByShareholders + '%',
+          'debt': '$' + this.debt,
+          'debt-source': this.debtSource,
+          'number-of-staff': this.numberOfStaff,
+          'industry': this.industry,
+          'description-of-business': this.descriptionOfBusiness,
+          'competition': this.competition,
+          'elevator-pitch': this.elevatorPitch,
+          'funding-sought': '$' + this.fundingSought,
+          'use-of-funding': this.useOfFunding
+        })
+
+        let formData = new FormData()
+        formData.append('business-plan', this.businessPlan)
+        formData.append('data', rawData)
+
         axios
           .post(
             '/',
-            this.encode({
-              'form-name': this.formName,
-
-              'first-name': this.firstName,
-              'last-name': this.lastName,
-              'email-address': this.emailAddress,
-              'job-title': this.jobTitle,
-              'company-name': this.companyName,
-              'trading-name': this.tradingName,
-              'city': this.city,
-              'country': this.country,
-              'year-business-was-incorporated': this.yearBusinessWasIncorporated,
-              'stage-of-business': this.stageOfBusiness,
-              'number-of-shareholders': this.numberOfShareholders,
-              'percent-owned-by-shareholders': this.percentOwnedByShareholders + '%',
-              'debt': '$' + this.debt,
-              'debt-source': this.debtSource,
-              'number-of-staff': this.numberOfStaff,
-              'industry': this.industry,
-              'description-of-business': this.descriptionOfBusiness,
-              'competition': this.competition,
-              'elevator-pitch': this.elevatorPitch,
-              'funding-sought': '$' + this.fundingSought,
-              'use-of-funding': this.useOfFunding,
-
-              'business-plan': this.businessPlan
-            }),
+            formData,
             {
               headers: {
                 'Content-Type': 'multipart/form-data'
