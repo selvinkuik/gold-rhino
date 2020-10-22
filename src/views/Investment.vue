@@ -260,7 +260,7 @@
 
     data() {
       return {
-        formName: 'gold-rhino-investment',
+        formName: 'form 1',
 
         imageLoadCounter: 0,
         pageHasScrolled: false,
@@ -306,7 +306,7 @@
       },
       
       checkForm() {
-        fetch('/investment', {
+        fetch('/investment/', {
           method: 'POST',
           body: this.encode({
             'form-name': this.formName,
