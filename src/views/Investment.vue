@@ -235,7 +235,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
+  // import axios from 'axios'
   import imagesLoaded from 'imagesloaded'
   import throttle from 'lodash/throttle'
   import ClipPathBox from '@/components/ClipPathBox.vue'
@@ -296,51 +296,53 @@
     methods: {
       encode(data) {
         const formData = new FormData()
-        Object.keys(data).forEach((key) => formData.append(key, data[key]))
+        for (const key of Object.keys(data)) {
+          if (key === 'business-plan') {
+            formData.append(key, data[key][0])
+          } else {
+            formData.append(key, data[key])
+          }
+        }
         return formData
       },
       
       checkForm() {
-        axios
-          .post(
-            '/',
-            this.encode({
-              'form-name': this.formName,
+        fetch('/', {
+          method: 'POST',
+          body: this.encode({
+            'form-name': this.formName,
 
-              'first-name': this.firstName,
-              'last-name': this.lastName,
-              'email-address': this.emailAddress,
-              'job-title': this.jobTitle,
-              'company-name': this.companyName,
-              'trading-name': this.tradingName,
-              'city': this.city,
-              'country': this.country,
-              'year-business-was-incorporated': this.yearBusinessWasIncorporated,
-              'stage-of-business': this.stageOfBusiness,
-              'number-of-shareholders': this.numberOfShareholders,
-              'percent-owned-by-shareholders': this.percentOwnedByShareholders + '%',
-              'debt': '$' + this.debt,
-              'debt-source': this.debtSource,
-              'number-of-staff': this.numberOfStaff,
-              'industry': this.industry,
-              'description-of-business': this.descriptionOfBusiness,
-              'competition': this.competition,
-              'elevator-pitch': this.elevatorPitch,
-              'funding-sought': '$' + this.fundingSought,
-              'use-of-funding': this.useOfFunding
+            'first-name': this.firstName,
+            'last-name': this.lastName,
+            'email-address': this.emailAddress,
+            'job-title': this.jobTitle,
+            'company-name': this.companyName,
+            'trading-name': this.tradingName,
+            'city': this.city,
+            'country': this.country,
+            'year-business-was-incorporated': this.yearBusinessWasIncorporated,
+            'stage-of-business': this.stageOfBusiness,
+            'number-of-shareholders': this.numberOfShareholders,
+            'percent-owned-by-shareholders': this.percentOwnedByShareholders + '%',
+            'debt': '$' + this.debt,
+            'debt-source': this.debtSource,
+            'number-of-staff': this.numberOfStaff,
+            'industry': this.industry,
+            'description-of-business': this.descriptionOfBusiness,
+            'competition': this.competition,
+            'elevator-pitch': this.elevatorPitch,
+            'funding-sought': '$' + this.fundingSought,
+            'use-of-funding': this.useOfFunding
 
-              // 'business-plan': this.businessPlan
-            }),
-            {
-              // 'Content-Type': 'multipart/form-data'
-              header: { 'Content-Type': 'application/x-www-form-urlencoded' }
-            }
-          )
-          .then((response) => {
-            if (response.status == 200) {
-              this.$router.push('/investment/thank-you')
-            }
+            // 'business-plan': this.businessPlan
           })
+        })
+        .then((response) => {
+          console.log(response)
+          // if (response.status == 200) {
+          //   this.$router.push('/investment/thank-you')
+          // }
+        })
       },
 
       handleScroll() {
