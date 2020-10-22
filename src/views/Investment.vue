@@ -261,7 +261,7 @@
 
     data() {
       return {
-        formName: 'gold-rhino',
+        formName: 'gold-rhino-investment',
 
         imageLoadCounter: 0,
         pageHasScrolled: false,
