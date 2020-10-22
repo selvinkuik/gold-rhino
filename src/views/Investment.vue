@@ -306,7 +306,7 @@
       },
       
       checkForm() {
-        fetch('/', {
+        fetch('/investment', {
           method: 'POST',
           body: this.encode({
             'form-name': this.formName,
