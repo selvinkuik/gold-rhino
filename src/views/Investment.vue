@@ -296,11 +296,7 @@
       encode(data) {
         const formData = new FormData()
         for (const key of Object.keys(data)) {
-          if (key === 'business-plan') {
-            formData.append(key, data[key][0])
-          } else {
-            formData.append(key, data[key])
-          }
+          formData.append(key, data[key])
         }
         return formData
       },
