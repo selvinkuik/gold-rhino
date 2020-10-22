@@ -327,9 +327,9 @@
               'competition': this.competition,
               'elevator-pitch': this.elevatorPitch,
               'funding-sought': '$' + this.fundingSought,
-              'use-of-funding': this.useOfFunding,
+              'use-of-funding': this.useOfFunding
 
-              'business-plan': this.businessPlan
+              // 'business-plan': this.businessPlan
             }),
             {
               // 'Content-Type': 'multipart/form-data'
