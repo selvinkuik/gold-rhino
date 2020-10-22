@@ -19,16 +19,18 @@
     },
 
     mounted() {
-      this.$scrollmagic.addScene(
-        this.$scrollmagic.scene({
-          triggerElement: this.$refs.formHeading,
-          triggerHook: 0,
-          duration: parseInt(getComputedStyle(this.$refs.formHeading).height)
-        })
-          .on('enter', () => {
-            this.$emit('update:scrollPosition', this.scrollCounter)
+      this.$nextTick(() => {
+        this.$scrollmagic.addScene(
+          this.$scrollmagic.scene({
+            triggerElement: this.$refs.formHeading,
+            triggerHook: 0,
+            duration: parseInt(getComputedStyle(this.$refs.formHeading).height)
           })
-      )
+            .on('enter', () => {
+              this.$emit('update:scrollPosition', this.scrollCounter)
+            })
+        )
+      })
     }
   }
 </script>
